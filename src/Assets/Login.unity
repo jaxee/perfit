@@ -1206,7 +1206,7 @@ GameObject:
   - component: {fileID: 1761882342}
   - component: {fileID: 1761882343}
   m_Layer: 0
-  m_Name: gradient-blue-abstract-background_1159-3091
+  m_Name: Image_Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1413,7 +1413,7 @@ GameObject:
   - component: {fileID: 2067890290}
   - component: {fileID: 2067890291}
   m_Layer: 0
-  m_Name: perfit_logo
+  m_Name: Image_Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

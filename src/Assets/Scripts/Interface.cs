@@ -30,7 +30,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			
 		else if (gameObject.name == "Dress2") {
 			Debug.Log ("Dress 2");
-			AddOrRemoveClothes ("naked", "Dress", "dress02", 0);
+			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
 		}
 		//add more
     }

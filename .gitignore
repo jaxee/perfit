@@ -1,5 +1,4 @@
 /[Ll]ibrary/
-/[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
@@ -22,6 +21,7 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
+.DS_Store
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -32,3 +32,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Temp and metadata
+Temp/
+*/Library/metadata/
+*/Library/EditorInstance.json

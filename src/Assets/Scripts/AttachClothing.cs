@@ -103,15 +103,11 @@ public class AttachClothing : MonoBehaviour
 
     public GameObject AttachModels(GameObject ClothingModel, GameObject Character)
     {
-		GameObject Cmesh = GameObject.Find("bodyMesh");
-		ClothingModel.transform.Rotate (30, 90, 180); 
-		ClothingModel.transform.parent = Cmesh.transform;
-
-		SkinnedMeshRenderer skinnedCharMeshRenderer = Cmesh.GetComponentInChildren<SkinnedMeshRenderer> (),
-		skinnedMeshRenderers = ClothingModel.GetComponentInChildren<SkinnedMeshRenderer>();
-
-        skinnedMeshRenderers.bones = skinnedCharMeshRenderer.bones;
-		//ClothingModel.transform.Rotate
+		
+		SkinnedMeshRenderer skinnedCharMeshRenderer = Character.GetComponentInChildren<SkinnedMeshRenderer>(),
+				skinnedMeshRenderers = ClothingModel.GetComponentInChildren<SkinnedMeshRenderer>();
+		ClothingModel.transform.parent = Character.transform;
+		//    skinnedMeshRenderers.bones = skinnedCharMeshRenderer.bones;
 		return ClothingModel;
     }
 }

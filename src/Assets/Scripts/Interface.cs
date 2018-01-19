@@ -24,14 +24,21 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+		Debug.Log ("hi");
 		
-		if (gameObject.name == "Dress1")
-			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
-			
-		else if (gameObject.name == "Dress2") {
-			Debug.Log ("Dress 2");
+		if (gameObject.name == "Dress1") {
+			Debug.Log ("Dress 1");
+			humanObject.transform.rotation = Quaternion.identity;
+
 			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
 		}
+		else if (gameObject.name == "Dress2") {
+			Debug.Log ("Dress 2");
+			humanObject.transform.rotation = Quaternion.identity;
+
+			AddOrRemoveClothes ("naked", "Dress", "dress02", 0);
+		}
+
 		//add more
     }
 

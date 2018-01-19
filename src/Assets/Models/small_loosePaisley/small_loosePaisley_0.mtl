@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
 newmtl PT_FABRIC_FRONT_72783
 Ka 0.257132 0.257132 0.257132
@@ -96,3 +97,103 @@ illum 2
 d 1.000000
 map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
 map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+=======
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl PT_FABRIC_FRONT_72783
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl Default Fabric_FRONT_3574
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+newmtl PT_FABRIC_FRONT_70846
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl PT_FABRIC_FRONT_6923
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl PT_FABRIC_FRONT_67609
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+newmtl PT_FABRIC_FRONT_9855
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl PT_FABRIC_FRONT_70079
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl PT_FABRIC_FRONT_68934
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+newmtl PT_FABRIC_FRONT_69774
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+newmtl PT_FABRIC_FRONT_69351
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+newmtl PT_FABRIC_FRONT_71795
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+>>>>>>> c6cb1d5878f17c5c9725ef5ea45738f3a4bebc3e

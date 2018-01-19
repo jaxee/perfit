@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ClothScene.unity
+- path: Assets/WomensPage.unity
   isLoaded: 1
   isActive: 1

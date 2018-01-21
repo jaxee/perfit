@@ -10,6 +10,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
     private AttachClothing attachScript; //Reference 
     private Text textChild;  //Their text lol can prob delete this l8r
 	private ClothAnimation clothAnimationScript;
+	private AddColliders collidersScript;
 
     private void Start()
     {
@@ -29,7 +30,6 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 		if (gameObject.name == "Dress1") {
 			Debug.Log ("Dress 1");
 			humanObject.transform.rotation = Quaternion.identity;
-
 			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
 		}
 		else if (gameObject.name == "Dress2") {
@@ -37,6 +37,18 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			humanObject.transform.rotation = Quaternion.identity;
 
 			AddOrRemoveClothes ("naked", "Dress", "dress02", 0);
+		}
+		else if (gameObject.name == "Dress3") {
+			Debug.Log ("Dress 3");
+			humanObject.transform.rotation = Quaternion.identity;
+
+			AddOrRemoveClothes ("naked", "Dress", "dress03", 0);
+		}
+		else if (gameObject.name == "Dress4") {
+			Debug.Log ("Dress 4");
+			humanObject.transform.rotation = Quaternion.identity;
+
+			AddOrRemoveClothes ("naked", "Dress", "dress04", 0);
 		}
 
 		//add more

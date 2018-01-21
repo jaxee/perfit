@@ -1,0 +1,118 @@
+newmtl small_roseDress:Material11713
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.21 0.21 0.21
+Tf 1.00 1.00 1.00
+map_Kd Puller_01.jpg
+Ni 1.00
+Ks 0.76 0.76 0.76
+Ns 51.00
+newmtl small_roseDress:Material11719
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.21 0.21 0.21
+Tf 1.00 1.00 1.00
+map_Kd Puller_01.jpg
+Ni 1.00
+Ks 0.76 0.76 0.76
+Ns 51.00
+newmtl small_roseDress:PT_FABRIC_FRONT_872077
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_872787
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_872963
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_873057
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_873410
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_873655
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_875584
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_876315
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_889675
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:PT_FABRIC_FRONT_890144
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

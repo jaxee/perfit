@@ -4582,7 +4582,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Body Settings
+  m_Text: Settings
 --- !u!222 &1131357784
 CanvasRenderer:
   m_ObjectHideFlags: 0

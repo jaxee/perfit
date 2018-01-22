@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Kinect = Windows.Kinect;
+using Face = Microsoft.Kinect.Face;
 
 public class Kinect_Measurements : MonoBehaviour 
 {
@@ -10,6 +11,9 @@ public class Kinect_Measurements : MonoBehaviour
 
 	private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
 	private Kinect_BodyManager _BodyManager;
+
+    private HashSet<float> hipDepth = new HashSet<float>();
+    private float initialHipDepth;
 
 	private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
 	{
@@ -47,18 +51,22 @@ public class Kinect_Measurements : MonoBehaviour
 	{
 		if (BodySourceManager == null)
 		{
-			return;
+            Debug.LogError("No BodySourceManager");
+            return;
 		}
-
+ 
 		_BodyManager = BodySourceManager.GetComponent<Kinect_BodyManager>();
 		if (_BodyManager == null)
 		{
-			return;
+            Debug.LogError("Cannot get script");
+            return;
 		}
 
-		Kinect.Body[] data = _BodyManager.GetData();
-		if (data == null)
+        Kinect.Body[] data = _BodyManager.GetData();
+
+        if (data == null)
 		{
+            Debug.LogError("No data");
 			return;
 		}
 
@@ -67,12 +75,14 @@ public class Kinect_Measurements : MonoBehaviour
 		{
 			if (body == null)
 			{
+                Debug.LogError("Body not tracked");
 				continue;
 			}
 
 			if(body.IsTracked)
 			{
 				trackedIds.Add (body.TrackingId);
+
 			}
 		}
 
@@ -88,23 +98,22 @@ public class Kinect_Measurements : MonoBehaviour
 			}
 		}
 
-		foreach(var body in data)
-		{
+		foreach(var body in data){
 			if (body == null)
 			{
+                Debug.LogError("Body not tracked");
 				continue;
 			}
 
-			if(body.IsTracked)
-			{
-				if(!_Bodies.ContainsKey(body.TrackingId))
-				{
-					_Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
-				}
+            if (body.IsTracked)
+            {
+                if (!_Bodies.ContainsKey(body.TrackingId))
+                {
+                    _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                }
 
-				RefreshBodyObject(body, _Bodies[body.TrackingId]);
+                RefreshBodyObject(body, _Bodies[body.TrackingId]);
 				Measurements (body);
-
 			}
 		}
 	}
@@ -114,9 +123,10 @@ public class Kinect_Measurements : MonoBehaviour
 		double legLength = GetLegLength (body) * 100;
 		double armLength = GetArmLength (body) * 100;
 		double shoulderLength = getShoulderLength (body) * 100;
+        double hip = getHipLength(body) * 100;
 
 		Debug.Log ("***************************************************************************");
-		Debug.Log ("Height: " + height + "\nLeg Length: " + legLength + "\nArm Length: " + armLength + "\nShoulder Length: " + shoulderLength);
+		Debug.Log ("Height: " + height + "\nLeg Length: " + legLength + "\nArm Length: " + armLength + "\nShoulder Length: " + shoulderLength + "\nHip: " + hip);
 		Debug.Log ("***************************************************************************");
 	}
 
@@ -225,7 +235,53 @@ public class Kinect_Measurements : MonoBehaviour
 		return shoulderLength;
 	}
 
-	private static double Length(Kinect.Joint p1, Kinect.Joint p2) {
+    private double getHipLength(Kinect.Body body)
+    {
+        var leftHip = body.Joints[Kinect.JointType.HipLeft];
+        var rightHip = body.Joints[Kinect.JointType.HipRight];
+        float centerHip = body.Joints[Kinect.JointType.SpineBase].Position.Z;
+        var HipPoint = body.Joints[Kinect.JointType.SpineBase].Position;
+
+        Debug.Log("WAIST Z VALUE: " + centerHip);
+
+        if (hipDepth == null)
+        {
+            hipDepth = new HashSet<float>();
+            initialHipDepth = centerHip;
+        } else
+        {
+            hipDepth.Add(centerHip);
+        }
+
+        Kinect.DepthSpacePoint depthPoint = _BodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(HipPoint);
+
+        Debug.Log("Point in depth space: " + depthPoint + " | X: " + depthPoint.X + " Y: " + depthPoint.Y);
+
+        /*if (_BodyManager.depthPixels != null)
+        {
+            var i = (int)depthPoint.X;
+            var j = (int)depthPoint.Y;
+            var depthInMM = _BodyManager.depthPixels[i];
+        }*/
+
+        //double hipLength = ((Length(leftHip, centerHip) * 2) + (Length(centerHip, rightHip) * 2));
+
+        return 0.0;
+    }
+
+    void OnApplicationQuit()
+    {
+        var angle = 360 / hipDepth.Count;
+
+        Debug.Log ("Number of elements: " + hipDepth.Count);
+        Debug.Log("Hipe Depth Values: ");
+        foreach (float i in hipDepth)
+        {
+            Debug.Log(i);
+        }
+    }
+
+    private static double Length(Kinect.Joint p1, Kinect.Joint p2) {
 		return Mathf.Sqrt (
 			Mathf.Pow(p1.Position.X - p2.Position.X, 2) +
 			Mathf.Pow(p1.Position.Y - p2.Position.Y, 2) +

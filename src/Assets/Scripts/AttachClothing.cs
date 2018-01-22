@@ -22,15 +22,15 @@ public class AttachClothing : MonoBehaviour
 
     public void InitializeClothingItemsList()
     {
-        totalSlots = 2;
+        totalSlots = 1;
 
         for (int i = 0; i < totalSlots; i++)
         {
 			wornItems.Add(new ClothingItem());
         }
 
-        AddClothingToList(0); //Dress1
-		AddClothingToList(1); //Dress2
+        AddClothingToList(0); //Dresses
+		//AddClothingToList(1); //Underwear
 
 
 //        AddEquipmentToList(1); //Chest
@@ -40,6 +40,8 @@ public class AttachClothing : MonoBehaviour
 //        AddEquipmentToList(5); //HandRight
 //        AddEquipmentToList(6); //ChestArmor
 //        AddEquipmentToList(7); //Feet
+
+	
     }
 
     public void AddClothingToList(int id)
@@ -113,14 +115,14 @@ public class AttachClothing : MonoBehaviour
 		Cloth b = ClothingModel.GetComponentInChildren<Cloth> ();
 
 		colliders = new CapsuleCollider[4];
-		colliders[0] = GameObject.Find ("QuickRigCharacter_LeftUpLeg").GetComponent<CapsuleCollider>();
-		colliders[1] = GameObject.Find ("QuickRigCharacter_RightUpLeg").GetComponent<CapsuleCollider>();
-		colliders[2] =  GameObject.Find ("QuickRigCharacter_LeftLeg").GetComponent<CapsuleCollider>();
-		colliders[3] = GameObject.Find ("QuickRigCharacter_RightLeg").GetComponent<CapsuleCollider>();
+		colliders[0] = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider>();
+		colliders[1] = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider>();
+		colliders[2] =  GameObject.Find ("Character_LeftLeg").GetComponent<CapsuleCollider>();
+		colliders[3] = GameObject.Find ("Character_RightLeg").GetComponent<CapsuleCollider>();
 
 		b.capsuleColliders = colliders;
 
-		Debug.Log (b);
+		//Debug.Log (GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ().radius);
 		//    skinnedMeshRenderers.bones = skinnedCharMeshRenderer.bones;
 		return ClothingModel;
     }

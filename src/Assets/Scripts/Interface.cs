@@ -14,6 +14,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
+		
         humanObject = GameObject.FindGameObjectWithTag("Unit").gameObject; //finding the human
 
 		//Reference to the changeGear script to use functions
@@ -21,36 +22,52 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
 		//Reference to the equipment script to use functions
         attachScript = humanObject.GetComponent<AttachClothing>(); 
+		AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-		Debug.Log ("hi");
-		
 		if (gameObject.name == "Dress1") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
 			Debug.Log ("Dress 1");
 			humanObject.transform.rotation = Quaternion.identity;
 			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
 		}
 		else if (gameObject.name == "Dress2") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
+
 			Debug.Log ("Dress 2");
 			humanObject.transform.rotation = Quaternion.identity;
 
 			AddOrRemoveClothes ("naked", "Dress", "dress02", 0);
 		}
 		else if (gameObject.name == "Dress3") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
+
 			Debug.Log ("Dress 3");
 			humanObject.transform.rotation = Quaternion.identity;
 
 			AddOrRemoveClothes ("naked", "Dress", "dress03", 0);
 		}
 		else if (gameObject.name == "Dress4") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
+
 			Debug.Log ("Dress 4");
 			humanObject.transform.rotation = Quaternion.identity;
 
 			AddOrRemoveClothes ("naked", "Dress", "dress04", 0);
-		}
 
+		}
+		else if (gameObject.name == "Dress5") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
+
+			Debug.Log ("Dress 5");
+			humanObject.transform.rotation = Quaternion.identity;
+
+			AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
+
+		}
 		//add more
     }
 

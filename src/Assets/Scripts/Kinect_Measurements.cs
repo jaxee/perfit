@@ -103,10 +103,21 @@ public class Kinect_Measurements : MonoBehaviour
 				}
 
 				RefreshBodyObject(body, _Bodies[body.TrackingId]);
-				double height = GetBodyHeight (body);
-				Debug.Log ("*********** Body: " + body + " height is " + height + " ********");
+				Measurements (body);
+
 			}
 		}
+	}
+
+	private void Measurements(Kinect.Body body) {
+		double height = GetBodyHeight (body) * 100;
+		double legLength = GetLegLength (body) * 100;
+		double armLength = GetArmLength (body) * 100;
+		double shoulderLength = getShoulderLength (body) * 100;
+
+		Debug.Log ("***************************************************************************");
+		Debug.Log ("Height: " + height + "\nLeg Length: " + legLength + "\nArm Length: " + armLength + "\nShoulder Length: " + shoulderLength);
+		Debug.Log ("***************************************************************************");
 	}
 
 	private GameObject CreateBodyObject(ulong id)
@@ -158,6 +169,60 @@ public class Kinect_Measurements : MonoBehaviour
 		double legLength = leftLegTrackedJoints > rightLegTrackedJoints ? Length(hipLeft, kneeLeft, ankleLeft, footLeft) : Length(hipRight, kneeRight, ankleRight, footRight);
 
 		return Length(head, neck, spine, waist) + legLength + HEAD_DIVERGENCE;
+	}
+
+	private double GetLegLength(Kinect.Body body) {
+
+		var hipLeft = body.Joints[Kinect.JointType.HipLeft];
+		var hipRight = body.Joints[Kinect.JointType.HipRight];
+		var kneeLeft = body.Joints[Kinect.JointType.KneeLeft];
+		var kneeRight = body.Joints[Kinect.JointType.KneeRight];
+		var ankleLeft = body.Joints[Kinect.JointType.AnkleLeft];
+		var ankleRight = body.Joints[Kinect.JointType.AnkleRight];
+		var footLeft = body.Joints[Kinect.JointType.FootLeft];
+		var footRight = body.Joints[Kinect.JointType.FootRight];
+
+		int leftLegTrackedJoints = NumberOfTrackedJoints (hipLeft, kneeLeft, ankleLeft, footLeft);
+		int rightLegTrackedJoints = NumberOfTrackedJoints (hipRight, kneeRight, ankleRight, footRight);
+
+		//int leftLegTrackedJoints = NumberOfTrackedJoints (hipLeft, kneeLeft, ankleLeft);
+		//int rightLegTrackedJoints = NumberOfTrackedJoints (hipRight, kneeRight, ankleRight);
+
+		double legLength = leftLegTrackedJoints > rightLegTrackedJoints ? Length(hipLeft, kneeLeft, ankleLeft, footLeft) : Length(hipRight, kneeRight, ankleRight, footRight);
+		//double legLength = leftLegTrackedJoints > rightLegTrackedJoints ? Length(hipLeft, kneeLeft, ankleLeft) : Length(hipRight, kneeRight, ankleRight);
+
+		return legLength;
+	}
+
+	private double GetArmLength(Kinect.Body body) {
+		var rightShoulder = body.Joints[Kinect.JointType.ShoulderRight];
+		var leftShoulder = body.Joints[Kinect.JointType.ShoulderLeft];
+		var rightElbow = body.Joints[Kinect.JointType.ElbowRight];
+		var leftElbow = body.Joints[Kinect.JointType.ElbowLeft];
+		var rightWrist = body.Joints[Kinect.JointType.WristRight];
+		var leftWrist = body.Joints[Kinect.JointType.WristLeft];
+		/*var rightHandTip = body.Joints[Kinect.JointType.HandTipRight];
+		var leftHandTip = body.Joints[Kinect.JointType.HandTipLeft]; */
+
+		/*var leftArmTrackedJoints = NumberOfTrackedJoints (leftShoulder, leftElbow, leftWrist, leftHandTip);
+		var rightArmTrackedJoints = NumberOfTrackedJoints (rightShoulder, rightElbow, rightWrist, rightHandTip);*/
+
+		var leftArmTrackedJoints = NumberOfTrackedJoints (leftShoulder, leftElbow, leftWrist);
+		var rightArmTrackedJoints = NumberOfTrackedJoints (rightShoulder, rightElbow, rightWrist);
+
+		//double armLength = leftArmTrackedJoints > rightArmTrackedJoints ? Length(leftShoulder, leftElbow, leftWrist, leftHandTip) : Length(rightShoulder, rightElbow, rightWrist, rightHandTip);
+		double armLength = leftArmTrackedJoints > rightArmTrackedJoints ? Length(leftShoulder, leftElbow, leftWrist) : Length(rightShoulder, rightElbow, rightWrist);
+
+		return armLength;
+	}
+
+	private double getShoulderLength (Kinect.Body body) {
+		var rightShoulder = body.Joints[Kinect.JointType.ShoulderRight];
+		var leftShoulder = body.Joints[Kinect.JointType.ShoulderLeft];
+
+		double shoulderLength = Length (leftShoulder, rightShoulder);
+
+		return shoulderLength;
 	}
 
 	private static double Length(Kinect.Joint p1, Kinect.Joint p2) {

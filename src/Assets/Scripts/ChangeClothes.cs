@@ -11,6 +11,7 @@ public class ChangeClothes : MonoBehaviour
 		attachScript.InitializeClothingItemsList();
         //equip stuff
        // EquipItem("Legs", "pants"); 
+		AttachClothingItem("Dress", "underwear01");
     }
 
     public void AttachClothingItem(string itemType, string itemFile)

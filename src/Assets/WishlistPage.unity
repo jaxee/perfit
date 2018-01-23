@@ -822,6 +822,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114718728791779306, guid: 2196de22dde76402a9c4fe31df878270,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2196de22dde76402a9c4fe31df878270, type: 2}
   m_IsPrefabParent: 0
@@ -4228,8 +4233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.73436, y: 393.3058}
-  m_SizeDelta: {x: 127, y: 49.8}
+  m_AnchoredPosition: {x: 10, y: 284}
+  m_SizeDelta: {x: 365.4, y: 98.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404193858
 MonoBehaviour:
@@ -4252,12 +4257,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
-    m_FontStyle: 1
+    m_FontSize: 50
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MaxSize: 50
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4428,7 +4433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -618, y: -964}
+  m_AnchoredPosition: {x: -618, y: -1048}
   m_SizeDelta: {x: 1110.7, y: 3438.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1449685527
@@ -6316,7 +6321,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2045465173}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0b5985f89f62d848ba348253606ef80, type: 3}
   m_Name: 

@@ -24,6 +24,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
         attachScript = humanObject.GetComponent<AttachClothing>(); 
 		AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
 
+		//Debug.Log ("yo");
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -76,6 +77,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 		//If the model is naked then we will attach the dress to the model. 
         if (attachScript.wornItems[wornItemsIndex].FileName == naked)
         {
+			
 			changeClothesScript.AttachClothingItem(clothesType, clothesFileName);
         }
         else if (attachScript.wornItems[wornItemsIndex].FileName == clothesFileName)

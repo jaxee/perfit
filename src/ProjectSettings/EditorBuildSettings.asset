@@ -6,5 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/HomePage.unity
+    guid: 24ac711d4db811549bdd20e786664e89
+  - enabled: 1
     path: Assets/WomensPage.unity
     guid: 7ab058fafa17a48c1844b8255153bb44
+  - enabled: 1
+    path: Assets/SettingsPage.unity
+    guid: bde2ca1d118e54057a452d434932f6b1
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/66ac30e033f7a418ebc8ccfbd2ee6e08
+    guid: 66ac30e033f7a418ebc8ccfbd2ee6e08
+  - enabled: 1
+    path: Assets/WishlistPage.unity
+    guid: f8da634bbbe5042ec8ff0494ca827fee
+  - enabled: 1
+    path: Assets/HomePage-signedOut.unity
+    guid: dcad6bbbe9430429db5bb7c97e733d67

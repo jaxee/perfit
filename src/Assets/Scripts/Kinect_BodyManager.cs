@@ -16,16 +16,9 @@ public class Kinect_BodyManager : MonoBehaviour
     public byte[] depthPixels = null;
     private const int MapDepthToByte = 8000 / 256;
 
-    public _DepthData = null;
-
     public Body[] GetData()
     {
         return _Data;
-    }
-
-    public GetDepthData()
-    {
-        return _DepthData;
     }
 
     void Start()
@@ -100,10 +93,10 @@ public class Kinect_BodyManager : MonoBehaviour
                 {
                     ushort maxDepth = depthFrame.DepthMaxReliableDistance;
 
+                    Debug.Log("Max Depth: " + maxDepth + " | Width: " + depthFrameDescription.Width + " Height: "  + depthFrameDescription.Height);
+
                     //ProcessDepthFrameData(depthBuffer.UnderlyingBuffer, depthBuffer.Capacity, depthFrame.DepthMinReliableDistance, maxDepth);
                 }
-
-                depthFrame.CopyFrameDataToArray();
 
                 depthFrame.Dispose();
                 depthFrame = null;

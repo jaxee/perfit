@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Kinect = Windows.Kinect;
@@ -15,7 +16,17 @@ public class Kinect_Measurements : MonoBehaviour
     private HashSet<float> hipDepth = new HashSet<float>();
     private float initialHipDepth;
 
-	private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
+    private HashSet<double> heightCalculations = new HashSet<double>();
+    private HashSet<double> legCalculations = new HashSet<double>();
+    private HashSet<double> armCalculations = new HashSet<double>();
+
+    private bool beginScan = false;
+    private bool scanDone = false;
+
+    public Text m_measText;
+    int i = 1000;
+
+    private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
 	{
 		{ Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
 		{ Kinect.JointType.AnkleLeft, Kinect.JointType.KneeLeft },
@@ -66,57 +77,105 @@ public class Kinect_Measurements : MonoBehaviour
 
         if (data == null)
 		{
-            Debug.LogError("No data");
+            Debug.Log("Preparing Kinect...");
 			return;
 		}
 
-		List<ulong> trackedIds = new List<ulong>();
-		foreach(var body in data)
-		{
-			if (body == null)
-			{
-                Debug.LogError("Body not tracked");
-				continue;
-			}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            beginScan = true;
+            m_measText.text = "Scanning body...";
+        }
 
-			if(body.IsTracked)
-			{
-				trackedIds.Add (body.TrackingId);
+        if (beginScan && !scanDone)
+        {
 
-			}
-		}
-
-		List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
-
-		// First delete untracked bodies
-		foreach(ulong trackingId in knownIds)
-		{
-			if(!trackedIds.Contains(trackingId))
-			{
-				Destroy(_Bodies[trackingId]);
-				_Bodies.Remove(trackingId);
-			}
-		}
-
-		foreach(var body in data){
-			if (body == null)
-			{
-                Debug.LogError("Body not tracked");
-				continue;
-			}
-
-            if (body.IsTracked)
+            while (i > -1)
             {
-                if (!_Bodies.ContainsKey(body.TrackingId))
+                List<ulong> trackedIds = new List<ulong>();
+                foreach (var body in data)
                 {
-                    _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                    if (body == null)
+                    {
+                        Debug.LogError("Body not tracked");
+                        continue;
+                    }
+
+                    if (body.IsTracked)
+                    {
+                        trackedIds.Add(body.TrackingId);
+
+                    }
                 }
 
-                RefreshBodyObject(body, _Bodies[body.TrackingId]);
-				Measurements (body);
-			}
-		}
-	}
+                List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
+
+                // First delete untracked bodies
+                foreach (ulong trackingId in knownIds)
+                {
+                    if (!trackedIds.Contains(trackingId))
+                    {
+                        Destroy(_Bodies[trackingId]);
+                        _Bodies.Remove(trackingId);
+                    }
+                }
+
+                foreach (var body in data)
+                {
+                    if (body == null)
+                    {
+                        Debug.LogError("Body not tracked");
+                        continue;
+                    }
+
+                    if (body.IsTracked)
+                    {
+                        if (!_Bodies.ContainsKey(body.TrackingId))
+                        {
+                            _Bodies[body.TrackingId] = CreateBodyObject(body.TrackingId);
+                        }
+
+                        RefreshBodyObject(body, _Bodies[body.TrackingId]);
+                        Measurements(body);
+                    }
+                }
+
+                i--;
+            }
+        }
+
+        if (i == -1)
+        {
+            Debug.Log("Ended Scan");
+
+            var finalHeight = averageValues(heightCalculations);
+            var finalLeg = averageValues(legCalculations);
+            var finalArm = averageValues(armCalculations);
+
+            Debug.Log("Final Measurmenets: \n");
+            Debug.Log("Final Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
+
+            m_measText.text = "Body Scanned!\n\n";
+
+            m_measText.text += "Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm;
+
+            scanDone = true;
+            i--;
+        }
+    }
+
+    private double averageValues(HashSet<double> vals)
+    {
+        var size = vals.Count;
+        double valsAdded = 0.0;
+
+        foreach (double v in vals)
+        {
+            valsAdded += v;
+        }
+
+        return valsAdded/size;
+    }
 
 	private void Measurements(Kinect.Body body) {
 		double height = GetBodyHeight (body) * 100;
@@ -125,6 +184,10 @@ public class Kinect_Measurements : MonoBehaviour
 		double shoulderLength = getShoulderLength (body) * 100;
         double hip = getHipLength(body) * 100;
 
+        heightCalculations.Add(height);
+        legCalculations.Add(legLength);
+        armCalculations.Add(armLength);
+
 		Debug.Log ("***************************************************************************");
 		Debug.Log ("Height: " + height + "\nLeg Length: " + legLength + "\nArm Length: " + armLength + "\nShoulder Length: " + shoulderLength + "\nHip: " + hip);
 		Debug.Log ("***************************************************************************");
@@ -132,7 +195,6 @@ public class Kinect_Measurements : MonoBehaviour
 
 	private GameObject CreateBodyObject(ulong id)
 	{
-		Debug.Log ("New Body");
 		GameObject body = new GameObject("Body:" + id);
 
 		for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
@@ -144,7 +206,7 @@ public class Kinect_Measurements : MonoBehaviour
 			lr.material = BoneMaterial;
 			lr.SetWidth(0.05f, 0.05f);
 
-			jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+			jointObj.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 			jointObj.name = jt.ToString();
 			jointObj.transform.parent = body.transform;
 		}
@@ -242,7 +304,7 @@ public class Kinect_Measurements : MonoBehaviour
         float centerHip = body.Joints[Kinect.JointType.SpineBase].Position.Z;
         var HipPoint = body.Joints[Kinect.JointType.SpineBase].Position;
 
-        Debug.Log("WAIST Z VALUE: " + centerHip);
+        //Debug.Log("WAIST Z VALUE: " + centerHip);
 
         if (hipDepth == null)
         {
@@ -255,7 +317,7 @@ public class Kinect_Measurements : MonoBehaviour
 
         Kinect.DepthSpacePoint depthPoint = _BodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(HipPoint);
 
-        Debug.Log("Point in depth space: " + depthPoint + " | X: " + depthPoint.X + " Y: " + depthPoint.Y);
+        //Debug.Log("Point in depth space: " + depthPoint + " | X: " + depthPoint.X + " Y: " + depthPoint.Y);
 
         /*if (_BodyManager.depthPixels != null)
         {
@@ -271,14 +333,15 @@ public class Kinect_Measurements : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        var angle = 360 / hipDepth.Count;
+        //var angle = 360 / hipDepth.Count;
 
-        Debug.Log ("Number of elements: " + hipDepth.Count);
-        Debug.Log("Hipe Depth Values: ");
-        foreach (float i in hipDepth)
+        //Debug.Log ("Number of elements: " + hipDepth.Count);
+        //Debug.Log("Hipe Depth Values: ");
+        /*foreach (float i in hipDepth)
         {
             Debug.Log(i);
-        }
+        }*/
+        Debug.Log("Kinect Sensor Shut Down!");
     }
 
     private static double Length(Kinect.Joint p1, Kinect.Joint p2) {

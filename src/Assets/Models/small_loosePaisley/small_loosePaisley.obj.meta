@@ -3,12 +3,16 @@ guid: 8ff783c48c118472bb06ab821923eb05
 timeCreated: 1516304152
 licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: default
     100002: //RootNode
+    100004: default_MeshPart0
+    100006: default_MeshPart1
     400000: default
     400002: //RootNode
+    400004: default_MeshPart0
+    400006: default_MeshPart1
     2100000: Default
     2100002: PT_FABRIC_FRONT_6923
     2100004: PT_FABRIC_FRONT_68934
@@ -21,14 +25,18 @@ ModelImporter:
     2100018: PT_FABRIC_FRONT_69774
     2100020: PT_FABRIC_FRONT_70846
     2300000: default
+    2300002: default_MeshPart0
+    2300004: default_MeshPart1
     3300000: default
+    3300002: default_MeshPart0
+    3300004: default_MeshPart1
     4300000: default
-  externalObjects: {}
+    4300002: default_MeshPart0
+    4300004: default_MeshPart1
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -41,7 +49,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -66,8 +73,6 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
-    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

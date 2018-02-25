@@ -5,20 +5,32 @@ public class modifier : MonoBehaviour
 {
     //get mesh data 
     SkinnedMeshRenderer target;
+
     //copied mesh ref
     Mesh clone;
+
     [Header("ctrl point prefab")]
     //ctrl point prefab
     public GameObject ctrlPoint;
+
     //lattice dimension 
     [Header("FFD dimension")]
-    public int L, M, N;
+    public int L;
+    public int M;
+    public int N;
+
     //Localized grid
-    Vector3 S = Vector3.zero, T = Vector3.zero, U = Vector3.zero;
+    [Header("FFD local coordinate size")]
+    public Vector3 S = Vector3.zero;
+    public Vector3 T = Vector3.zero;
+    public Vector3 U = Vector3.zero;
+
     //localized point position values 
     float s, t, u;
+
     //store all ctrl points postion
     GameObject[,,] ctrlPoints;
+
     //lattice origin 
     Vector3 P0;
 
@@ -31,11 +43,8 @@ public class modifier : MonoBehaviour
         target = GameObject.FindObjectOfType<SkinnedMeshRenderer>();//get target model in scene mesh info 
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh 
-        S = new Vector3(0.5f, 0.0f, 0.0f);
-        T = new Vector3(0.0f, 0.5f, 0.0f);
-        U = new Vector3(0.0f, 0.0f, 0.5f);
-        ctrlPoints = new GameObject[L + 1, M + 1, N + 1];
-        BuildLattice();
+        ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input 
+        BuildLattice();//build lattice 
     }
     private void Update()
     {
@@ -46,7 +55,7 @@ public class modifier : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 500.0f))
             {
-                P0 = ctrlPoints[0, 0, 0].transform.localPosition;
+                P0 = ctrlPoints[0, 0, 0].transform.position;
                 MeshUpdate(Parameterize());
             }
         }
@@ -76,7 +85,6 @@ public class modifier : MonoBehaviour
                         float pi = Bernstein(L, i, s);
                         float pj = Bernstein(M, j, t);
                         float pk = Bernstein(N, k, u);
-
                         npt += pi * pj * pk * ctrlPoints[i, j, k].transform.localPosition;
                     }
                 }
@@ -96,7 +104,8 @@ public class modifier : MonoBehaviour
             {
                 for (int k = 0; k <= N; k++)
                 {
-                    Vector3 position = (i / L * S) + (j / M * T) + (k / N * U);
+
+                    Vector3 position = (i / (float)L * S) + (j / (float)M * T) + (k / (float)N * U);
                     ctrlPoints[i, j, k] = (GameObject)Instantiate(ctrlPoint, position, Quaternion.identity);
                 }
             }
@@ -105,19 +114,23 @@ public class modifier : MonoBehaviour
 
     float EmbedPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 x, Vector3 x0)
     {//embedding points into lattice
+        return Vector3.Dot(Vector3.Cross(a, b), (x - x0)) / Vector3.Dot(Vector3.Cross(a, b), c);
+    }
 
-        return Vector3.Dot(Vector3.Cross(a, b), ((x - x0) / Vector3.Dot(Vector3.Cross(a, b), c)));
+    float coefficient(int n, int i)
+    {//calculate coefficient
+        float xn = 1.0f;
+        for (int k = 1; k <= i; k++)
+        {
+            xn *= (n - (i - k)) / (float)k;
+        }
+        return xn;
     }
 
     float Bernstein(int n, int i, float x)
     {//calculate berstein polynomial
 
-        float xn = 1.0f;
-        for (int k = 1; k <= i; k++)
-        {
-            xn *= (n - (i - k)) / i;
-        }
-        return xn * Mathf.Pow(x, (float)i) * Mathf.Pow((float)(1.0f - x), (float)(n - i));
+        return coefficient(n, i) * Mathf.Pow(x, (float)i) * Mathf.Pow((float)(1.0f - x), (float)(n - i));
     }
 
     void MeshUpdate(Vector3[] vertices)
@@ -127,11 +140,4 @@ public class modifier : MonoBehaviour
         target.sharedMesh.RecalculateBounds();
         target.sharedMesh.RecalculateNormals();
     }
-
-
-
-
-
-
-
-}
+}//-end-of-script 

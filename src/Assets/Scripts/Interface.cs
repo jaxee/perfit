@@ -22,7 +22,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
 		//Reference to the equipment script to use functions
         attachScript = humanObject.GetComponent<AttachClothing>(); 
-		AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
+		//AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
 
 		//Debug.Log ("yo");
     }

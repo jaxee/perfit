@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
+using Winterdust;
 public class AttachClothing : MonoBehaviour
 {
     #region Fields
@@ -10,7 +10,10 @@ public class AttachClothing : MonoBehaviour
 
 	public GameObject wornDress;
 	public CapsuleCollider[] colliders;
-
+	public AddCloth addClothScript;
+	public GameObject finalProduct;
+	public Cloth clothComponent;
+	public GameObject cube;
 
     //lists
 	public List<ClothingItem> wornItems = new List<ClothingItem>();
@@ -108,19 +111,49 @@ public class AttachClothing : MonoBehaviour
 
     public GameObject AttachModels(GameObject ClothingModel, GameObject Character)
     {		
-		SkinnedMeshRenderer skinnedCharMeshRenderer = Character.GetComponentInChildren<SkinnedMeshRenderer>(),
-				skinnedMeshRenderers = ClothingModel.GetComponentInChildren<SkinnedMeshRenderer>();
-		ClothingModel.transform.parent = Character.transform;
-	
-		Cloth b = ClothingModel.GetComponentInChildren<Cloth> ();
+		
+		GameObject modelGO = ClothingModel;
+		GameObject skeletonGO = GameObject.Find("Rig");
+		GameObject cube  = GameObject.Find("PinningCube");
+		Debug.Log (skeletonGO);
+		MeshSkinner ms = new MeshSkinner(modelGO, skeletonGO);
+		ms.work();
+		ms.finish();
 
+		finalProduct = GameObject.Find ("SkinnedVersion");
+		finalProduct.AddComponent<Cloth> ();
+
+		clothComponent = finalProduct.GetComponent<Cloth> ();
+		clothComponent.enabled = false;
+
+		ClothSkinningCoefficient[] newConstraints; 
+		newConstraints = clothComponent.coefficients;
+
+		for (int i = 0; i < clothComponent.vertices.Length; i++) {
+			float dist = Vector3.Distance(clothComponent.vertices[i], cube.transform.position);
+			Debug.Log (dist);
+			if (dist > 4) {
+				newConstraints [i].maxDistance = 0.01f; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
+			}
+		}
+		//newConstraints[0].maxDistance = 0;
+
+		//https://answers.unity.com/questions/966554/set-unity-5-cloth-constraints-from-code.html
+		clothComponent.coefficients = newConstraints;
+		clothComponent.enabled = true;
+
+		//renderer
+		SkinnedMeshRenderer f = cube.GetComponentInChildren<SkinnedMeshRenderer>();
+		f.enabled = false;
+
+		//add colliders
 		colliders = new CapsuleCollider[4];
 		colliders[0] = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider>();
 		colliders[1] = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider>();
 		colliders[2] =  GameObject.Find ("Character_LeftLeg").GetComponent<CapsuleCollider>();
 		colliders[3] = GameObject.Find ("Character_RightLeg").GetComponent<CapsuleCollider>();
 
-		b.capsuleColliders = colliders;
+		clothComponent.capsuleColliders = colliders;
 
 		//Debug.Log (GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ().radius);
 		//    skinnedMeshRenderers.bones = skinnedCharMeshRenderer.bones;

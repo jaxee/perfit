@@ -1,0 +1,125 @@
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl Material16252
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+newmtl Material15199
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material15136
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material15022
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material14941
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material15887
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+newmtl Material15857
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+newmtl Material16222
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+newmtl Default Fabric_FRONT_14508
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+newmtl Material15461
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+newmtl Material15492
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+newmtl Material15522
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/lace.jpg
+newmtl Material15079
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material14877
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png

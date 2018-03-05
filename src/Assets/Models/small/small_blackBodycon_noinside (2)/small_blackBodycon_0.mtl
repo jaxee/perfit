@@ -1,0 +1,30 @@
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl Material5449
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material4961
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.066667 0.066667 0.066667
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/16928/1080/FCL1-PSC003-00_DIFFUSE_184518.jpg
+map_Kd C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/16928/1080/FCL1-PSC003-00_DIFFUSE_184518.jpg
+map_Bump C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/16928/1080/FCL1-PSC003-00_NORMAL_184520.jpg
+map_Ks C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/16928/1080/FCL1-PSC003-00_SPECULAR_184522.jpg
+newmtl Material5233
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png

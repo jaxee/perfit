@@ -1,0 +1,64 @@
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl Material7518
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/5684/1085/FCL1-PSC009-00_1002619_184706_293205.png
+map_Kd C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/5684/1085/FCL1-PSC009-00_1002619_184706_293205.png
+newmtl Material7770
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+newmtl Material8226
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+newmtl Material8428
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+newmtl Material8125
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+newmtl Material8327
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+newmtl Material8024
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/greenStripes.png

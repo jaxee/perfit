@@ -1,0 +1,62 @@
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl Default Fabric_FRONT_3574
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+newmtl PT_FABRIC_FRONT_280961
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl PT_FABRIC_FRONT_279002
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl PT_FABRIC_FRONT_284642
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl PT_FABRIC_FRONT_286491
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl PT_FABRIC_FRONT_285219
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl PT_FABRIC_FRONT_286872
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png

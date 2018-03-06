@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Skinning/test.unity
+- path: Assets/HomePage.unity
   isLoaded: 1
   isActive: 1

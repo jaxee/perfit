@@ -14,7 +14,6 @@ public class AttachClothing : MonoBehaviour
 	public AddCloth addClothScript;
 
 
-
     //lists
 	public List<ClothingItem> wornItems = new List<ClothingItem>();
     //ints
@@ -23,6 +22,9 @@ public class AttachClothing : MonoBehaviour
 
     #region Monobehaviour
 
+	public void OnStart () {
+		avatar = GameObject.Find ("UNITY_FEMALE");
+	}
     public void InitializeClothingItemsList()
     {
         totalSlots = 1;
@@ -115,7 +117,12 @@ public class AttachClothing : MonoBehaviour
 
     public GameObject AttachModels(GameObject ClothingModel, GameObject Character)
     {		
-		
+
+		DestroyImmediate (avatar); 
+		DestroyImmediate (GameObject.Find("SkinnedVersion")); 
+		GameObject newHuman = Instantiate (Resources.Load ("UNITY_FEMALE")) as GameObject;
+		avatar = newHuman;
+
 		GameObject finalProduct;
 		Cloth clothComponent;
 		DestroyClothing ();
@@ -139,7 +146,7 @@ public class AttachClothing : MonoBehaviour
 			for (int i = 0; i < clothComponent.vertices.Length; i++) {
 				float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 				//Debug.Log (dist);
-				if (dist > 4) {
+				if (dist > 3) {
 					newConstraints [i].maxDistance = 0.01f; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
 				}
 			}

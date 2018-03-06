@@ -32,14 +32,14 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 		if (gameObject.name == "Dress1") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
 			Debug.Log ("Dress 1");
-			humanObject.transform.rotation = Quaternion.identity;
+			//humanObject.transform.rotation = Quaternion.identity;
 			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
 		}
 		else if (gameObject.name == "Dress2") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
 
 			Debug.Log ("Dress 2");
-			humanObject.transform.rotation = Quaternion.identity;
+			//humanObject.transform.rotation = Quaternion.identity;
 
 			AddOrRemoveClothes ("naked", "Dress", "dress02", 0);
 		}
@@ -47,7 +47,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
 
 			Debug.Log ("Dress 3");
-			humanObject.transform.rotation = Quaternion.identity;
+			//humanObject.transform.rotation = Quaternion.identity;
 
 			AddOrRemoveClothes ("naked", "Dress", "dress03", 0);
 		}
@@ -55,7 +55,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
 
 			Debug.Log ("Dress 4");
-			humanObject.transform.rotation = Quaternion.identity;
+			//humanObject.transform.rotation = Quaternion.identity;
 
 			AddOrRemoveClothes ("naked", "Dress", "dress04", 0);
 
@@ -64,7 +64,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
 
 			Debug.Log ("Dress 5");
-			humanObject.transform.rotation = Quaternion.identity;
+			//humanObject.transform.rotation = Quaternion.identity;
 
 			AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
 

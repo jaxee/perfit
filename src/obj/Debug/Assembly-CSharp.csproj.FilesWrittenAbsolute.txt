@@ -48,3 +48,4 @@
 /Users/juju/Unity/perfit/src/Temp/bin/Debug/Assembly-CSharp.dll
 /Users/juju/Unity/perfit/src/obj/Debug/Assembly-CSharp.dll
 /Users/juju/Unity/perfit/src/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/juju/Unity/perfit/src/Temp/bin/Debug/MeshSkinner1.0.1.dll

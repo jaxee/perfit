@@ -8,7 +8,7 @@ public class AttachClothing : MonoBehaviour
     //gameObjects
     public GameObject avatar;
 	public ClothAnimation clothScript;
-
+	public int ClothingSize; // 1 = Small 2 = Medium 3 = Large
 	public GameObject wornDress;
 	public CapsuleCollider[] colliders;
 	public AddCloth addClothScript;
@@ -122,6 +122,7 @@ public class AttachClothing : MonoBehaviour
 		DestroyImmediate (GameObject.Find("SkinnedVersion")); 
 		GameObject newHuman = Instantiate (Resources.Load ("UNITY_FEMALE")) as GameObject;
 		avatar = newHuman;
+		float PIN_CONSTANT = 3;
 
 		GameObject finalProduct;
 		Cloth clothComponent;
@@ -137,6 +138,10 @@ public class AttachClothing : MonoBehaviour
 
 		finalProduct.AddComponent<Cloth> ();
 
+		if (ClothingSize == 3) {
+			PIN_CONSTANT = 7.2f;
+		}
+
 		clothComponent = finalProduct.GetComponent<Cloth> ();
 		clothComponent.enabled = false;
 
@@ -146,9 +151,12 @@ public class AttachClothing : MonoBehaviour
 			for (int i = 0; i < clothComponent.vertices.Length; i++) {
 				float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 				//Debug.Log (dist);
+
 				if (dist > 3) {
 					newConstraints [i].maxDistance = 0.01f; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
+
 				}
+			
 			}
 			//newConstraints[0].maxDistance = 0;
 

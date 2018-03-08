@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/HomePage.unity
+- path: Assets/beta/BodyScanPage.unity
   isLoaded: 1
   isActive: 1

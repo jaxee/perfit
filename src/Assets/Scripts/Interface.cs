@@ -9,8 +9,6 @@ public class Interface : MonoBehaviour, IPointerClickHandler
     private ChangeClothes changeClothesScript; //Reference to the change Item script
     private AttachClothing attachScript; //Reference 
     private Text textChild;  //Their text lol can prob delete this l8r
-	private ClothAnimation clothAnimationScript;
-	private AddColliders collidersScript;
 
     private void Start()
     {

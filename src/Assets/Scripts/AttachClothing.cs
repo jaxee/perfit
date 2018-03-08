@@ -7,7 +7,6 @@ public class AttachClothing : MonoBehaviour
     #region Fields
     //gameObjects
     public GameObject avatar;
-	public ClothAnimation clothScript;
 	public int ClothingSize; // 1 = Small 2 = Medium 3 = Large
 	public GameObject wornDress;
 	public CapsuleCollider[] colliders;

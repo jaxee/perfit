@@ -27,8 +27,6 @@ public class obj : MonoBehaviour {
     public Vector3 T;
     public Vector3 U;
 
-
-
     //localized point position values 
     float s, t, u;
     
@@ -41,9 +39,12 @@ public class obj : MonoBehaviour {
     //store vertices information 
     Vector3[] vrts;
 
-    //repeat value for point 
-    int pr = 0; 
-   
+
+    //update mesh
+    [Header("Mesh update")]
+
+    public bool updateMesh= false; 
+
 
     private void Start()
     {
@@ -54,18 +55,19 @@ public class obj : MonoBehaviour {
         SetOrigin();
         BuildLattice();//build lattice 
     }
+    private void FixedUpdate()
+    {
+        if (updateMesh)
+        {//ensure timed update of mesh as deformation happen
+            MeshUpdate(Deform());
+            Debug.Log("updated mesh");
+        }
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, 500.0f))
-            {
-                MeshUpdate(Parameterize());
-            }
-        }
+        if (Input.GetKeyDown("u"))
+            updateMesh= true;
     }
 
    void SetOrigin()
@@ -88,7 +90,7 @@ public class obj : MonoBehaviour {
     }
 
 
-    Vector3[] Parameterize()
+    Vector3[] Deform()
     {//place vertices of object into lattice local grid for calculation 
 
         for (int v = 0; v < clone.vertexCount; v++)
@@ -161,6 +163,7 @@ public class obj : MonoBehaviour {
 
     void MeshUpdate(Vector3[] vertices)
     {//take new mesh data and apply copied points to render 
+        updateMesh = false;//reset bool 
         target.sharedMesh = clone;
         target.sharedMesh.vertices = vertices;
         target.sharedMesh.RecalculateBounds();

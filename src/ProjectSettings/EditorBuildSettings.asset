@@ -9,14 +9,11 @@ EditorBuildSettings:
     path: Assets/HomePage.unity
     guid: 24ac711d4db811549bdd20e786664e89
   - enabled: 1
-    path: Assets/WomensPage.unity
+    path: Assets/WomensPage broken.unity
     guid: 7ab058fafa17a48c1844b8255153bb44
   - enabled: 1
     path: Assets/SettingsPage.unity
     guid: bde2ca1d118e54057a452d434932f6b1
-  - enabled: 1
-    path: Assets/WishlistPage.unity
-    guid: f8da634bbbe5042ec8ff0494ca827fee
   - enabled: 1
     path: Assets/HomePage-signedOut.unity
     guid: dcad6bbbe9430429db5bb7c97e733d67
@@ -26,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BodySettingsPage.unity
     guid: 3521c373b569b4a84bb2ce05145e4493
+  - enabled: 1
+    path: Assets/Measurements.unity
+    guid: 711353ed8e2f9d244981b51cecbd2ebb

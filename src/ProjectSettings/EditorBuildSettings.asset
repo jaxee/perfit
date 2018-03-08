@@ -6,23 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/HomePage.unity
+    path: Assets/beta/HomePage.unity
     guid: 24ac711d4db811549bdd20e786664e89
   - enabled: 1
-    path: Assets/WomensPage broken.unity
-    guid: 7ab058fafa17a48c1844b8255153bb44
-  - enabled: 1
-    path: Assets/SettingsPage.unity
+    path: Assets/beta/SettingsPage.unity
     guid: bde2ca1d118e54057a452d434932f6b1
   - enabled: 1
-    path: Assets/HomePage-signedOut.unity
+    path: Assets/beta/HomePage-signedOut.unity
     guid: dcad6bbbe9430429db5bb7c97e733d67
   - enabled: 1
-    path: Assets/Login.unity
-    guid: 685f9de958f6a404cafad4bd2d92f706
-  - enabled: 1
-    path: Assets/BodySettingsPage.unity
+    path: Assets/beta/BodySettingsPage.unity
     guid: 3521c373b569b4a84bb2ce05145e4493
   - enabled: 1
-    path: Assets/Measurements.unity
+    path: Assets/beta/Measurements.unity
     guid: 711353ed8e2f9d244981b51cecbd2ebb
+  - enabled: 1
+    path: Assets/beta/WomensPage.unity
+    guid: e892a25812c0c432785fbca9ad0ea8dd
+  - enabled: 1
+    path: Assets/beta/loginPage.unity
+    guid: 3506958f073be7e428e584f8e709968b

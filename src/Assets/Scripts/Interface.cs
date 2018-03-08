@@ -12,17 +12,15 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-		
-        humanObject = GameObject.FindGameObjectWithTag("Unit").gameObject; //finding the human
+		if(GameObject.FindGameObjectWithTag("Unit").gameObject)
+       		humanObject = GameObject.FindGameObjectWithTag("Unit").gameObject; //finding the human
 
-		//Reference to the changeGear script to use functions
-        changeClothesScript = humanObject.GetComponent<ChangeClothes>();
+			//Reference to the changeGear script to use functions
+        	changeClothesScript = humanObject.GetComponent<ChangeClothes>();
 
-		//Reference to the equipment script to use functions
-        attachScript = humanObject.GetComponent<AttachClothing>(); 
-		//AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
-
-		//Debug.Log ("yo");
+			//Reference to the equipment script to use functions
+        	attachScript = humanObject.GetComponent<AttachClothing>(); 
+			//AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
     }
 
     public void OnPointerClick(PointerEventData eventData)

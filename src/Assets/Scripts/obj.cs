@@ -42,7 +42,6 @@ public class obj : MonoBehaviour {
 
     //update mesh
     [Header("Mesh update")]
-
     public bool updateMesh= false; 
 
 
@@ -134,7 +133,7 @@ public class obj : MonoBehaviour {
                 {
 					Vector3 position = P0+(i /(float)L * S) + (j/ (float)M * T) + (k / (float)N * U);
                     ctrlPoints[i, j, k] = (GameObject)Instantiate(ctrlPoint, position, Quaternion.identity,transform);
-                    ctrlPoints[i, j, k].name = ptName; 
+                    ctrlPoints[i, j, k].name = ptName;
                 }
             }
         }//end-of-nested loop

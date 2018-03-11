@@ -23,6 +23,7 @@ public class AttachClothing : MonoBehaviour
 
 	public void OnStart () {
 		avatar = GameObject.Find ("UNITY_FEMALE");
+
 	}
     public void InitializeClothingItemsList()
     {
@@ -113,12 +114,25 @@ public class AttachClothing : MonoBehaviour
         wornClothing = AttachModels(clothing, avatar);
         return wornClothing;
     }
+	void OnMouseDrag(){
+		//Debug.Log ("YO");
+		float rotSpeed = 400;
+		float rotX = Input.GetAxis ("Mouse X") *rotSpeed *Mathf.Deg2Rad;
+
+		if (wornDress) {
+			wornDress.transform.Find ("Rig").transform.Rotate (Vector3.up, -rotX);
+		}
+	}
+
 
     public GameObject AttachModels(GameObject ClothingModel, GameObject Character)
     {		
-
+		
+		DestroyImmediate (GameObject.Find ("underwear"));
 		DestroyImmediate (avatar); 
 		DestroyImmediate (GameObject.Find("SkinnedVersion")); 
+		DestroyImmediate (GameObject.Find("Rig")); 
+
 		GameObject newHuman = Instantiate (Resources.Load ("UNITY_FEMALE")) as GameObject;
 		avatar = newHuman;
 		float PIN_CONSTANT = 3;
@@ -127,7 +141,7 @@ public class AttachClothing : MonoBehaviour
 		Cloth clothComponent;
 		DestroyClothing ();
 		GameObject modelGO = ClothingModel;
-		GameObject skeletonGO = GameObject.Find("Rig");// Debug.Log (modelGO.name + skeletonGO.name); 
+		GameObject skeletonGO = avatar.transform.Find("Rig").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
 		GameObject cube  = GameObject.Find("Pin");
 		//Debug.Log (skeletonGO);
 		MeshSkinner ms = new MeshSkinner(modelGO, skeletonGO);
@@ -143,7 +157,8 @@ public class AttachClothing : MonoBehaviour
 
 		clothComponent = finalProduct.GetComponent<Cloth> ();
 		clothComponent.enabled = false;
-
+		clothComponent.damping = 0.5f;
+		clothComponent.bendingStiffness = 1f;
 			ClothSkinningCoefficient[] newConstraints; 
 			newConstraints = clothComponent.coefficients;
 
@@ -163,9 +178,9 @@ public class AttachClothing : MonoBehaviour
 			clothComponent.coefficients = newConstraints;
 			clothComponent.enabled = true;
 
-			//renderer
 
-			//add colliders
+
+			//REDO COLLIDERS.... after lena 
 			colliders = new CapsuleCollider[4];
 			colliders [0] = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ();
 			colliders [1] = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider> ();

@@ -1681,6 +1681,8 @@ GameObject:
   - component: {fileID: 114751995282979800}
   - component: {fileID: 114459545170747762}
   - component: {fileID: 114043272362431784}
+  - component: {fileID: 65599075544204294}
+  - component: {fileID: 114862330431493296}
   m_Layer: 0
   m_Name: UNITY_FEMALE
   m_TagString: Unit
@@ -7210,6 +7212,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217968508667056}
   m_Mesh: {fileID: 4300000, guid: ac414add8a9714690a133179d379c7f5, type: 3}
+--- !u!65 &65599075544204294
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431914317840980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 20, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95194379836631006
 Animator:
   serializedVersion: 3
@@ -7298,11 +7312,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 1431914317840980}
-  clothScript: {fileID: 0}
+  ClothingSize: 0
   wornDress: {fileID: 0}
   colliders: []
   addClothScript: {fileID: 0}
   wornItems: []
+--- !u!114 &114862330431493296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431914317840980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b5985f89f62d848ba348253606ef80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  activePos: 0
 --- !u!136 &136069151998756302
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -7338,7 +7365,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.84
+  m_Radius: 0.85
   m_Height: 3
   m_Direction: 0
   m_Center: {x: 0.4, y: 0, z: 0.1}
@@ -7429,7 +7456,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.84
+  m_Radius: 0.85
   m_Height: 3
   m_Direction: 0
   m_Center: {x: -0.4, y: 0, z: -0.1}

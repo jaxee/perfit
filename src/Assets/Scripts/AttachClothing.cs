@@ -11,6 +11,7 @@ public class AttachClothing : MonoBehaviour
 	public GameObject wornDress;
 	public CapsuleCollider[] colliders;
 	public AddCloth addClothScript;
+	private Color black;
 
 
     //lists
@@ -24,9 +25,28 @@ public class AttachClothing : MonoBehaviour
 	public void OnStart () {
 		avatar = GameObject.Find ("UNITY_FEMALE");
 
+		black = new Color (255, 255, 255);
+
+	}
+	public void attachGarments(){
+
+		if (GameObject.Find ("underwear") && avatar.transform.Find ("Rig").gameObject) {
+			GameObject undiesGO = GameObject.Find ("underwear");
+			GameObject skeletonGO = avatar.transform.Find ("Rig").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
+			//Debug.Log (undiesGO);
+			//Debug.Log (skeletonGO);
+			MeshSkinner ms = new MeshSkinner (undiesGO, skeletonGO);
+			ms.work ();
+			ms.finish ();
+
+			SkinnedMeshRenderer sk = GameObject.Find ("SkinnedVersion").GetComponent<SkinnedMeshRenderer> ();
+			sk.material.color = black;
+
+		}
 	}
     public void InitializeClothingItemsList()
     {
+		attachGarments ();
         totalSlots = 1;
 
         for (int i = 0; i < totalSlots; i++)
@@ -116,7 +136,7 @@ public class AttachClothing : MonoBehaviour
     }
 	void OnMouseDrag(){
 		//Debug.Log ("YO");
-		float rotSpeed = 400;
+		float rotSpeed = 50;
 		float rotX = Input.GetAxis ("Mouse X") *rotSpeed *Mathf.Deg2Rad;
 
 		if (wornDress) {
@@ -152,9 +172,12 @@ public class AttachClothing : MonoBehaviour
 		finalProduct.AddComponent<Cloth> ();
 
 		if (ClothingSize == 3) {
-			PIN_CONSTANT = 7.2f;
+			PIN_CONSTANT = 7.2f; 
+			////////L - Dress 01 = 8.4
 		}
-
+		if (ClothingSize == 1) {
+			PIN_CONSTANT = 4f;
+		}
 		clothComponent = finalProduct.GetComponent<Cloth> ();
 		clothComponent.enabled = false;
 		clothComponent.damping = 0.5f;
@@ -166,7 +189,7 @@ public class AttachClothing : MonoBehaviour
 				float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 				//Debug.Log (dist);
 
-				if (dist > 3) {
+				if (dist >4) {
 					newConstraints [i].maxDistance = 0.01f; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
 
 				}

@@ -6534,9 +6534,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ctrlPoint: {fileID: 1469329933801338, guid: 35bbc5fa765f64fb08f3434655177e4a, type: 2}
   ptName: x
-  L: 2
-  M: 3
-  N: 3
+  L: 6
+  M: 4
+  N: 2
   S: {x: 0, y: 0, z: 0}
   T: {x: 0, y: 0, z: 0}
   U: {x: 0, y: 0, z: 0}

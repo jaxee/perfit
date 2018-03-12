@@ -44,6 +44,13 @@ public class obj : MonoBehaviour {
     [Header("Mesh update")]
     public bool updateMesh= false; 
 
+    //array to target ctrl group 
+    string [] leftHip   = new string[] { "2,2,0","2,2,1","2,2,2"};
+    string [] rightHip  = new string[] { "4,2,0", "4,2,1", "4,2,2" };
+    string butt         = "3,2,0";
+    string chest        = "3,3,2";
+    string stomach      = "3,2,2";
+
 
     private void Start()
     {
@@ -59,14 +66,24 @@ public class obj : MonoBehaviour {
         if (updateMesh)
         {//ensure timed update of mesh as deformation happen
             MeshUpdate(Deform());
-            Debug.Log("updated mesh");
+            gameObject.SetActive(false);
         }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("u"))
-            updateMesh= true;
+        {
+            updateMesh = true;
+            
+        }
+        if (Input.GetKeyDown("a"))
+        {
+            adjust(10, "butt");
+            adjust(5, "chest");
+            adjust(32, "lhips");
+            adjust(32, "rhips");
+        }
     }
 
    void SetOrigin()
@@ -134,6 +151,9 @@ public class obj : MonoBehaviour {
 					Vector3 position = P0+(i /(float)L * S) + (j/ (float)M * T) + (k / (float)N * U);
                     ctrlPoints[i, j, k] = (GameObject)Instantiate(ctrlPoint, position, Quaternion.identity,transform);
                     ctrlPoints[i, j, k].name = string.Format("{0},{1},{2}",i,j,k);
+                    ctrlPoints[i, j, k].layer = 8;
+
+
                 }
             }
         }//end-of-nested loop
@@ -167,6 +187,44 @@ public class obj : MonoBehaviour {
         target.sharedMesh.vertices = vertices;
         target.sharedMesh.RecalculateBounds();
         target.sharedMesh.RecalculateNormals();
+    }
+
+    void adjust(float measurement,string section)
+    {//take values and move respective ctrl points 
+        if (section == "lhips") {
+            Vector3 adjustment = new Vector3(measurement * 0.10f, 0,0);
+            foreach (string hip in leftHip) {
+                GameObject tmp = GameObject.Find(hip);
+                tmp.transform.position -= adjustment;
+            }
+        }
+        if (section == "rhips")
+        {
+            Vector3 adjustment = new Vector3(measurement * 0.10f, 0, 0);
+            foreach (string hip in rightHip)
+            {
+                GameObject tmp = GameObject.Find(hip);
+                tmp.transform.position += adjustment;
+            }
+        }
+        if (section == "butt") {
+            Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
+            GameObject tmp = GameObject.Find(butt);
+            tmp.transform.position -= adjustment;
+        }
+        if (section == "stomach")
+        {
+            Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
+            GameObject tmp = GameObject.Find(stomach);
+            tmp.transform.position += adjustment;
+        }
+        if (section == "chest")
+        {
+            Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
+            GameObject tmp = GameObject.Find(chest);
+            tmp.transform.position += adjustment;
+        }
+
     }
 		
 }//-end-of-script 

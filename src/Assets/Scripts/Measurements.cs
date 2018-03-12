@@ -30,6 +30,7 @@ public class Measurements : MonoBehaviour
     public GameObject DepthSrcManager;
     private DepthSourceManager depthManager;
     private ushort[] depthData;
+    private Texture2D texture;
 
 
     void Start()
@@ -83,7 +84,12 @@ public class Measurements : MonoBehaviour
             return;
         }
 
+        texture = depthManager.GetDepthTexture();
 
+        if (texture == null)
+        {
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -99,8 +105,6 @@ public class Measurements : MonoBehaviour
                 Debug.Log("Scanning Side");
                 beginScanTwo = true;
             }
-
-
         }
 
         if (beginScanOne && !scanOneDone && scan == 1)
@@ -316,71 +320,32 @@ public class Measurements : MonoBehaviour
 
     private double FrontHipMeasurement(Kinect.Joint hc, Kinect.Joint hr, Kinect.Joint hl)
     {
-        double middleHipCalc = Length(hl, hr);
-
-        bool hipDepthLCalculating = true;
-        bool hipDepthRCalculating = true;
-
-        int hipDepthLMeasurement = 0;
-        int hipDepthRMeasurement = 0;
-
-        if (middleHipCalc != 0.0)
-        {
-            Debug.Log("Middle Hip: " + middleHipCalc);
-        }
-
         Kinect.DepthSpacePoint hipDepthPointC = bodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(hc.Position);
-        Kinect.DepthSpacePoint hipDepthPointR = bodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(hr.Position);
-        Kinect.DepthSpacePoint hipDepthPointL = bodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(hl.Position);
+        Kinect.DepthSpacePoint hrPoint = hipDepthPointC;
+        Kinect.DepthSpacePoint hlPoint = hipDepthPointC;
 
-        Debug.Log("Original Left Hip Positioning: " + hipDepthPointL.X);
 
-        int indexDepthHipL = (int)(hipDepthPointL.X + (hipDepthPointL.Y * 512));
-        int indexDepthHipR = (int)(hipDepthPointR.X + (hipDepthPointR.Y * 512));
-
-        //Debug.Log("LH?: " + depthData[indexDepthHipL]);
-
-        /*for (int h = 0; h < 10; h++) {
-            Debug.Log("Left | " + depthData[indexDepthHipL]);
-            indexDepthHipL--;
-            Debug.Log("Right | " + depthData[indexDepthHipR]);
-            indexDepthHipR++;
-        }*/
-
-        while (hipDepthLCalculating)
+        for (int i = 0; i < 100; i++)
         {
-            if ((depthData[indexDepthHipL] - depthData[indexDepthHipL - 1]) != depthData[indexDepthHipL])
+            if (texture.GetPixel(((int)hrPoint.X + i), (int)hrPoint.Y).grayscale == 0)
             {
-                hipDepthLMeasurement++;
-                indexDepthHipL--;
-            }
-            else
-            {
-                hipDepthPointL.X -= hipDepthLMeasurement;
-                hipDepthLCalculating = false;
+                //Debug.Log("Right hip point: (" + ((int)hrPoint.X + i) + ", " + (int)hrPoint.Y + ")");
+                hrPoint.X = hrPoint.X + i;
+                break;
             }
         }
 
-        /* while (hipDepthRCalculating)
-         {
-             if ((depthData[indexDepthHipR] - depthData[indexDepthHipR + 1]) != depthData[indexDepthHipR])
-             {
-                 hipDepthRMeasurement++;
-                 indexDepthHipR++;
-             }
-             else
-             {
-                 hipDepthRCalculating = false;
-             }
-         } */
+        for (int i = 0; i < 100; i++)
+        {
+            if (texture.GetPixel(((int)hlPoint.X - i), (int)hlPoint.Y).grayscale == 0)
+            {
+                //Debug.Log("Left hip point: (" + ((int)hlPoint.X - i) + ", " + (int)hlPoint.Y + ")");
+                hlPoint.X = hlPoint.X - i;
+                break;
+            }
+        }
 
-
-        Debug.Log("Left hip depth pixel count is: " + hipDepthLMeasurement);
-        Debug.Log("The new coordinate is: " + hipDepthPointL.X + " | " + hipDepthPointL.Y);
-
-        //Debug.Log("Right hip depth pixel count is: " + hipDepthLMeasurement);
-
-        //Debug.Log("Final Calc across is: " + (hipDepthLMeasurement + hipDepthRMeasurement + middleHipCalc));
+        Debug.Log("Final front hip positions are: (left) " + hlPoint.X + " | (centre) " + hipDepthPointC.X + " | (right) " + hrPoint.X + "||| y is: " + hipDepthPointC.Y);
 
         return 0.0;
     }
@@ -388,8 +353,37 @@ public class Measurements : MonoBehaviour
     private double SideHipMeasurement(Kinect.Joint hc)
     {
         Kinect.DepthSpacePoint hipDepthPointC = bodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(hc.Position);
+        Kinect.DepthSpacePoint hrPoint = hipDepthPointC;
+        Kinect.DepthSpacePoint hlPoint = hipDepthPointC;
 
-        Debug.Log("Side Measurement Hip Centre: " + hipDepthPointC.X + " | " + hipDepthPointC.Y);
+        for (int i = 0; i < 100; i++)
+        {
+            if (texture.GetPixel(((int)hrPoint.X + i), (int)hrPoint.Y).grayscale == 0)
+            {
+                //Debug.Log("Right hip point: (" + ((int)hrPoint.X + i) + ", " + (int)hrPoint.Y + ")");
+                hrPoint.X = hrPoint.X + i;
+                break;
+            }
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+            if (texture.GetPixel(((int)hlPoint.X - i), (int)hlPoint.Y).grayscale == 0)
+            {
+                //Debug.Log("Left hip point: (" + ((int)hlPoint.X - i) + ", " + (int)hlPoint.Y + ")");
+                hlPoint.X = hlPoint.X - i;
+                break;
+            }
+        }
+
+        Debug.Log("Final side hip positions are: (left) " + hlPoint.X + " | (centre) " + hipDepthPointC.X + " | (right) " + hrPoint.X + "||| y is: " + hipDepthPointC.Y);
+
+        //Here
+        //Kinect.CameraSpacePoint[] hrFinalPoint = depthManager._Sensor.CoordinateMapper.MapDepthFrameToCameraSpace(depthData, hrPoint);
+        //Kinect.CameraSpacePoint[] hrFinalPoint;
+
+
+        //Debug.Log("Texture Info: Width " + texture.width + " | " + texture.height + " | " + texture.GetPixel((int)hipDepthPointC.X, (int)hipDepthPointC.Y).grayscale + " | " + texture.GetPixels32());
 
         return 0.0;
     }

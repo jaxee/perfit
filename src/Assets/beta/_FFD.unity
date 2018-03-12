@@ -912,7 +912,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1814954555
+  randomSeed: 1218050905
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4940,6 +4940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b5985f89f62d848ba348253606ef80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  activePos: 0
 --- !u!114 &622854057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6514,7 +6516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117130923}
   - component: {fileID: 1117130922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FFD
   m_TagString: Untagged
   m_Icon: {fileID: 0}

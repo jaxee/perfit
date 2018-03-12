@@ -42,13 +42,6 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			//AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
     }
 
-	void OnMouseDrag(){
-		//Debug.Log ("YO");
-		float rotSpeed = 400;
-		float rotX = Input.GetAxis ("Mouse X") *rotSpeed *Mathf.Deg2Rad;
-
-		GameObject.Find("Rig").transform.Rotate (Vector3.up, -rotX);
-	}
 
     public void OnPointerClick(PointerEventData eventData)
     {

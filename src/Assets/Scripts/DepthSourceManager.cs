@@ -4,13 +4,20 @@ using Windows.Kinect;
 
 public class DepthSourceManager : MonoBehaviour
 {   
-    private KinectSensor _Sensor;
+    public KinectSensor _Sensor;
     private DepthFrameReader _Reader;
     private ushort[] _Data;
+    private byte[] _RawData;
 
     public ushort[] GetData()
     {
         return _Data;
+    }
+
+    private Texture2D _Texture;
+    public Texture2D GetDepthTexture()
+    {
+        return _Texture;
     }
 
     void Start () 
@@ -21,6 +28,10 @@ public class DepthSourceManager : MonoBehaviour
         {
             _Reader = _Sensor.DepthFrameSource.OpenReader();
             _Data = new ushort[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels];
+
+            _RawData = new byte[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels * 3];
+            _Texture = new Texture2D(_Sensor.DepthFrameSource.FrameDescription.Width, _Sensor.DepthFrameSource.FrameDescription.Height, TextureFormat.RGB24, false);
+
         }
     }
     
@@ -32,12 +43,25 @@ public class DepthSourceManager : MonoBehaviour
             if (frame != null)
             {
                 frame.CopyFrameDataToArray(_Data);
+
+
+                for (int i = 0; i < _Data.Length; ++i)
+                {
+                    _RawData[3 * i + 0] = (byte)(_Data[i] / 256);
+                    _RawData[3 * i + 1] = (byte)(_Data[i] % 256);
+                    _RawData[3 * i + 2] = 0;
+                }
+
+                _Texture.LoadRawTextureData(_RawData);
+                _Texture.Apply();
+
                 frame.Dispose();
                 frame = null;
             }
         }
     }
-    
+
+
     void OnApplicationQuit()
     {
         if (_Reader != null)

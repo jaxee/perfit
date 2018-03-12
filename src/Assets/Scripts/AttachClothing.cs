@@ -32,6 +32,7 @@ public class AttachClothing : MonoBehaviour
 
 		if (GameObject.Find ("underwear") && avatar.transform.Find ("Rig").gameObject) {
 			GameObject undiesGO = GameObject.Find ("underwear");
+			wornDress = undiesGO;
 			GameObject skeletonGO = avatar.transform.Find ("Rig").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
 			//Debug.Log (undiesGO);
 			//Debug.Log (skeletonGO);
@@ -135,13 +136,16 @@ public class AttachClothing : MonoBehaviour
         return wornClothing;
     }
 	void OnMouseDrag(){
-		//Debug.Log ("YO");
-		float rotSpeed = 50;
+		float rotSpeed = 300;
 		float rotX = Input.GetAxis ("Mouse X") *rotSpeed *Mathf.Deg2Rad;
 
 		if (wornDress) {
 			wornDress.transform.Find ("Rig").transform.Rotate (Vector3.up, -rotX);
+			//Debug.Log ("meow");
+		} else {
+			GameObject.Find ("Rig").transform.Rotate (Vector3.up, -rotX);
 		}
+
 	}
 
 
@@ -215,7 +219,7 @@ public class AttachClothing : MonoBehaviour
 
 			//Debug.Log (GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ().radius);
 			//    skinnedMeshRenderers.bones = skinnedCharMeshRenderer.bones;
-
+		wornDress = ClothingModel;
 
 		return ClothingModel;
     }

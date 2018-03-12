@@ -81,7 +81,7 @@ public class obj : MonoBehaviour {
         {
             adjust(10, "butt");
             adjust(5, "chest");
-			adjust(10, "stomach");
+			adjust(40, "stomach");
             adjust(32, "lhips");
             adjust(32, "rhips");
         }
@@ -192,11 +192,17 @@ public class obj : MonoBehaviour {
 
     void adjust(float measurement,string section)
     {//take values and move respective ctrl points 
+
+		CapsuleCollider hipCol     = GameObject.Find ("Character_Hips").GetComponent<CapsuleCollider> ();
+		CapsuleCollider rthighCol  = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider> ();
+		CapsuleCollider lthighCol  = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ();
+
         if (section == "lhips") {
             Vector3 adjustment = new Vector3(measurement * 0.10f, 0,0);
             foreach (string hip in leftHip) {
                 GameObject tmp = GameObject.Find(hip);
                 tmp.transform.position -= adjustment;
+				hipCol.radius += 2 * 0.10f; 
             }
         }
         if (section == "rhips")

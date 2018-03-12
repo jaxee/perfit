@@ -81,6 +81,7 @@ public class obj : MonoBehaviour {
         {
             adjust(10, "butt");
             adjust(5, "chest");
+			adjust(10, "stomach");
             adjust(32, "lhips");
             adjust(32, "rhips");
         }
@@ -226,6 +227,10 @@ public class obj : MonoBehaviour {
         }
 
     }
+
+	public void updateSize(){
+		
+	}
 		
 }//-end-of-script 
 

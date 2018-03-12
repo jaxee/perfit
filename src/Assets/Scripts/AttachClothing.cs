@@ -37,6 +37,7 @@ public class AttachClothing : MonoBehaviour
 			//Debug.Log (undiesGO);
 			//Debug.Log (skeletonGO);
 			MeshSkinner ms = new MeshSkinner (undiesGO, skeletonGO);
+
 			ms.work ();
 			ms.finish ();
 
@@ -173,6 +174,7 @@ public class AttachClothing : MonoBehaviour
 		ms.finish();
 		finalProduct = GameObject.Find ("SkinnedVersion");
 
+
 		finalProduct.AddComponent<Cloth> ();
 
 		if (ClothingSize == 3) {
@@ -208,7 +210,7 @@ public class AttachClothing : MonoBehaviour
 
 
 			//REDO COLLIDERS.... after lena 
-			colliders = new CapsuleCollider[7];
+			colliders = new CapsuleCollider[9];
 			colliders [0] = GameObject.Find ("QuickRigCharacter_LeftUpLeg").GetComponent<CapsuleCollider> ();
 		colliders [1] = GameObject.Find ("QuickRigCharacter_RightUpLeg").GetComponent<CapsuleCollider> ();
 		colliders [2] = GameObject.Find ("QuickRigCharacter_LeftLeg").GetComponent<CapsuleCollider> ();
@@ -216,6 +218,9 @@ public class AttachClothing : MonoBehaviour
 		colliders [4] = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider> ();
 		colliders [5] = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
 		colliders [6] = GameObject.Find ("QuickRigCharacter_Spine2").GetComponent<CapsuleCollider> ();
+		colliders [7] = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
+		colliders [8] = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
+
 
 
 			clothComponent.capsuleColliders = colliders;

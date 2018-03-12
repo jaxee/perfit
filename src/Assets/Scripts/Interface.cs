@@ -116,17 +116,21 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 		//https://docs.unity3d.com/ScriptReference/Animation-clip.html
 		//ANIMATION https://unity3d.com/learn/tutorials/topics/animation/animator-scripting
 		else if (gameObject.name == "PoseButton") {
+			anim = GameObject.FindGameObjectWithTag("Unit").GetComponent<Animator>();
+
 			Debug.Log ("Pose 1 Animation");
 
 			activePos = 1;
-			//anim.SetInteger("Pose", activePos); 
+			anim.SetInteger("Pose", activePos); 
 
 		}
 		//ANIMATION
 		else if (gameObject.name == "PoseButton2") {
+			anim = GameObject.FindGameObjectWithTag("Unit").GetComponent<Animator>();
+
 			Debug.Log ("Pose 2 Animation");
 			activePos = 2;
-			//anim.SetInteger("Pose", activePos); 
+			anim.SetInteger("Pose", activePos); 
 
 		}
     }

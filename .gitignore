@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 /[Ll]ibrary/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
-=======
-[Ll]ibrary/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-*Assets/AssetStoreTools*
->>>>>>> 14f29b4a0f294038e8fdb6a71c6a39effc31e15c
+
 
 # Visual Studio 2015 cache directory
 */.vs/

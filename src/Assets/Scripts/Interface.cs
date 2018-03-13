@@ -109,6 +109,34 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
 		}
 
+		else if (gameObject.name == "dress1s") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
+
+			Debug.Log ("Dress 1s");
+			//humanObject.transform.rotation = Quaternion.identity;
+
+			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
+
+		}
+		else if (gameObject.name == "dress1m") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
+
+			Debug.Log ("Dress 1m");
+			//humanObject.transform.rotation = Quaternion.identity;
+
+			AddOrRemoveClothes ("naked", "Dress", "dress01m", 0);
+
+		}
+		else if (gameObject.name == "dress1l") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
+
+			Debug.Log ("Dress 1l");
+			//humanObject.transform.rotation = Quaternion.identity;
+
+			AddOrRemoveClothes ("naked", "Dress", "dress01l", 0);
+
+		}
+
 
 
 		//add more

@@ -7,6 +7,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class obj : MonoBehaviour {
 
+    [Header("Target model")]
+    public GameObject targetmodel; 
+
     //get mesh data 
     SkinnedMeshRenderer target;//**change to assigned target to model body
 
@@ -58,11 +61,11 @@ public class obj : MonoBehaviour {
 
     private void Start()
     {
-		sm = new SaveManager ();
-        target = GameObject.FindObjectOfType<SkinnedMeshRenderer>();//get target model in scene mesh info 
-        clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
-        vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh 
-        ctrlPoints = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
+		sm          = new SaveManager ();
+        target      = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info 
+        clone       = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
+        vrts        = new Vector3[clone.vertexCount];//set array size of vertice on mesh 
+        ctrlPoints  = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
         SetOrigin();
         BuildLattice();//build lattice 
     }
@@ -91,6 +94,7 @@ public class obj : MonoBehaviour {
         }
 		if(Input.GetKeyDown("s")){
 			saveProfile();
+            loadProfile();
 		}
     }
 
@@ -203,7 +207,7 @@ public class obj : MonoBehaviour {
 		CapsuleCollider hipCol     = GameObject.Find ("Character_Hips").GetComponent<CapsuleCollider> ();
 		CapsuleCollider rThighCol  = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider> ();
 		CapsuleCollider lThighCol  = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ();
-		CapsuleCollider[] bustCol = GameObject.Find ("Character_Spine").GetComponents<CapsuleCollider> ();	
+		CapsuleCollider[] bustCol  = GameObject.Find ("Character_Spine").GetComponents<CapsuleCollider> ();	
 		Debug.Log (bustCol[0]);	
 
         if (section == "hips") {
@@ -236,18 +240,14 @@ public class obj : MonoBehaviour {
             Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
             GameObject tmp = GameObject.Find(chest);
             tmp.transform.position += adjustment;
-
         }
 
     }
 	void saveProfile(){
 		Save data = new Save ();
-
 		data.bust = 5.0f;
 		data.hip = 32.0f;
-
 		sm.saveData (data);
-	
 	}
 
 	void loadProfile(){

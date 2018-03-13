@@ -7,12 +7,13 @@ public class SaveManager
 {
 		protected string filePath;
 		private Save data;
-
+		
 		//private SaveData
 
-		public SaveManager ()
+	public SaveManager (string filename)
 		{
-			this.filePath = Application.persistentDataPath + "/userData.save";
+			this.filePath = Application.persistentDataPath + filename;
+			Debug.Log ("file saved as: " + this.filePath);
 			this.data = new Save ();
 			this.loadData ();
 		}
@@ -24,7 +25,6 @@ public class SaveManager
 			FileStream file = File.Create(this.filePath);
 			bin.Serialize(file, input);
 			file.Close();
-			Debug.Log ("file saved as: " + this.filePath);
 		}
 
 		public Save loadData()

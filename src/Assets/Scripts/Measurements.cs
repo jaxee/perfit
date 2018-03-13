@@ -47,7 +47,7 @@ public class Measurements : MonoBehaviour
 
     void Start()
     {
-        sm = new SaveManager();
+        sm = new SaveManager("/measurements.save");
         data = new Save();
 
         if (BodySrcManager == null)

@@ -6,9 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class Save
 {//global inputs to save 
-	public float bust; 
-	public float hip;
-	public float height; 
+	public float 		bust; 
+	public float 		hip;
+	public float 		height;
 
 }
 

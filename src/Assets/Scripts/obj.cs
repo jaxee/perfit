@@ -11,7 +11,7 @@ public class obj : MonoBehaviour {
     public GameObject targetmodel; 
 
     //get mesh data 
-    SkinnedMeshRenderer target;//**change to assigned target to model body
+    SkinnedMeshRenderer target;
 
 	SaveManager sm;
     
@@ -61,13 +61,12 @@ public class obj : MonoBehaviour {
 
     private void Start()
     {
-		sm          = new SaveManager ();
+		sm          = new SaveManager ("/profileData.save");
         target      = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info 
         clone       = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
         vrts        = new Vector3[clone.vertexCount];//set array size of vertice on mesh 
         ctrlPoints  = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
         SetOrigin();
-        saveProfile();
         BuildLattice();//build lattice 
     }
     private void FixedUpdate()

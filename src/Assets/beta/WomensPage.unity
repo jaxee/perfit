@@ -2781,9 +2781,20 @@ Prefab:
       propertyPath: m_Name
       value: UNITY_FEMALEx
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1431914317840980, guid: 0c132831f2f8d44a4a7767ed2ff89afe, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114751995282979800, guid: 0c132831f2f8d44a4a7767ed2ff89afe, type: 2}
+    - {fileID: 114459545170747762, guid: 0c132831f2f8d44a4a7767ed2ff89afe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0c132831f2f8d44a4a7767ed2ff89afe, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &266323214 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1844995760351120, guid: 0c132831f2f8d44a4a7767ed2ff89afe,
+    type: 2}
+  m_PrefabInternal: {fileID: 266323213}
 --- !u!1 &279410460
 GameObject:
   m_ObjectHideFlags: 0
@@ -12881,6 +12892,55 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1134144492}
+--- !u!1 &1142843558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1142843560}
+  - component: {fileID: 1142843559}
+  m_Layer: 0
+  m_Name: 'deformerManager '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1142843559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1142843558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f78aa61bf22487a813722430546532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetmodel: {fileID: 266323214}
+  ctrlPoint: {fileID: 1469329933801338, guid: 35bbc5fa765f64fb08f3434655177e4a, type: 2}
+  L: 6
+  M: 4
+  N: 2
+  S: {x: 0, y: 0, z: 0}
+  T: {x: 0, y: 0, z: 0}
+  U: {x: 0, y: 0, z: 0}
+  updateMesh: 0
+--- !u!4 &1142843560
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1142843558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1145789718
 GameObject:
   m_ObjectHideFlags: 0

@@ -765,7 +765,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114164201535949788, guid: 2196de22dde76402a9c4fe31df878270, type: 2}
+    - {fileID: 114208208537518338, guid: 2196de22dde76402a9c4fe31df878270, type: 2}
+    - {fileID: 114392731837469892, guid: 2196de22dde76402a9c4fe31df878270, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2196de22dde76402a9c4fe31df878270, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &352987630
@@ -6534,8 +6537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f78aa61bf22487a813722430546532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetmodel: {fileID: 1832204411}
   ctrlPoint: {fileID: 1469329933801338, guid: 35bbc5fa765f64fb08f3434655177e4a, type: 2}
-  ptName: x
   L: 6
   M: 4
   N: 2
@@ -7643,6 +7646,11 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1832204411 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1940161713757262, guid: 2196de22dde76402a9c4fe31df878270,
+    type: 2}
+  m_PrefabInternal: {fileID: 348691679}
 --- !u!1 &1918513065
 GameObject:
   m_ObjectHideFlags: 0

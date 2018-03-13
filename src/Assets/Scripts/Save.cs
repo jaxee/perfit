@@ -8,7 +8,7 @@ public class Save
 {//global inputs to save 
 	public float bust; 
 	public float hip;
-	public float heigth; 
+	public float height; 
 
 }
 

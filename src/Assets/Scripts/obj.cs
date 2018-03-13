@@ -18,10 +18,10 @@ public class obj : MonoBehaviour {
     //copied mesh ref
     Mesh clone;
 
-    [Header("ctrl point prefab")]
+    [Header("Ctrl point prefab")]
     //ctrl point prefab
     public GameObject ctrlPoint;
-    public string ptName; 
+    
     //lattice dimension 
     [Header("FFD dimension")]
     public int L;
@@ -67,6 +67,7 @@ public class obj : MonoBehaviour {
         vrts        = new Vector3[clone.vertexCount];//set array size of vertice on mesh 
         ctrlPoints  = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
         SetOrigin();
+        saveProfile();
         BuildLattice();//build lattice 
     }
     private void FixedUpdate()
@@ -85,17 +86,9 @@ public class obj : MonoBehaviour {
             updateMesh = true;
             
         }
-        if (Input.GetKeyDown("a"))
-        {
-            adjust( 10 , "butt");
-            adjust( 5  , "chest");
-			adjust( 40 , "stomach");
-            adjust( 32 , "hips");
+        if (Input.GetKeyDown("t")) {
+           GameObject.Find("UNITY_FEMALEx").SetActive(false);
         }
-		if(Input.GetKeyDown("s")){
-			saveProfile();
-            loadProfile();
-		}
     }
 
    void SetOrigin()
@@ -163,12 +156,10 @@ public class obj : MonoBehaviour {
 					Vector3 position = P0+(i /(float)L * S) + (j/ (float)M * T) + (k / (float)N * U);
                     ctrlPoints[i, j, k] = (GameObject)Instantiate(ctrlPoint, position, Quaternion.identity,transform);
                     ctrlPoints[i, j, k].name = string.Format("{0},{1},{2}",i,j,k);
-                    ctrlPoints[i, j, k].layer = 8;
-
-
                 }
             }
         }//end-of-nested loop
+        loadProfile();
     }
 
     float EmbedPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 x, Vector3 x0)
@@ -204,30 +195,27 @@ public class obj : MonoBehaviour {
     void adjust(float measurement,string section)
     {//take values and move respective ctrl points 
 
-		CapsuleCollider hipCol     = GameObject.Find ("Character_Hips").GetComponent<CapsuleCollider> ();
-		CapsuleCollider rThighCol  = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider> ();
-		CapsuleCollider lThighCol  = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ();
-		CapsuleCollider[] bustCol  = GameObject.Find ("Character_Spine").GetComponents<CapsuleCollider> ();	
-		Debug.Log (bustCol[0]);	
+        CapsuleCollider hipCol      = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
+        CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
+        CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
+        CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
+        CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();	
 
         if (section == "hips") {
             Vector3 adjA = new Vector3(measurement * 0.10f, 0,0);
             foreach (string hip in leftHip) {
                 GameObject tmp = GameObject.Find(hip);
 				tmp.transform.position -= adjA;
-				hipCol.radius += 2 * 0.10f; 
+				
             }
-     	    Vector3 adjB = new Vector3(measurement * 0.10f, 0, 0);
-            foreach (string hip in rightHip)
-            {
-                GameObject tmp = GameObject.Find(hip);
-				tmp.transform.position += adjB;
-            }
+            hipCol.radius += 2 * 0.10f; 
         }
         if (section == "butt") {
             Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
             GameObject tmp = GameObject.Find(butt);
             tmp.transform.position -= adjustment;
+            rbuttCol.radius += 1 * 0.10f;
+            lbuttCol.radius += 1 * 0.10f;
         }
         if (section == "stomach")
         {
@@ -240,6 +228,9 @@ public class obj : MonoBehaviour {
             Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
             GameObject tmp = GameObject.Find(chest);
             tmp.transform.position += adjustment;
+
+            bustACol.radius += 2 * 0.10f;
+            bustBCol.radius += 2 * 0.10f;
         }
 
     }
@@ -252,8 +243,10 @@ public class obj : MonoBehaviour {
 
 	void loadProfile(){
 		Save data = sm.loadData ();
-		Debug.Log(data.bust);
-	}
+        adjust(10, "butt");
+        adjust(data.bust, "chest");
+        adjust(data.hip, "hips");
+    }
 		
 }//-end-of-script 
 

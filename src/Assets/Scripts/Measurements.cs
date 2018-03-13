@@ -169,7 +169,7 @@ public class Measurements : MonoBehaviour
                 Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
                 Debug.Log("INCHES | Height: " + CmToInches(finalHeight) + "\nLeg Length: " + CmToInches(finalLeg) + "\nArm Length: " + CmToInches(finalArm));
 
-                data.heigth = CmToInches(finalHeight);
+                data.height = CmToInches(finalHeight);
 
                 scanOneDone = true;
             }

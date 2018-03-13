@@ -2,11 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class obj : MonoBehaviour {
 
+    [Header("Target model")]
+    public GameObject targetmodel; 
+
     //get mesh data 
-    SkinnedMeshRenderer target;
+    SkinnedMeshRenderer target;//**change to assigned target to model body
+
+	SaveManager sm;
     
     //copied mesh ref
     Mesh clone;
@@ -54,10 +61,11 @@ public class obj : MonoBehaviour {
 
     private void Start()
     {
-        target = GameObject.FindObjectOfType<SkinnedMeshRenderer>();//get target model in scene mesh info 
-        clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
-        vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh 
-        ctrlPoints = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
+		sm          = new SaveManager ();
+        target      = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info 
+        clone       = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
+        vrts        = new Vector3[clone.vertexCount];//set array size of vertice on mesh 
+        ctrlPoints  = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
         SetOrigin();
         BuildLattice();//build lattice 
     }
@@ -79,12 +87,15 @@ public class obj : MonoBehaviour {
         }
         if (Input.GetKeyDown("a"))
         {
-            adjust(10, "butt");
-            adjust(5, "chest");
-			adjust(40, "stomach");
-            adjust(32, "lhips");
-            adjust(32, "rhips");
+            adjust( 10 , "butt");
+            adjust( 5  , "chest");
+			adjust( 40 , "stomach");
+            adjust( 32 , "hips");
         }
+		if(Input.GetKeyDown("s")){
+			saveProfile();
+            loadProfile();
+		}
     }
 
    void SetOrigin()
@@ -194,24 +205,23 @@ public class obj : MonoBehaviour {
     {//take values and move respective ctrl points 
 
 		CapsuleCollider hipCol     = GameObject.Find ("Character_Hips").GetComponent<CapsuleCollider> ();
-		CapsuleCollider rthighCol  = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider> ();
-		CapsuleCollider lthighCol  = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ();
+		CapsuleCollider rThighCol  = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider> ();
+		CapsuleCollider lThighCol  = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ();
+		CapsuleCollider[] bustCol  = GameObject.Find ("Character_Spine").GetComponents<CapsuleCollider> ();	
+		Debug.Log (bustCol[0]);	
 
-        if (section == "lhips") {
-            Vector3 adjustment = new Vector3(measurement * 0.10f, 0,0);
+        if (section == "hips") {
+            Vector3 adjA = new Vector3(measurement * 0.10f, 0,0);
             foreach (string hip in leftHip) {
                 GameObject tmp = GameObject.Find(hip);
-                tmp.transform.position -= adjustment;
+				tmp.transform.position -= adjA;
 				hipCol.radius += 2 * 0.10f; 
             }
-        }
-        if (section == "rhips")
-        {
-            Vector3 adjustment = new Vector3(measurement * 0.10f, 0, 0);
+     	    Vector3 adjB = new Vector3(measurement * 0.10f, 0, 0);
             foreach (string hip in rightHip)
             {
                 GameObject tmp = GameObject.Find(hip);
-                tmp.transform.position += adjustment;
+				tmp.transform.position += adjB;
             }
         }
         if (section == "butt") {
@@ -233,9 +243,16 @@ public class obj : MonoBehaviour {
         }
 
     }
+	void saveProfile(){
+		Save data = new Save ();
+		data.bust = 5.0f;
+		data.hip = 32.0f;
+		sm.saveData (data);
+	}
 
-	public void updateSize(){
-		
+	void loadProfile(){
+		Save data = sm.loadData ();
+		Debug.Log(data.bust);
 	}
 		
 }//-end-of-script 

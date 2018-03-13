@@ -7,10 +7,14 @@ using System.IO;
 
 public class Measurements : MonoBehaviour
 {
+
+    SaveManager sm;
+    Save data;
+
     const int SCAN_LENGTH = 1000;
     int scan = 0;
 
-    private const double INCHES = 0.39370;
+    private const float INCHES = 0.39370f;
 
     // Body Manager (Joints)
     public GameObject BodySrcManager;
@@ -21,13 +25,13 @@ public class Measurements : MonoBehaviour
     private HashSet<double> legCalculations = new HashSet<double>();
     private HashSet<double> armCalculations = new HashSet<double>();
 
-    private double hipFront = 0.0;
-    private double hipSide = 0.0;
-    private double hipCalculation = 0.0;
+    private float hipFront = 0.0f;
+    private float hipSide = 0.0f;
+    private float hipCalculation = 0.0f;
 
-    private double bustFront = 0.0;
-    private double bustSide = 0.0;
-    private double bustCalculation = 0.0;
+    private float bustFront = 0.0f;
+    private float bustSide = 0.0f;
+    private float bustCalculation = 0.0f;
 
     private bool beginScanOne = false;
     private bool scanOneDone = false;
@@ -43,6 +47,9 @@ public class Measurements : MonoBehaviour
 
     void Start()
     {
+        sm = new SaveManager();
+        data = new Save();
+
         if (BodySrcManager == null)
         {
             Debug.LogError("Missing Game Object (Body Source Manager)");
@@ -155,12 +162,14 @@ public class Measurements : MonoBehaviour
             if (i >= SCAN_LENGTH)
             {
 
-                var finalHeight = averageValues(heightCalculations);
+                float finalHeight = averageValues(heightCalculations);
                 var finalLeg = averageValues(legCalculations);
                 var finalArm = averageValues(armCalculations);
 
                 Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
                 Debug.Log("INCHES | Height: " + CmToInches(finalHeight) + "\nLeg Length: " + CmToInches(finalLeg) + "\nArm Length: " + CmToInches(finalArm));
+
+                data.heigth = CmToInches(finalHeight);
 
                 scanOneDone = true;
             }
@@ -213,6 +222,9 @@ public class Measurements : MonoBehaviour
 
                 Debug.Log("INCHES | Hip: " + CmToInches(hipCalculation));
                 Debug.Log("INCHES | Bust: " + CmToInches(bustCalculation));
+
+                data.hip = CmToInches(hipCalculation);
+                data.bust = CmToInches(bustCalculation);
 
                 scanTwoDone = true;
             }
@@ -310,19 +322,19 @@ public class Measurements : MonoBehaviour
         return legLength;
     }
 
-    private double ArmLength(params Kinect.Joint[] joints)
+    private float ArmLength(params Kinect.Joint[] joints)
     {
         int leftArmTrackedJoints = NumberOfTrackedJoints(joints[1], joints[3], joints[5]);
         int rightArmTrackedJoints = NumberOfTrackedJoints(joints[0], joints[2], joints[4]);
 
-        double armLength = leftArmTrackedJoints > rightArmTrackedJoints ?
+        float armLength = leftArmTrackedJoints > rightArmTrackedJoints ?
             Length(joints[1], joints[3], joints[5]) :
             Length(joints[0], joints[2], joints[4]);
 
         return armLength;
     }
 
-    private double EllipseRadius(Kinect.Joint middle, Kinect.Joint left, Kinect.Joint right, string measurement)
+    private float EllipseRadius(Kinect.Joint middle, Kinect.Joint left, Kinect.Joint right, string measurement)
     {
         bool debug = false;
 
@@ -411,10 +423,10 @@ public class Measurements : MonoBehaviour
             return Length(middle.Position, rightCameraSpace);
         }
 
-        return 0.0;
+        return 0.0f;
     }
 
-    private double EllipseRadius(Kinect.Joint middle, string measurement)
+    private float EllipseRadius(Kinect.Joint middle, string measurement)
     {
         bool debug = false;
 
@@ -503,7 +515,7 @@ public class Measurements : MonoBehaviour
             return Length(middle.Position, rightCameraSpace);
         }
 
-        return 0.0;
+        return 0.0f;
     }
 
     // HELPERS
@@ -523,7 +535,7 @@ public class Measurements : MonoBehaviour
         return trackedJoints;
     }
 
-    private static double Length(Kinect.Joint p1, Kinect.Joint p2)
+    private static float Length(Kinect.Joint p1, Kinect.Joint p2)
     {
         return Mathf.Sqrt(
             Mathf.Pow(p1.Position.X - p2.Position.X, 2) +
@@ -531,9 +543,9 @@ public class Measurements : MonoBehaviour
             Mathf.Pow(p1.Position.Z - p2.Position.Z, 2));
     }
 
-    private static double Length(params Kinect.Joint[] joints)
+    private static float Length(params Kinect.Joint[] joints)
     {
-        double length = 0;
+        float length = 0;
 
         for (int i = 0; i < joints.Length - 1; i++)
         {
@@ -543,7 +555,7 @@ public class Measurements : MonoBehaviour
         return length;
     }
 
-    private static double Length(Kinect.CameraSpacePoint p1, Kinect.CameraSpacePoint p2)
+    private static float Length(Kinect.CameraSpacePoint p1, Kinect.CameraSpacePoint p2)
     {
         return Mathf.Sqrt(
             Mathf.Pow(p1.X - p2.X, 2) +
@@ -551,9 +563,9 @@ public class Measurements : MonoBehaviour
             Mathf.Pow(p1.Z - p2.Z, 2));
     }
 
-    private static double Length(params Kinect.CameraSpacePoint[] pt)
+    private static float Length(params Kinect.CameraSpacePoint[] pt)
     {
-        double length = 0;
+        float length = 0;
 
         for (int i = 0; i < pt.Length - 1; i++)
         {
@@ -563,12 +575,12 @@ public class Measurements : MonoBehaviour
         return length;
     }
 
-    private double averageValues(HashSet<double> vals)
+    private float averageValues(HashSet<double> vals)
     {
         var size = vals.Count;
-        double valsAdded = 0.0;
+        float valsAdded = 0.0f;
 
-        foreach (double v in vals)
+        foreach (float v in vals)
         {
             valsAdded += v;
         }
@@ -576,12 +588,12 @@ public class Measurements : MonoBehaviour
         return valsAdded / size;
     }
 
-    private double EllipseCircumference (float a, float b)
+    private float EllipseCircumference (float a, float b)
     {
         return Mathf.PI * (3 * (a + b) - Mathf.Sqrt((3 * a + b) * (a + 3 * b)));
     }
 
-    private double CmToInches (double cm)
+    private float CmToInches (float cm)
     {
         return cm * INCHES;
     }

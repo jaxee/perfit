@@ -195,8 +195,8 @@ public class AttachClothing : MonoBehaviour
 				float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 				//Debug.Log (dist);
 
-				if (dist >4f) {
-					newConstraints [i].maxDistance = 0.01f; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
+				if (dist < 4f) {
+					newConstraints [i].maxDistance = 0; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
 
 				}
 			
@@ -210,18 +210,19 @@ public class AttachClothing : MonoBehaviour
 
 
 			//REDO COLLIDERS.... after lena 
-			colliders = new CapsuleCollider[9];
+			colliders = new CapsuleCollider[10];
 			colliders [0] = GameObject.Find ("QuickRigCharacter_LeftUpLeg").GetComponent<CapsuleCollider> ();
 		colliders [1] = GameObject.Find ("QuickRigCharacter_RightUpLeg").GetComponent<CapsuleCollider> ();
 		colliders [2] = GameObject.Find ("QuickRigCharacter_LeftLeg").GetComponent<CapsuleCollider> ();
 		colliders [3] = GameObject.Find ("QuickRigCharacter_RightLeg").GetComponent<CapsuleCollider> ();
-		colliders [4] = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider> ();
-		colliders [5] = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
-		colliders [6] = GameObject.Find ("QuickRigCharacter_Spine2").GetComponent<CapsuleCollider> ();
+		//colliders [4] = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider> ();
+		//colliders [5] = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
+		//colliders [6] = GameObject.Find ("QuickRigCharacter_Spine2").GetComponent<CapsuleCollider> ();
 		colliders [7] = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
 		colliders [8] = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
+		colliders [9] = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
 
-
+		//QuickRigCharacter_Hips
 
 			clothComponent.capsuleColliders = colliders;
 

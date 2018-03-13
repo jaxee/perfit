@@ -1,12 +1,12 @@
-*/[Ll]ibrary/
-*/[Oo]bj/
-*/[Bb]uild/
-*/[Bb]uilds/
-*/Assets/AssetStoreTools*
-*/prototype_Data/
-*/prototypeALPHA.app/
-*/prototype2.app/
-*/prototype.app/
+[Ll]ibrary/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+Assets/AssetStoreTools*
+prototype_Data/*
+prototypeALPHA.app/*
+prototype2.app/*
+prototype.app/*
 
 # Visual Studio 2015 cache directory
 */.vs/

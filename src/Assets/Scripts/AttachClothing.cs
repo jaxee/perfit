@@ -30,13 +30,14 @@ public class AttachClothing : MonoBehaviour
 	}
 	public void attachGarments(){
 
-		if (GameObject.Find ("underwear") && avatar.transform.Find ("Rig").gameObject) {
+		if (GameObject.Find ("underwear") && avatar.transform.Find ("QuickRigCharacter_Reference").gameObject) {
 			GameObject undiesGO = GameObject.Find ("underwear");
 			wornDress = undiesGO;
-			GameObject skeletonGO = avatar.transform.Find ("Rig").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
+			GameObject skeletonGO = avatar.transform.Find ("QuickRigCharacter_Reference").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
 			//Debug.Log (undiesGO);
 			//Debug.Log (skeletonGO);
 			MeshSkinner ms = new MeshSkinner (undiesGO, skeletonGO);
+
 			ms.work ();
 			ms.finish ();
 
@@ -140,10 +141,10 @@ public class AttachClothing : MonoBehaviour
 		float rotX = Input.GetAxis ("Mouse X") *rotSpeed *Mathf.Deg2Rad;
 
 		if (wornDress) {
-			wornDress.transform.Find ("Rig").transform.Rotate (Vector3.up, -rotX);
+			wornDress.transform.Find ("QuickRigCharacter_Reference").transform.Rotate (Vector3.up, -rotX);
 			//Debug.Log ("meow");
 		} else {
-			GameObject.Find ("Rig").transform.Rotate (Vector3.up, -rotX);
+			GameObject.Find ("QuickRigCharacter_Reference").transform.Rotate (Vector3.up, -rotX);
 		}
 
 	}
@@ -155,7 +156,7 @@ public class AttachClothing : MonoBehaviour
 		DestroyImmediate (GameObject.Find ("underwear"));
 		DestroyImmediate (avatar); 
 		DestroyImmediate (GameObject.Find("SkinnedVersion")); 
-		DestroyImmediate (GameObject.Find("Rig")); 
+		DestroyImmediate (GameObject.Find("QuickRigCharacter_Reference")); 
 
 		GameObject newHuman = Instantiate (Resources.Load ("UNITY_FEMALE")) as GameObject;
 		avatar = newHuman;
@@ -165,13 +166,14 @@ public class AttachClothing : MonoBehaviour
 		Cloth clothComponent;
 		DestroyClothing ();
 		GameObject modelGO = ClothingModel;
-		GameObject skeletonGO = avatar.transform.Find("Rig").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
+		GameObject skeletonGO = avatar.transform.Find("QuickRigCharacter_Reference").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
 		GameObject cube  = GameObject.Find("Pin");
 		//Debug.Log (skeletonGO);
 		MeshSkinner ms = new MeshSkinner(modelGO, skeletonGO);
 		ms.work();
 		ms.finish();
 		finalProduct = GameObject.Find ("SkinnedVersion");
+
 
 		finalProduct.AddComponent<Cloth> ();
 
@@ -193,8 +195,8 @@ public class AttachClothing : MonoBehaviour
 				float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 				//Debug.Log (dist);
 
-				if (dist >4) {
-					newConstraints [i].maxDistance = 0.01f; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
+				if (dist < 4f) {
+					newConstraints [i].maxDistance = 0; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
 
 				}
 			
@@ -208,12 +210,19 @@ public class AttachClothing : MonoBehaviour
 
 
 			//REDO COLLIDERS.... after lena 
-			colliders = new CapsuleCollider[4];
-			colliders [0] = GameObject.Find ("Character_LeftUpLeg").GetComponent<CapsuleCollider> ();
-			colliders [1] = GameObject.Find ("Character_RightUpLeg").GetComponent<CapsuleCollider> ();
-			colliders [2] = GameObject.Find ("Character_LeftLeg").GetComponent<CapsuleCollider> ();
-			colliders [3] = GameObject.Find ("Character_RightLeg").GetComponent<CapsuleCollider> ();
+			colliders = new CapsuleCollider[10];
+			colliders [0] = GameObject.Find ("QuickRigCharacter_LeftUpLeg").GetComponent<CapsuleCollider> ();
+		colliders [1] = GameObject.Find ("QuickRigCharacter_RightUpLeg").GetComponent<CapsuleCollider> ();
+		colliders [2] = GameObject.Find ("QuickRigCharacter_LeftLeg").GetComponent<CapsuleCollider> ();
+		colliders [3] = GameObject.Find ("QuickRigCharacter_RightLeg").GetComponent<CapsuleCollider> ();
+		//colliders [4] = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider> ();
+		//colliders [5] = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
+		//colliders [6] = GameObject.Find ("QuickRigCharacter_Spine2").GetComponent<CapsuleCollider> ();
+		colliders [7] = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
+		colliders [8] = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
+		colliders [9] = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
 
+		//QuickRigCharacter_Hips
 
 			clothComponent.capsuleColliders = colliders;
 

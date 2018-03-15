@@ -85,8 +85,9 @@ public class obj : MonoBehaviour {
             updateMesh = true;
             
         }
-        if (Input.GetKeyDown("t")) {
-           GameObject.Find("UNITY_FEMALEx").SetActive(false);
+		if (Input.GetKeyDown("a"))
+		{
+			loadProfile();
         }
     }
 
@@ -158,7 +159,6 @@ public class obj : MonoBehaviour {
                 }
             }
         }//end-of-nested loop
-        loadProfile();
     }
 
     float EmbedPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 x, Vector3 x0)
@@ -194,11 +194,11 @@ public class obj : MonoBehaviour {
     void adjust(float measurement,string section)
     {//take values and move respective ctrl points 
 
-        CapsuleCollider hipCol      = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
-        CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
-        CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
-        CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
-        CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();	
+        //CapsuleCollider hipCol      = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
+        //CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
+        //CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
+        //CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
+        //CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();	
 
         if (section == "hips") {
             Vector3 adjA = new Vector3(measurement * 0.10f, 0,0);
@@ -207,14 +207,20 @@ public class obj : MonoBehaviour {
 				tmp.transform.position -= adjA;
 				
             }
-            hipCol.radius += 2 * 0.10f; 
+
+			foreach (string hip in rightHip) {
+				GameObject tmp = GameObject.Find(hip);
+				tmp.transform.position += adjA;
+
+			}
+            //.radius += 2 * 0.10f; 
         }
         if (section == "butt") {
             Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
             GameObject tmp = GameObject.Find(butt);
             tmp.transform.position -= adjustment;
-            rbuttCol.radius += 1 * 0.10f;
-            lbuttCol.radius += 1 * 0.10f;
+            //rbuttCol.radius += 1 * 0.10f;
+            ///.radius += 1 * 0.10f;
         }
         if (section == "stomach")
         {
@@ -228,8 +234,8 @@ public class obj : MonoBehaviour {
             GameObject tmp = GameObject.Find(chest);
             tmp.transform.position += adjustment;
 
-            bustACol.radius += 2 * 0.10f;
-            bustBCol.radius += 2 * 0.10f;
+            //bustACol.radius += 2 * 0.10f;
+            //bustBCol.radius += 2 * 0.10f;
         }
 
     }
@@ -241,10 +247,10 @@ public class obj : MonoBehaviour {
 	}
 
 	void loadProfile(){
-		Save data = sm.loadData ();
+		//Save data = sm.loadData ();
         adjust(10, "butt");
-        adjust(data.bust, "chest");
-        adjust(data.hip, "hips");
+        adjust(5, "chest");
+        adjust(30, "hips");
     }
 		
 }//-end-of-script 

@@ -4,25 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
+using System;
 
 public class obj : MonoBehaviour {
 
     [Header("Target model")]
-    public GameObject targetmodel; 
+    public GameObject targetmodel;
 
-    //get mesh data 
+    //get mesh data
     SkinnedMeshRenderer target;
 
 	SaveManager sm;
-    
+
     //copied mesh ref
     Mesh clone;
 
     [Header("Ctrl point prefab")]
     //ctrl point prefab
     public GameObject ctrlPoint;
-    
-    //lattice dimension 
+
+    //lattice dimension
     [Header("FFD dimension")]
     public int L;
     public int M;
@@ -34,24 +36,23 @@ public class obj : MonoBehaviour {
     public Vector3 T;
     public Vector3 U;
 
-    //localized point position values 
-    float s, t, u;
-    
     //store all ctrl points postion
     GameObject[,,] ctrlPoints;
-    
-    //lattice origin 
+
+    //lattice origin
     Vector3 P0;
 
-    //store vertices information 
+    //store vertices information
     Vector3[] vrts;
+
+	private Stopwatch tStart;
 
 
     //update mesh
     [Header("Mesh update")]
-    public bool updateMesh= false; 
+    public bool updateMesh= false;
 
-    //array to target ctrl group 
+    //array to target ctrl group
     string [] leftHip   = new string[] { "2,2,0","2,2,1","2,2,2"};
     string [] rightHip  = new string[] { "4,2,0", "4,2,1", "4,2,2" };
     string butt         = "3,2,0";
@@ -62,39 +63,45 @@ public class obj : MonoBehaviour {
     private void Start()
     {
 		sm          = new SaveManager ("/profileData.save");
-        target      = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info 
+        target      = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone       = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
-        vrts        = new Vector3[clone.vertexCount];//set array size of vertice on mesh 
+        vrts        = new Vector3[clone.vertexCount];//set array size of vertice on mesh
         ctrlPoints  = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
         SetOrigin();
-        BuildLattice();//build lattice 
+        saveProfile();
+        BuildLattice();//build lattice
+
     }
     private void FixedUpdate()
     {
-        if (updateMesh)
-        {//ensure timed update of mesh as deformation happen
-            MeshUpdate(Deform());
+		if (updateMesh)
+		{//ensure timed update of mesh as deformation happen
+			tStart = Stopwatch.StartNew();
+			tStart.Start ();
+			MeshUpdate(Deform());
+			tStart.Stop ();
+			TimeSpan delta = tStart.Elapsed;
+			UnityEngine.Debug.Log("time to deform: "+ delta);
+            tStart.Reset();
             gameObject.SetActive(false);
-        }
+		}
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("u"))
         {
-            updateMesh = true;
-            
+			gameObject.SetActive(true);
+			updateMesh = true;
         }
-        if (Input.GetKeyDown("t")) {
-           GameObject.Find("UNITY_FEMALEx").SetActive(false);
-        }
+
     }
 
    void SetOrigin()
     {//set lattice local coordinate system
 
-		//get max and min of 3d model vertices 
-		Vector3 min = new Vector3 (Mathf.Infinity,Mathf.Infinity,Mathf.Infinity); 
+		//get max and min of 3d model vertices
+		Vector3 min = new Vector3 (Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
 		Vector3 max = new Vector3 (-Mathf.Infinity,-Mathf.Infinity,-Mathf.Infinity);
 
 		foreach(Vector3 v in clone.vertices){//loop through all points and find max vertice and min vertice
@@ -108,44 +115,56 @@ public class obj : MonoBehaviour {
 
 		P0 = min;
     }
-
-
     Vector3[] Deform()
-    {//place vertices of object into lattice local grid for calculation 
+    {//place vertices of object into lattice local grid for calculation
+        Vector3 npt;
+		Vector3 tmpTU 		= Vector3.Cross(T, U);
+		Vector3 tmpSU 		= Vector3.Cross(S, U);
+		Vector3 tmpST 		= Vector3.Cross(S, T);
 
-        for (int v = 0; v < clone.vertexCount; v++)
+		float tmpTUS 		= Vector3.Dot (tmpTU,S);
+		float tmpSUT		= Vector3.Dot (tmpSU,T);
+		float tmpSTU		= Vector3.Dot (tmpST,U);
+
+
+		for (int v = 0; v < clone.vertexCount; v++)
         {
-            Vector3 npt = Vector3.zero;
-            s = EmbedPoint(T, U, S, clone.vertices[v], P0);
-            t = EmbedPoint(S, U, T, clone.vertices[v], P0);
-            u = EmbedPoint(S, T, U, clone.vertices[v], P0);
+            npt = Vector3.zero;
+			float s, t, u;
+			Vector3 x = (clone.vertices [v] - P0); 
+			s = Vector3.Dot (tmpTU, x)/tmpTUS;
+			t = Vector3.Dot (tmpSU, x)/tmpSUT;
+			u = Vector3.Dot (tmpST, x)/tmpSTU;
 
-            //Vector3 p = P0 + s * S + t * T + u * U;
-            //Vector3 stu = new Vector3(s, t, u);
-            //Debug.Log(string.Format("vrt {0} convert to {1} back to {2}", clone.vertices[v], stu, p));
 
-            for (int i = 0; i <= L; i++)
-            {
-                for (int j = 0; j <= M; j++)
-                {
-                    for (int k = 0; k <= N; k++)
-                    {
-                        float pi = Bernstein(L, i, s);
-                        float pj = Bernstein(M, j, t);
-                        float pk = Bernstein(N, k, u); 
-                        npt += pi * pj * pk * ctrlPoints[i, j, k].transform.localPosition;
-                    }
-                }
-            }
-            vrts[v] = npt;
+			//Vector3 p = P0 + s * S + t * T + u * U;
+			//Vector3 stu = new Vector3(s, t, u);
+			//debug.log(string.format("vrt {0} convert to {1} back to {2}", clone.vertices[v], stu, p));
+            ////for (int i = 0; i <= l; i++)
+            ////{
+            ////    float pi = bernstein(l, i, s);
+            ////    for (int j = 0; j <= m; j++)
+            ////    {
+            ////        float pj = bernstein(m, j, t);
+            ////        for (int k = 0; k <= n; k++)
+            ////        {
+            ////            npt += pi * pj * bernstein(n, k, u) * ctrlpoints[i, j, k].transform.localposition;
+            ////        }
+            ////    }
+            ////}
+            ////vrts[v] = npt;
 
         }//end-of-loop
 
         return vrts;
     }
 
+
+
+
+
     void BuildLattice()
-    {//build control point lattice 
+    {//build control point lattice
         for (int i = 0; i <= L;i++)
         {
             for (int j=0; j <= M;j++)
@@ -160,12 +179,7 @@ public class obj : MonoBehaviour {
         }//end-of-nested loop
         loadProfile();
     }
-
-    float EmbedPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 x, Vector3 x0)
-    {//embedding points into lattice
-        return Vector3.Dot(Vector3.Cross(a, b), (x-x0))/Vector3.Dot(Vector3.Cross(a, b), c);
-    }
-
+		
     float factorials(int a)
     {
         float f = 1.0f;
@@ -173,7 +187,7 @@ public class obj : MonoBehaviour {
         {
             f *= i;
         }
-        return f; 
+        return f;
     }
 
     float Bernstein(int n, int i, float x)
@@ -183,8 +197,8 @@ public class obj : MonoBehaviour {
     }
 
     void MeshUpdate(Vector3[] vertices)
-    {//take new mesh data and apply copied points to render 
-        updateMesh = false;//reset bool 
+    {//take new mesh data and apply copied points to render
+        updateMesh = false;//reset bool
         target.sharedMesh = clone;
         target.sharedMesh.vertices = vertices;
         target.sharedMesh.RecalculateBounds();
@@ -192,29 +206,35 @@ public class obj : MonoBehaviour {
     }
 
     void adjust(float measurement,string section)
-    {//take values and move respective ctrl points 
+    {//take values and move respective ctrl points
 
-        CapsuleCollider hipCol      = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
-        CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
-        CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
-        CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
-        CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();	
+        //CapsuleCollider hipCol      = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
+        //CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
+        //CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
+        //CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
+        //CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();
 
         if (section == "hips") {
             Vector3 adjA = new Vector3(measurement * 0.10f, 0,0);
             foreach (string hip in leftHip) {
                 GameObject tmp = GameObject.Find(hip);
 				tmp.transform.position -= adjA;
-				
+
             }
-            hipCol.radius += 2 * 0.10f; 
+            foreach (string hip in rightHip)
+            {
+                GameObject tmp = GameObject.Find(hip);
+                tmp.transform.position += adjA;
+
+            }
+            //hipCol.radius += 2 * 0.10f;
         }
         if (section == "butt") {
             Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
             GameObject tmp = GameObject.Find(butt);
             tmp.transform.position -= adjustment;
-            rbuttCol.radius += 1 * 0.10f;
-            lbuttCol.radius += 1 * 0.10f;
+            //rbuttCol.radius += 1 * 0.10f;
+            //lbuttCol.radius += 1 * 0.10f;
         }
         if (section == "stomach")
         {
@@ -228,8 +248,8 @@ public class obj : MonoBehaviour {
             GameObject tmp = GameObject.Find(chest);
             tmp.transform.position += adjustment;
 
-            bustACol.radius += 2 * 0.10f;
-            bustBCol.radius += 2 * 0.10f;
+            //bustACol.radius += 2 * 0.10f;
+            //bustBCol.radius += 2 * 0.10f;
         }
 
     }
@@ -246,6 +266,5 @@ public class obj : MonoBehaviour {
         adjust(data.bust, "chest");
         adjust(data.hip, "hips");
     }
-		
-}//-end-of-script 
 
+}//-end-of-script

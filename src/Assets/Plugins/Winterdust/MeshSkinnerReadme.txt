@@ -1,0 +1,22 @@
+MeshSkinner 1.0.1 (Winterdust, Sweden)
+
+Extract the ZIP archive in the "Assets" folder inside your Unity project.
+This path should exist after you've extracted: Assets/Plugins/Winterdust
+
+Afterwards you can put this at the top of your scripts to access the MeshSkinner class:
+
+	using Winterdust;
+
+Getting started is simple. Here's an example line of code to try:
+
+	new MeshSkinner(GameObject.Find("My_Model"), GameObject.Find("My_Skeleton_Container")).work().debug().finish();
+
+What it does is find the two required GameObjects, prepare them, work, add a DebugWeights component to the model and finally apply the work (make the model skinned).
+The My_Model GameObject contains one or more meshes. The My_Skeleton_Container contains the skeleton hierarchy (a bunch of empty GameObjects).
+
+When benchmarking remember that the performance of the DLL will increase a lot when you run from a stand-alone build.
+The work() method will usually finish around twice as fast outside the Unity Editor.
+
+Thank you very much for your purchase!
+
+https://winterdust.itch.io/meshskinner

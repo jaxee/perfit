@@ -1,0 +1,60 @@
+newmtl small_stripeBodycon:Material7770
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd greenStripes.png
+map_Ka greenStripes.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_stripeBodycon:Material8024
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd greenStripes.png
+map_Ka greenStripes.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_stripeBodycon:Material8125
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd greenStripes.png
+map_Ka greenStripes.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_stripeBodycon:Material8226
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd greenStripes.png
+map_Ka greenStripes.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_stripeBodycon:Material8327
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd greenStripes.png
+map_Ka greenStripes.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_stripeBodycon:Material8428
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd greenStripes.png
+map_Ka greenStripes.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

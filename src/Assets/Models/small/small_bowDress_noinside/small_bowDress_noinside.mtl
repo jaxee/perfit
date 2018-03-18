@@ -1,0 +1,139 @@
+newmtl small_bowDress:Material8888
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.34 0.34 0.34
+Tf 1.00 1.00 1.00
+map_Kd steel-texture-metal-textureddd_3694974_16883_1554145.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 5.00
+newmtl small_bowDress:Material9234
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd birds.jpg
+map_Ka birds.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material9680
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material9997
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd birds.jpg
+map_Ka birds.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material10356
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material10512
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd birds.jpg
+map_Ka birds.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material10668
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd birds.jpg
+map_Ka birds.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material10725
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd birds.jpg
+map_Ka birds.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material10782
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd birds.jpg
+map_Ka birds.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material10839
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd birds.jpg
+map_Ka birds.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material10896
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd birds.jpg
+map_Ka birds.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material11031
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material11130
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_bowDress:Material11205
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

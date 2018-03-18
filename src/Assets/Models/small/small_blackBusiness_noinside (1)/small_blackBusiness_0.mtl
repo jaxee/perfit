@@ -1,0 +1,87 @@
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl Material6779
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material6595
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material7423
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material7776
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Default Fabric_FRONT_5595
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+newmtl Material6410
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material7997
+Ka 0.210000 0.210000 0.210000
+Kd 0.792157 0.803922 0.113725
+Ks 0.760000 0.760000 0.760000
+Ns 51.000000
+illum 2
+d 1.000000
+map_Kd C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/16928/1091/Puller_01.jpg
+newmtl Material8003
+Ka 0.210000 0.210000 0.210000
+Kd 0.792157 0.803922 0.113725
+Ks 0.760000 0.760000 0.760000
+Ns 51.000000
+illum 2
+d 1.000000
+map_Kd C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/16928/1091/Puller_01.jpg
+newmtl Material7144
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material7989
+Ka 0.248520 0.252211 0.035679
+Kd 0.792157 0.803922 0.113725
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka C:/Program Files/Marvelous Designer 7 Enterprise Online Auth/Preset/Zipper/Plastic.png
+map_Kd C:/Program Files/Marvelous Designer 7 Enterprise Online Auth/Preset/Zipper/Plastic.png

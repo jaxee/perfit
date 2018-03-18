@@ -1,0 +1,133 @@
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl Material9997
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+newmtl Material10512
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+newmtl Material9680
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material8888
+Ka 0.341176 0.341176 0.341176
+Kd 0.917647 0.861036 0.068376
+Ks 1.000000 1.000000 1.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Kd C:/Users/Erin/AppData/Local/CLO/Marvelous Designer 7 Enterprise OnlineAuth/31424/1087/steel-texture-metal-textureddd_3694974_16883_1554145.jpg
+newmtl Material10668
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+newmtl Material10725
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+newmtl Material10356
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material10896
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+newmtl Material11031
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Default Fabric_FRONT_8649
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+newmtl Material11130
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material11205
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/black.png
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/black.png
+newmtl Material10782
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+newmtl Material10839
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+newmtl Material9234
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/birds.jpg

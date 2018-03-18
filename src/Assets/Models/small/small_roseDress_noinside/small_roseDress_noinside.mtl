@@ -1,0 +1,128 @@
+newmtl small_roseDress:Material5553
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material5702
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material5842
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material5991
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material6075
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material6197
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material6254
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material6337
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material6415
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material6920
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rose.jpg
+map_Ka rose.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material7125
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Plastic.png
+map_Ka Plastic.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl small_roseDress:Material7137
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.21 0.21 0.21
+Tf 1.00 1.00 1.00
+map_Kd Puller_01.jpg
+Ni 1.00
+Ks 0.76 0.76 0.76
+Ns 51.00
+newmtl small_roseDress:Material7139
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.21 0.21 0.21
+Tf 1.00 1.00 1.00
+map_Kd Puller_01.jpg
+Ni 1.00
+Ks 0.76 0.76 0.76
+Ns 51.00

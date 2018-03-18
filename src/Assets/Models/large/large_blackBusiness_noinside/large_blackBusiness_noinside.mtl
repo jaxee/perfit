@@ -1,0 +1,60 @@
+newmtl large_blackBusiness:PT_FABRIC_FRONT_279002
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blackBusiness:PT_FABRIC_FRONT_280961
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blackBusiness:PT_FABRIC_FRONT_284642
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blackBusiness:PT_FABRIC_FRONT_285219
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blackBusiness:PT_FABRIC_FRONT_286491
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blackBusiness:PT_FABRIC_FRONT_286872
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

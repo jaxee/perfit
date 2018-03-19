@@ -1,13 +1,34 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Diagnostics;
+﻿using UnityEngine;
 using System;
 
-public class obj : MonoBehaviour {
+public struct VrtDeform
+{
+    public float s, t, u, pi, pj, pk;
+
+    private float Factorials(int a)
+    {
+        float f = 1.0f;
+        for (int i = a; i > 0; i--)
+        {
+            f *= i;
+        }
+        return f;
+    }
+
+    public float Bernstein(int n, int i, float x)
+    {//calculate berstein polynomial
+        float binomial = Factorials(n) / (Factorials(n - i) * Factorials(i));
+        return binomial * Mathf.Pow(x, (float)i) * Mathf.Pow((float)(1.0f - x), (float)(n - i));
+    }
+
+    public float EmbedPoint(Vector3 a, Vector3 b, Vector3 c, Vector3 x, Vector3 x0)
+    {//embedding points into lattice
+        return Vector3.Dot(Vector3.Cross(a, b), (x - x0)) / Vector3.Dot(Vector3.Cross(a, b), c);
+    }
+}
+
+    public class obj : MonoBehaviour {
+    
 
     [Header("Target model")]
     public GameObject targetmodel;
@@ -45,8 +66,7 @@ public class obj : MonoBehaviour {
     //store vertices information
     Vector3[] vrts;
 
-	private Stopwatch tStart;
-
+	private System.Diagnostics.Stopwatch tStart;
 
     //update mesh
     [Header("Mesh update")]
@@ -59,40 +79,37 @@ public class obj : MonoBehaviour {
     string chest        = "3,3,2";
     string stomach      = "3,2,2";
 
+    private Vector3 tmpTU = Vector3.zero;
+    private Vector3 tmpSU = Vector3.zero;
+    private Vector3 tmpST = Vector3.zero;
+
+    private float tmpTUS = 0;
+    private float tmpSUT = 0;
+    private float tmpSTU = 0;
 
     private void Start()
     {
-		sm          = new SaveManager ("/profileData.save");
-        target      = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
-        clone       = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
-        vrts        = new Vector3[clone.vertexCount];//set array size of vertice on mesh
-        ctrlPoints  = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
+        sm = new SaveManager("/profileData.save");
+        target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
+        clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
+        vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
+        ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
         saveProfile();
-        BuildLattice();//build lattice
-
-    }
-    private void FixedUpdate()
-    {
-		if (updateMesh)
-		{//ensure timed update of mesh as deformation happen
-			tStart = Stopwatch.StartNew();
-			tStart.Start ();
-			MeshUpdate(Deform());
-			tStart.Stop ();
-			TimeSpan delta = tStart.Elapsed;
-			UnityEngine.Debug.Log("time to deform: "+ delta);
-            tStart.Reset();
-            gameObject.SetActive(false);
-		}
+        BuildLattice();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("u"))
         {
-			gameObject.SetActive(true);
 			updateMesh = true;
+        }
+        if (updateMesh)
+        {//ensure timed update of mesh as deformation happen
+            updateMesh = false;
+            deformMesh();
+            gameObject.SetActive(false);
         }
 
     }
@@ -103,8 +120,7 @@ public class obj : MonoBehaviour {
 		//get max and min of 3d model vertices
 		Vector3 min = new Vector3 (Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
 		Vector3 max = new Vector3 (-Mathf.Infinity,-Mathf.Infinity,-Mathf.Infinity);
-
-		foreach(Vector3 v in clone.vertices){//loop through all points and find max vertice and min vertice
+        foreach (Vector3 v in clone.vertices){//loop through all points and find max vertice and min vertice
 			max = Vector3.Max(v,max);
 			min = Vector3.Min(v,min);
 		}
@@ -113,53 +129,59 @@ public class obj : MonoBehaviour {
 		T  = new Vector3(0.0f, max.y-min.y, 0.0f);
 		U  = new Vector3(0.0f, 0.0f, max.z-min.z);
 
-		P0 = min;
+        tmpTU = Vector3.Cross(T, U);
+        tmpSU = Vector3.Cross(S, U);
+        tmpST = Vector3.Cross(S, T);
+
+        tmpTUS = Vector3.Dot(tmpTU, S);
+        tmpSUT = Vector3.Dot(tmpSU, T);
+        tmpSTU = Vector3.Dot(tmpST, U);
+        P0 = min;
     }
-    Vector3[] Deform()
+    void deformMesh()
     {//place vertices of object into lattice local grid for calculation
-        Vector3 npt;
-		Vector3 tmpTU 		= Vector3.Cross(T, U);
-		Vector3 tmpSU 		= Vector3.Cross(S, U);
-		Vector3 tmpST 		= Vector3.Cross(S, T);
+        Vector3 npt = Vector3.zero;
+        Vector3 x = Vector3.zero;
 
-		float tmpTUS 		= Vector3.Dot (tmpTU,S);
-		float tmpSUT		= Vector3.Dot (tmpSU,T);
-		float tmpSTU		= Vector3.Dot (tmpST,U);
+        Vector3 a = tmpTU;
+        Vector3 b = tmpSU;
+        Vector3 c = tmpST;
+
+        float ad = tmpTUS;
+        float bd = tmpSUT;
+        float cd = tmpSTU;
 
 
-		for (int v = 0; v < clone.vertexCount; v++)
+        System.Diagnostics.Stopwatch tStart = System.Diagnostics.Stopwatch.StartNew();
+        tStart.Start();
+        for (int v = 0; v < clone.vertexCount; v++)
         {
+            x = (clone.vertices[v] - P0);
             npt = Vector3.zero;
-			float s, t, u;
-			Vector3 x = (clone.vertices [v] - P0); 
-			s = Vector3.Dot (tmpTU, x)/tmpTUS;
-			t = Vector3.Dot (tmpSU, x)/tmpSUT;
-			u = Vector3.Dot (tmpST, x)/tmpSTU;
-
-
-			//Vector3 p = P0 + s * S + t * T + u * U;
-			//Vector3 stu = new Vector3(s, t, u);
-			//debug.log(string.format("vrt {0} convert to {1} back to {2}", clone.vertices[v], stu, p));
-            ////for (int i = 0; i <= l; i++)
-            ////{
-            ////    float pi = bernstein(l, i, s);
-            ////    for (int j = 0; j <= m; j++)
-            ////    {
-            ////        float pj = bernstein(m, j, t);
-            ////        for (int k = 0; k <= n; k++)
-            ////        {
-            ////            npt += pi * pj * bernstein(n, k, u) * ctrlpoints[i, j, k].transform.localposition;
-            ////        }
-            ////    }
-            ////}
-            ////vrts[v] = npt;
-
+            //Vector3 p = P0 + s * S + t * T + u * U;
+            //Vector3 stu = new Vector3(s, t, u);
+            //debug.log(string.format("vrt {0} convert to {1} back to {2}", clone.vertices[v], stu, p));
+            for (int i = 0; i <= L; i++)
+            {
+                float pi = Bernstein(L, i, Vector3.Dot(a, x) / ad);
+                for (int j = 0; j <= M; j++)
+                {
+                    float pj = Bernstein(M, j, Vector3.Dot(b, x) / bd);
+                    for (int k = 0; k <= N; k++)
+                    {
+                        npt += pi * pj * Bernstein(N, k, Vector3.Dot(c, x) / cd) * ctrlPoints[i, j, k].transform.localPosition;
+                    }
+                }
+            }
+            vrts[v] = npt;
         }//end-of-loop
-
-        return vrts;
+        tStart.Stop();
+        TimeSpan delta = tStart.Elapsed;
+        Debug.Log("time to deform: " + delta);
+        tStart.Reset();
+        gameObject.SetActive(false);
+        MeshUpdate(vrts);
     }
-
-
 
 
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 
 
@@ -76,18 +76,19 @@ public class obj : MonoBehaviour {
 
     private void Update()
     {
-		if (Input.GetKeyDown("a"))
+		if (Input.GetKeyDown("u"))
 		{
 			gameObject.SetActive(true);
 			updateMesh = true;
+      if (updateMesh)
+      {//ensure timed update of mesh as deformation happen
+
+		Deform ();
+		updateMesh = false;
+        gameObject.SetActive(false);
+      }
 
     }
-    if (updateMesh)
-      {//ensure timed update of mesh as deformation happen
-          updateMesh = false;
-          deformMesh();
-          gameObject.SetActive(false);
-      }
 
     }
 
@@ -106,55 +107,51 @@ public class obj : MonoBehaviour {
 		T  = new Vector3(0.0f, max.y-min.y, 0.0f);
 		U  = new Vector3(0.0f, 0.0f, max.z-min.z);
 
-        tmpTU = Vector3.Cross(T, U);
-        tmpSU = Vector3.Cross(S, U);
-        tmpST = Vector3.Cross(S, T);
+    tmpTU = Vector3.Cross(T, U);
+    tmpSU = Vector3.Cross(S, U);
+    tmpST = Vector3.Cross(S, T);
 
-        tmpTUS = Vector3.Dot(tmpTU, S);
-        tmpSUT = Vector3.Dot(tmpSU, T);
-        tmpSTU = Vector3.Dot(tmpST, U);
-        P0 = min;
+    tmpTUS = Vector3.Dot(tmpTU, S);
+    tmpSUT = Vector3.Dot(tmpSU, T);
+    tmpSTU = Vector3.Dot(tmpST, U);
+    P0 = min;
     }
 	void Deform()
     {//place vertices of object into lattice local grid for calculation
-		Vector3 npt;
-		Vector3 tmpTU 		= Vector3.Cross(T, U);
-		Vector3 tmpSU 		= Vector3.Cross(S, U);
-		Vector3 tmpST 		= Vector3.Cross(S, T);
 
-    float ad = tmpTUS;
-    float bd = tmpSUT;
-    float cd = tmpSTU;
-
-		System.Diagnostics.Stopwatch tStart = Stopwatch.StartNew();
+		System.Diagnostics.Stopwatch tStart = System.Diagnostics.Stopwatch.StartNew();
 		tStart.Start ();
+    Vector3 npt;
+    Vector3[] data = clone.vertices ;
 		for (int v = 0; v < clone.vertexCount; v++) {
-			float s, t, u;
-			Vector3 x = (clone.vertices [v] - P0);
-			s = Vector3.Dot (tmpTU, x) / tmpTUS;
-			t = Vector3.Dot (tmpSU, x) / tmpSUT;
-			u = Vector3.Dot (tmpST, x) / tmpSTU;
 			//Vector3 p = P0 + s * S + t * T + u * U;
 			//Vector3 stu = new Vector3(s, t, u);
 			//Debug.Log(string.format("vrt {0} convert to {1} back to {2}", clone.vertices[v], stu, p));
 			npt = Vector3.zero;
+      Vector3 x = data [v] - P0;
+      float s = Vector3.Dot (tmpTU, x/ tmpTUS);
+      float t = Vector3.Dot (tmpSU, x/ tmpSUT);
+      float u = Vector3.Dot (tmpST, x/ tmpSTU);
+
 			for (int i = 0; i <= L; i++) {
-				float pi = Bernstein (L, i, s);
 				for (int j = 0; j <= M; j++) {
-					float pj = Bernstein (M, j, t);
 					for (int k = 0; k <= N; k++) {
-						npt += pi * pj * Bernstein (N, k, u) * ctrlPoints [i, j, k].transform.localPosition;
+            float pi = Bernstein (L, i, s);
+            float pj = Bernstein (M, j, t);
+						float pk = Bernstein (N, k, u);
+						npt +=  pi * pj * pk * ctrlPoints [i, j, k].transform.localPosition;
 					}
 				}
 			}
-			vrts [v] = npt;
+			vrts[v] = npt;
 		}
+
+		MeshUpdate (vrts);
 		tStart.Stop ();
 		TimeSpan delta = tStart.Elapsed;
-		UnityEngine.Debug.Log("Time to deform: "+ delta);
+		UnityEngine.Debug.Log("Delta: "+ delta);
 		tStart.Reset();
 		gameObject.SetActive(false);
-		MeshUpdate (vrts);
     }
 
 

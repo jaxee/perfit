@@ -195,7 +195,7 @@ public class AttachClothing : MonoBehaviour
 				float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 				//Debug.Log (dist);
 
-				if (dist < 4f) {
+				if (dist > 3f) {
 					newConstraints [i].maxDistance = 0; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
 
 				}
@@ -210,7 +210,7 @@ public class AttachClothing : MonoBehaviour
 
 
 			//REDO COLLIDERS.... after lena 
-			colliders = new CapsuleCollider[15];
+			colliders = new CapsuleCollider[20];
 			colliders [0] = GameObject.Find ("QuickRigCharacter_LeftUpLeg").GetComponent<CapsuleCollider> ();
 		colliders [1] = GameObject.Find ("QuickRigCharacter_RightUpLeg").GetComponent<CapsuleCollider> ();
 		colliders [2] = GameObject.Find ("QuickRigCharacter_LeftLeg").GetComponent<CapsuleCollider> ();
@@ -227,6 +227,12 @@ public class AttachClothing : MonoBehaviour
 		colliders [10] = GameObject.Find ("QuickRigCharacter_LeftSide_J").GetComponent<CapsuleCollider> ();
 		colliders [11] = GameObject.Find ("QuickRigCharacter_HipsCenter_J").GetComponent<CapsuleCollider> ();
 		colliders [12] = GameObject.Find ("QuickRigCharacter_Belly_J").GetComponent<CapsuleCollider> ();
+		colliders [13] = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider> ();
+		colliders [14] = GameObject.Find ("QuickRigCharacter_Belly2_J").GetComponent<CapsuleCollider> ();
+		colliders [15] = GameObject.Find ("QuickRigCharacter_Belly3_J").GetComponent<CapsuleCollider> ();
+		colliders [16] = GameObject.Find ("QuickRigCharacter_Rear_J").GetComponent<CapsuleCollider> ();
+		colliders [17] = GameObject.Find ("QuickRigCharacter_Rear2_J").GetComponent<CapsuleCollider> ();
+		colliders [18] = GameObject.Find ("QuickRigCharacter_Rear3_J").GetComponent<CapsuleCollider> ();
 
 		//QuickRigCharacter_Hips
 

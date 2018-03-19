@@ -70,38 +70,16 @@ public class obj : MonoBehaviour {
         SetOrigin();
         saveProfile();
         BuildLattice();//build lattice
-
-    }
-    private void FixedUpdate()
-    {
-		if (updateMesh)
-		{//ensure timed update of mesh as deformation happen
-			tStart = Stopwatch.StartNew();
-			tStart.Start ();
-			MeshUpdate(Deform());
-			tStart.Stop ();
-			TimeSpan delta = tStart.Elapsed;
-			UnityEngine.Debug.Log("time to deform: "+ delta);
-            tStart.Reset();
-            gameObject.SetActive(false);
-		}
+		Deform ();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown("u"))
-        {
-<<<<<<< HEAD
-            updateMesh = true;
-            
-        }
 		if (Input.GetKeyDown("a"))
 		{
-			loadProfile();
-=======
 			gameObject.SetActive(true);
 			updateMesh = true;
->>>>>>> 00b7e54135d538b7119d14c0576947e075ec6df9
+
         }
 
     }
@@ -124,9 +102,9 @@ public class obj : MonoBehaviour {
 
 		P0 = min;
     }
-    Vector3[] Deform()
+	void Deform()
     {//place vertices of object into lattice local grid for calculation
-        Vector3 npt;
+		Vector3 npt;
 		Vector3 tmpTU 		= Vector3.Cross(T, U);
 		Vector3 tmpSU 		= Vector3.Cross(S, U);
 		Vector3 tmpST 		= Vector3.Cross(S, T);
@@ -135,43 +113,38 @@ public class obj : MonoBehaviour {
 		float tmpSUT		= Vector3.Dot (tmpSU,T);
 		float tmpSTU		= Vector3.Dot (tmpST,U);
 
-
-		for (int v = 0; v < clone.vertexCount; v++)
-        {
-            npt = Vector3.zero;
+		tStart = Stopwatch.StartNew();
+		tStart.Start ();
+		for (int v = 0; v < clone.vertexCount; v++) {
 			float s, t, u;
-			Vector3 x = (clone.vertices [v] - P0); 
-			s = Vector3.Dot (tmpTU, x)/tmpTUS;
-			t = Vector3.Dot (tmpSU, x)/tmpSUT;
-			u = Vector3.Dot (tmpST, x)/tmpSTU;
-
-
+			Vector3 x = (clone.vertices [v] - P0);
+			s = Vector3.Dot (tmpTU, x) / tmpTUS;
+			t = Vector3.Dot (tmpSU, x) / tmpSUT;
+			u = Vector3.Dot (tmpST, x) / tmpSTU;
 			//Vector3 p = P0 + s * S + t * T + u * U;
 			//Vector3 stu = new Vector3(s, t, u);
-			//debug.log(string.format("vrt {0} convert to {1} back to {2}", clone.vertices[v], stu, p));
-            ////for (int i = 0; i <= l; i++)
-            ////{
-            ////    float pi = bernstein(l, i, s);
-            ////    for (int j = 0; j <= m; j++)
-            ////    {
-            ////        float pj = bernstein(m, j, t);
-            ////        for (int k = 0; k <= n; k++)
-            ////        {
-            ////            npt += pi * pj * bernstein(n, k, u) * ctrlpoints[i, j, k].transform.localposition;
-            ////        }
-            ////    }
-            ////}
-            ////vrts[v] = npt;
-
-        }//end-of-loop
-
-        return vrts;
+			//Debug.Log(string.format("vrt {0} convert to {1} back to {2}", clone.vertices[v], stu, p));
+			npt = Vector3.zero;
+			for (int i = 0; i <= L; i++) {
+				float pi = Bernstein (L, i, s);
+				for (int j = 0; j <= M; j++) {
+					float pj = Bernstein (M, j, t);
+					for (int k = 0; k <= N; k++) {
+						npt += pi * pj * Bernstein (N, k, u) * ctrlPoints [i, j, k].transform.localPosition;
+					}
+				}
+			}
+			vrts [v] = npt;
+		}
+		tStart.Stop ();
+		TimeSpan delta = tStart.Elapsed;
+		UnityEngine.Debug.Log("Time to deform: "+ delta);
+		tStart.Reset();
+		gameObject.SetActive(false);
+		MeshUpdate (vrts); 
     }
-
-
-
-
-
+		
+		
     void BuildLattice()
     {//build control point lattice
         for (int i = 0; i <= L;i++)
@@ -186,6 +159,7 @@ public class obj : MonoBehaviour {
                 }
             }
         }//end-of-nested loop
+		loadProfile();
     }
 		
     float factorials(int a)
@@ -220,11 +194,7 @@ public class obj : MonoBehaviour {
         //CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
         //CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
         //CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
-<<<<<<< HEAD
         //CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();	
-=======
-        //CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();
->>>>>>> 00b7e54135d538b7119d14c0576947e075ec6df9
 
         if (section == "hips") {
             Vector3 adjA = new Vector3(measurement * 0.10f, 0,0);
@@ -233,34 +203,17 @@ public class obj : MonoBehaviour {
 				tmp.transform.position -= adjA;
 
             }
-<<<<<<< HEAD
-
 			foreach (string hip in rightHip) {
 				GameObject tmp = GameObject.Find(hip);
 				tmp.transform.position += adjA;
 
 			}
-            //.radius += 2 * 0.10f; 
-=======
-            foreach (string hip in rightHip)
-            {
-                GameObject tmp = GameObject.Find(hip);
-                tmp.transform.position += adjA;
-
-            }
             //hipCol.radius += 2 * 0.10f;
->>>>>>> 00b7e54135d538b7119d14c0576947e075ec6df9
         }
         if (section == "butt") {
             Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
             GameObject tmp = GameObject.Find(butt);
             tmp.transform.position -= adjustment;
-            //rbuttCol.radius += 1 * 0.10f;
-<<<<<<< HEAD
-            ///.radius += 1 * 0.10f;
-=======
-            //lbuttCol.radius += 1 * 0.10f;
->>>>>>> 00b7e54135d538b7119d14c0576947e075ec6df9
         }
         if (section == "stomach")
         {

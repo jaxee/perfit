@@ -1,13 +1,9 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Diagnostics;
+﻿using UnityEngine;
 using System;
 
+
 public class obj : MonoBehaviour {
+
 
     [Header("Target model")]
     public GameObject targetmodel;
@@ -45,8 +41,7 @@ public class obj : MonoBehaviour {
     //store vertices information
     Vector3[] vrts;
 
-	private Stopwatch tStart;
-
+	private System.Diagnostics.Stopwatch tStart;
 
     //update mesh
     [Header("Mesh update")]
@@ -59,18 +54,24 @@ public class obj : MonoBehaviour {
     string chest        = "3,3,2";
     string stomach      = "3,2,2";
 
+    private Vector3 tmpTU = Vector3.zero;
+    private Vector3 tmpSU = Vector3.zero;
+    private Vector3 tmpST = Vector3.zero;
+
+    private float tmpTUS = 0;
+    private float tmpSUT = 0;
+    private float tmpSTU = 0;
 
     private void Start()
     {
-		sm          = new SaveManager ("/profileData.save");
-        target      = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
-        clone       = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
-        vrts        = new Vector3[clone.vertexCount];//set array size of vertice on mesh
-        ctrlPoints  = new GameObject[L+1,M+1,N+1];//set empty array to lattice size input
+        sm = new SaveManager("/profileData.save");
+        target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
+        clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
+        vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
+        ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
         saveProfile();
-        BuildLattice();//build lattice
-		Deform ();
+        BuildLattice();
     }
 
     private void Update()
@@ -80,7 +81,13 @@ public class obj : MonoBehaviour {
 			gameObject.SetActive(true);
 			updateMesh = true;
 
-        }
+    }
+    if (updateMesh)
+      {//ensure timed update of mesh as deformation happen
+          updateMesh = false;
+          deformMesh();
+          gameObject.SetActive(false);
+      }
 
     }
 
@@ -90,8 +97,7 @@ public class obj : MonoBehaviour {
 		//get max and min of 3d model vertices
 		Vector3 min = new Vector3 (Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
 		Vector3 max = new Vector3 (-Mathf.Infinity,-Mathf.Infinity,-Mathf.Infinity);
-
-		foreach(Vector3 v in clone.vertices){//loop through all points and find max vertice and min vertice
+        foreach (Vector3 v in clone.vertices){//loop through all points and find max vertice and min vertice
 			max = Vector3.Max(v,max);
 			min = Vector3.Min(v,min);
 		}
@@ -100,7 +106,14 @@ public class obj : MonoBehaviour {
 		T  = new Vector3(0.0f, max.y-min.y, 0.0f);
 		U  = new Vector3(0.0f, 0.0f, max.z-min.z);
 
-		P0 = min;
+        tmpTU = Vector3.Cross(T, U);
+        tmpSU = Vector3.Cross(S, U);
+        tmpST = Vector3.Cross(S, T);
+
+        tmpTUS = Vector3.Dot(tmpTU, S);
+        tmpSUT = Vector3.Dot(tmpSU, T);
+        tmpSTU = Vector3.Dot(tmpST, U);
+        P0 = min;
     }
 	void Deform()
     {//place vertices of object into lattice local grid for calculation
@@ -109,11 +122,11 @@ public class obj : MonoBehaviour {
 		Vector3 tmpSU 		= Vector3.Cross(S, U);
 		Vector3 tmpST 		= Vector3.Cross(S, T);
 
-		float tmpTUS 		= Vector3.Dot (tmpTU,S);
-		float tmpSUT		= Vector3.Dot (tmpSU,T);
-		float tmpSTU		= Vector3.Dot (tmpST,U);
+    float ad = tmpTUS;
+    float bd = tmpSUT;
+    float cd = tmpSTU;
 
-		tStart = Stopwatch.StartNew();
+		System.Diagnostics.Stopwatch tStart = Stopwatch.StartNew();
 		tStart.Start ();
 		for (int v = 0; v < clone.vertexCount; v++) {
 			float s, t, u;
@@ -141,10 +154,10 @@ public class obj : MonoBehaviour {
 		UnityEngine.Debug.Log("Time to deform: "+ delta);
 		tStart.Reset();
 		gameObject.SetActive(false);
-		MeshUpdate (vrts); 
+		MeshUpdate (vrts);
     }
-		
-		
+
+
     void BuildLattice()
     {//build control point lattice
         for (int i = 0; i <= L;i++)
@@ -161,7 +174,7 @@ public class obj : MonoBehaviour {
         }//end-of-nested loop
 		loadProfile();
     }
-		
+
     float factorials(int a)
     {
         float f = 1.0f;
@@ -194,7 +207,7 @@ public class obj : MonoBehaviour {
         //CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
         //CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
         //CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();	
+        //CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();
 
         if (section == "hips") {
             Vector3 adjA = new Vector3(measurement * 0.10f, 0,0);

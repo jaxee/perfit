@@ -210,17 +210,23 @@ public class AttachClothing : MonoBehaviour
 
 
 			//REDO COLLIDERS.... after lena 
-			colliders = new CapsuleCollider[10];
+			colliders = new CapsuleCollider[15];
 			colliders [0] = GameObject.Find ("QuickRigCharacter_LeftUpLeg").GetComponent<CapsuleCollider> ();
 		colliders [1] = GameObject.Find ("QuickRigCharacter_RightUpLeg").GetComponent<CapsuleCollider> ();
 		colliders [2] = GameObject.Find ("QuickRigCharacter_LeftLeg").GetComponent<CapsuleCollider> ();
 		colliders [3] = GameObject.Find ("QuickRigCharacter_RightLeg").GetComponent<CapsuleCollider> ();
-		//colliders [4] = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider> ();
-		//colliders [5] = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
-		//colliders [6] = GameObject.Find ("QuickRigCharacter_Spine2").GetComponent<CapsuleCollider> ();
+		colliders [4] = GameObject.Find ("QuickRigCharacter_Hips_J").GetComponent<CapsuleCollider> ();
+
+		colliders [4] = GameObject.Find ("QuickRigCharacter_RightSide_J").GetComponent<CapsuleCollider> ();
+		colliders [5] = GameObject.Find ("QuickRigCharacter_LeftUpLeg_J").GetComponent<CapsuleCollider> ();
+		colliders [6] = GameObject.Find ("QuickRigCharacter_RightUpLeg_J").GetComponent<CapsuleCollider> ();
 		colliders [7] = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
 		colliders [8] = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
 		colliders [9] = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
+
+		colliders [10] = GameObject.Find ("QuickRigCharacter_LeftSide_J").GetComponent<CapsuleCollider> ();
+		colliders [11] = GameObject.Find ("QuickRigCharacter_HipsCenter_J").GetComponent<CapsuleCollider> ();
+		colliders [12] = GameObject.Find ("QuickRigCharacter_Belly_J").GetComponent<CapsuleCollider> ();
 
 		//QuickRigCharacter_Hips
 

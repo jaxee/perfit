@@ -34,6 +34,7 @@ public class obj : MonoBehaviour {
 
     //store all ctrl points postion
     GameObject[,,] ctrlPoints;
+    GameObject[] ctrl; 
 
     //lattice origin
     Vector3 P0;
@@ -69,6 +70,7 @@ public class obj : MonoBehaviour {
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
         ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
+        ctrl = new GameObject[(L + 1)*(M + 1)* (N + 1)];
         SetOrigin();
         saveProfile();
         BuildLattice();
@@ -121,25 +123,26 @@ public class obj : MonoBehaviour {
 
 		System.Diagnostics.Stopwatch tStart = System.Diagnostics.Stopwatch.StartNew();
 		tStart.Start ();
-    Vector3 npt;
-    Vector3[] data = clone.vertices ;
-		for (int v = 0; v < clone.vertexCount; v++) {
+        Vector3 npt;
+        Vector3[] data = clone.vertices ;
+
+        for (int v = 0; v < clone.vertexCount; v++) {
 			//Vector3 p = P0 + s * S + t * T + u * U;
 			//Vector3 stu = new Vector3(s, t, u);
 			//Debug.Log(string.format("vrt {0} convert to {1} back to {2}", clone.vertices[v], stu, p));
 			npt = Vector3.zero;
-      Vector3 x = data [v] - P0;
-      float s = Vector3.Dot (tmpTU, x/ tmpTUS);
-      float t = Vector3.Dot (tmpSU, x/ tmpSUT);
-      float u = Vector3.Dot (tmpST, x/ tmpSTU);
+            Vector3 x = data [v] - P0;
+            float s = Vector3.Dot (tmpTU, x/ tmpTUS);
+            float t = Vector3.Dot (tmpSU, x/ tmpSUT);
+            float u = Vector3.Dot (tmpST, x/ tmpSTU);
 
 			for (int i = 0; i <= L; i++) {
-				for (int j = 0; j <= M; j++) {
-					for (int k = 0; k <= N; k++) {
-            float pi = Bernstein (L, i, s);
-            float pj = Bernstein (M, j, t);
+                float pi = Bernstein(L, i, s);
+                for (int j = 0; j <= M; j++) {
+                    float pj = Bernstein(M, j, t);
+                    for (int k = 0; k <= N; k++) {
 						float pk = Bernstein (N, k, u);
-						npt +=  pi * pj * pk * ctrlPoints [i, j, k].transform.localPosition;
+						npt +=  pi * pj * pk * ctrlPoints[i,j,k].transform.localPosition;
 					}
 				}
 			}
@@ -157,18 +160,22 @@ public class obj : MonoBehaviour {
 
     void BuildLattice()
     {//build control point lattice
+        int p = 0; 
         for (int i = 0; i <= L;i++)
         {
             for (int j=0; j <= M;j++)
             {
-                for(int k=0; k <= N; k++)
+                for (int k = 0; k <= N; k++)
                 {
-					Vector3 position = P0+(i /(float)L * S) + (j/ (float)M * T) + (k / (float)N * U);
-                    ctrlPoints[i, j, k] = (GameObject)Instantiate(ctrlPoint, position, Quaternion.identity,transform);
-                    ctrlPoints[i, j, k].name = string.Format("{0},{1},{2}",i,j,k);
+                    Vector3 position = P0 + (i / (float)L * S) + (j / (float)M * T) + (k / (float)N * U);
+                    ctrlPoints[i, j, k] = (GameObject)Instantiate(ctrlPoint, position, Quaternion.identity, transform);
+                    ctrlPoints[i, j, k].name = string.Format("{0},{1},{2}", i, j, k);
+                    ctrl[p++] = ctrlPoints[i, j, k];
                 }
             }
         }//end-of-nested loop
+
+        Debug.Log(ctrl.Length);
 		loadProfile();
     }
 
@@ -239,6 +246,10 @@ public class obj : MonoBehaviour {
 
             //bustACol.radius += 2 * 0.10f;
             //bustBCol.radius += 2 * 0.10f;
+        }
+        if (section == "height")
+        {
+
         }
 
     }

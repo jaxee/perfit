@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/beta/Measurements.unity
     guid: 711353ed8e2f9d244981b51cecbd2ebb
   - enabled: 1
-    path: Assets/final/scenes/WomensPage.unity
+    path: Assets/beta/WomensPage.unity
     guid: e892a25812c0c432785fbca9ad0ea8dd
   - enabled: 1
     path: Assets/beta/BodyScanPage.unity
@@ -29,3 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/final/scenes/_FFD.unity
     guid: e5df439b621f64f0ebd76a19e77d6c51
+  - enabled: 1
+    path: Assets/final/scenes/_WomensPage.unity
+    guid: 826423b9215378f4f82f5928883a61e8

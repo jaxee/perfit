@@ -1840,7 +1840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bdySrcMgr: {fileID: 1423801833}
   dpthSrcMgr: {fileID: 368578719}
-  measurementsScpt: {fileID: 509587097}
+  measurementsScpt: {fileID: 0}
   placementUI: {fileID: 285562621}
   placementSideStepsUI: {fileID: 285562621}
   placementStepsFrontSelected: {fileID: 225851326}

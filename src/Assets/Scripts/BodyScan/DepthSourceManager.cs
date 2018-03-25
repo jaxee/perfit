@@ -33,8 +33,6 @@ public class DepthSourceManager : MonoBehaviour
 		} else {
 			Debug.LogError ("Kinect not found - Please check connection");
 		}*/
-
-		Debug.Log ("Initializing Body Source Manager");
     }
 
 	public void StartDepthSourceManager () {
@@ -49,7 +47,9 @@ public class DepthSourceManager : MonoBehaviour
 		} else {
 			Debug.LogError ("Kinect not found - Please check connection");
 		}
-	}
+
+        Debug.Log("Initializing Body Source Manager");
+    }
     
     void Update () 
     {

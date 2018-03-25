@@ -11,7 +11,7 @@ public class Measurements : MonoBehaviour
     //SaveManager sm;
     //Save data;
 
-    const int SCAN_LENGTH = 1000;
+    const int SCAN_LENGTH = 250;
     int scan = 0;
 	public bool startScanning = false;
 	public bool startFrontScan = false;
@@ -536,6 +536,12 @@ public class Measurements : MonoBehaviour
     }
 
 	public int GetNumberOfBodies () {
+        bodies = bodyManager.GetData();
+
+        if (bodies == null)
+        {
+            return 0;
+        }
 		return bodies.Length;
 	}
 

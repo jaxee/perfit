@@ -1097,7 +1097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &285562622
 Transform:
   m_ObjectHideFlags: 0
@@ -1838,10 +1838,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d536b5382d24222a896b8069abd590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deviceCount: 0
   bdySrcMgr: {fileID: 1423801833}
   dpthSrcMgr: {fileID: 368578719}
-  measurementsScpt: {fileID: 0}
-  placementUI: {fileID: 285562621}
+  measurementsScpt: {fileID: 509587097}
+  placementUIGroup: {fileID: 1655201588}
+  placementInstructions: {fileID: 834543249}
   placementSideStepsUI: {fileID: 285562621}
   placementStepsFrontSelected: {fileID: 225851326}
   placementStepsSideSelected: {fileID: 2067648602}
@@ -1860,6 +1862,8 @@ MonoBehaviour:
   placeInstTwo: {fileID: 731044499}
   placeInstThree: {fileID: 1469830800}
   placeInstFour: {fileID: 1015850582}
+  chosenThree: {fileID: 1557225688}
+  chosenFour: {fileID: 1941186768}
 --- !u!4 &523778818
 Transform:
   m_ObjectHideFlags: 0
@@ -2601,7 +2605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &834543250
 Transform:
   m_ObjectHideFlags: 0
@@ -6967,7 +6971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1636893980
 Transform:
   m_ObjectHideFlags: 0

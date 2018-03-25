@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using Windows.Kinect;
 
 public class BodyScanInterface : MonoBehaviour {
+	public KinectSensor _Sensor;
+	public int deviceCount = 0;
 
 	public BodySourceManager bdySrcMgr;
 	public DepthSourceManager dpthSrcMgr;
@@ -40,8 +43,12 @@ public class BodyScanInterface : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		bdySrcMgr = GameObject.FindGameObjectWithTag("BodySourceManager").GetComponent<BodySourceManager>();
-		dpthSrcMgr = GameObject.FindGameObjectWithTag("DepthSourceManager").GetComponent<DepthSourceManager>();
+		if (KinectSensor.GetDefault ().IsAvailable) {
+			bdySrcMgr = GameObject.FindGameObjectWithTag ("BodySourceManager").GetComponent<BodySourceManager> ();
+			dpthSrcMgr = GameObject.FindGameObjectWithTag ("DepthSourceManager").GetComponent<DepthSourceManager> ();
+		} else {
+			Debug.LogError ("Kinect is not connected");
+		}
 
 		measurementsScpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Measurements>();
 	}
@@ -64,10 +71,12 @@ public class BodyScanInterface : MonoBehaviour {
 	public void StartBodyScan() {
 		Debug.Log ("Start body scan");
 
-		//bdySrcMgr.StartBodySourceManager ();
-		//dpthSrcMgr.StartDepthSourceManager ();
-
-		Debug.Log ("Test");
+		/*if (_Sensor != null) {
+			bdySrcMgr.StartBodySourceManager ();
+			dpthSrcMgr.StartDepthSourceManager ();
+		} else {
+			Debug.LogError("The Kinect is not connected");
+		}*/
 
 		StartCoroutine (WaitForPosition ());
 	}

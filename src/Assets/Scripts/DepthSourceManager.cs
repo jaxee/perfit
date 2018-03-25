@@ -22,43 +22,56 @@ public class DepthSourceManager : MonoBehaviour
 
     void Start () 
     {
-        _Sensor = KinectSensor.GetDefault();
+        /*_Sensor = KinectSensor.GetDefault();
         
-        if (_Sensor != null) 
-        {
-            _Reader = _Sensor.DepthFrameSource.OpenReader();
-            _Data = new ushort[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels];
+		if (_Sensor != null) {
+			_Reader = _Sensor.DepthFrameSource.OpenReader ();
+			_Data = new ushort[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels];
 
-            _RawData = new byte[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels * 3];
-            _Texture = new Texture2D(_Sensor.DepthFrameSource.FrameDescription.Width, _Sensor.DepthFrameSource.FrameDescription.Height, TextureFormat.RGB24, false);
+			_RawData = new byte[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels * 3];
+			_Texture = new Texture2D (_Sensor.DepthFrameSource.FrameDescription.Width, _Sensor.DepthFrameSource.FrameDescription.Height, TextureFormat.RGB24, false);
+		} else {
+			Debug.LogError ("Kinect not found - Please check connection");
+		}*/
 
-        }
+		Debug.Log ("Initializing Body Source Manager");
     }
+
+	public void StartDepthSourceManager () {
+		_Sensor = KinectSensor.GetDefault();
+
+		if (_Sensor != null) {
+			_Reader = _Sensor.DepthFrameSource.OpenReader ();
+			_Data = new ushort[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels];
+
+			_RawData = new byte[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels * 3];
+			_Texture = new Texture2D (_Sensor.DepthFrameSource.FrameDescription.Width, _Sensor.DepthFrameSource.FrameDescription.Height, TextureFormat.RGB24, false);
+		} else {
+			Debug.LogError ("Kinect not found - Please check connection");
+		}
+	}
     
     void Update () 
     {
-        if (_Reader != null)
-        {
-            var frame = _Reader.AcquireLatestFrame();
-            if (frame != null)
-            {
-                frame.CopyFrameDataToArray(_Data);
+		if (_Reader != null) {
+			var frame = _Reader.AcquireLatestFrame ();
+			if (frame != null) {
+				frame.CopyFrameDataToArray (_Data);
 
 
-                for (int i = 0; i < _Data.Length; ++i)
-                {
-                    _RawData[3 * i + 0] = (byte)(_Data[i] / 256);
-                    _RawData[3 * i + 1] = (byte)(_Data[i] % 256);
-                    _RawData[3 * i + 2] = 0;
-                }
+				for (int i = 0; i < _Data.Length; ++i) {
+					_RawData [3 * i + 0] = (byte)(_Data [i] / 256);
+					_RawData [3 * i + 1] = (byte)(_Data [i] % 256);
+					_RawData [3 * i + 2] = 0;
+				}
 
-                _Texture.LoadRawTextureData(_RawData);
-                _Texture.Apply();
+				_Texture.LoadRawTextureData (_RawData);
+				_Texture.Apply ();
 
-                frame.Dispose();
-                frame = null;
-            }
-        }
+				frame.Dispose ();
+				frame = null;
+			}
+		}
     }
 
 

@@ -13,6 +13,9 @@ public class Measurements : MonoBehaviour
 
     const int SCAN_LENGTH = 1000;
     int scan = 0;
+	public bool startScanning = false;
+	public bool startFrontScan = false;
+	public bool startSideScan = false;
 
     private const float INCHES = 0.39370f;
 
@@ -67,8 +70,6 @@ public class Measurements : MonoBehaviour
         {
             depthManager = DepthSrcManager.GetComponent<DepthSourceManager>();
         }
-
-        Debug.Log("Kinect Initialized. Press Space to Scan");
     }
 
     void Update()
@@ -106,7 +107,7 @@ public class Measurements : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             scan++;
 
@@ -118,7 +119,23 @@ public class Measurements : MonoBehaviour
             {
                 beginScanTwo = true;
             }
-        }
+        }*/
+
+		if (startScanning)
+		{
+			if (startFrontScan)
+			{
+				beginScanOne = true;
+			}
+			if (startSideScan)
+			{
+				beginScanTwo = true;
+			}
+
+			startScanning = false;
+			startFrontScan = false;
+			startSideScan = false;
+		}
 
         if (beginScanOne && !scanOneDone && scan == 1)
         {
@@ -517,6 +534,38 @@ public class Measurements : MonoBehaviour
 
         return 0.0f;
     }
+
+	public int GetNumberOfBodies () {
+		return bodies.Length;
+	}
+
+	public bool isHeadAndToesTracked () {
+
+		foreach (var body in bodies)
+		{
+			if (body == null)
+			{
+				Debug.LogError("Body not tracked");
+				continue;
+			}
+
+			if (body.IsTracked)
+			{
+				var head = body.Joints[Kinect.JointType.Head];
+				var leftFoot = body.Joints[Kinect.JointType.FootLeft];
+				var rightFoot = body.Joints[Kinect.JointType.FootRight];
+
+				if (head.TrackingState == Kinect.TrackingState.Tracked && (leftFoot.TrackingState == Kinect.TrackingState.Tracked || rightFoot.TrackingState == Kinect.TrackingState.Tracked)) {
+					return true;
+				} else {
+					Debug.LogError ("Head: " + head.TrackingState + " | Left Foot: " + leftFoot.TrackingState + " | Right Foot: " + rightFoot.TrackingState);
+					return false;
+				}
+			}
+		}
+
+		return false;
+	}
 
     // HELPERS
 

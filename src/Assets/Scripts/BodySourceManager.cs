@@ -16,7 +16,7 @@ public class BodySourceManager : MonoBehaviour
 
     void Start () 
     {
-        _Sensor = KinectSensor.GetDefault();
+        /*_Sensor = KinectSensor.GetDefault();
 
         if (_Sensor != null)
         {
@@ -26,8 +26,28 @@ public class BodySourceManager : MonoBehaviour
             {
                 _Sensor.Open();
             }
-        }   
+		} else {
+			Debug.LogError ("Kinect not connected");
+		}*/
+
+		Debug.Log ("Initializing Body Source Manager");
     }
+
+	public void StartBodySourceManager() {
+		_Sensor = KinectSensor.GetDefault();
+
+		if (_Sensor != null)
+		{
+			_Reader = _Sensor.BodyFrameSource.OpenReader();
+
+			if (!_Sensor.IsOpen)
+			{
+				_Sensor.Open();
+			}
+		} else {
+			Debug.LogError ("Kinect not connected");
+		}
+	}
     
     void Update () 
     {

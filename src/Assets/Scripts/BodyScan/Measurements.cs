@@ -8,8 +8,8 @@ using System.IO;
 public class Measurements : MonoBehaviour
 {
 
-    SaveManager sm;
-    Save data;
+    //SaveManager sm;
+    //Save data;
 
     const int SCAN_LENGTH = 1000;
     int scan = 0;
@@ -47,8 +47,8 @@ public class Measurements : MonoBehaviour
 
     void Start()
     {
-        sm = new SaveManager("/measurements.save");
-        data = new Save();
+        //sm = new SaveManager("/measurements.save");
+        //data = new Save();
 
         if (BodySrcManager == null)
         {
@@ -169,7 +169,7 @@ public class Measurements : MonoBehaviour
                 Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
                 Debug.Log("INCHES | Height: " + CmToInches(finalHeight) + "\nLeg Length: " + CmToInches(finalLeg) + "\nArm Length: " + CmToInches(finalArm));
 
-                data.height = CmToInches(finalHeight);
+                //data.height = CmToInches(finalHeight);
 
                 scanOneDone = true;
             }
@@ -223,8 +223,8 @@ public class Measurements : MonoBehaviour
                 Debug.Log("INCHES | Hip: " + CmToInches(hipCalculation));
                 Debug.Log("INCHES | Bust: " + CmToInches(bustCalculation));
 
-                data.hip = CmToInches(hipCalculation);
-                data.bust = CmToInches(bustCalculation);
+                //data.hip = CmToInches(hipCalculation);
+                //data.bust = CmToInches(bustCalculation);
 
                 scanTwoDone = true;
             }

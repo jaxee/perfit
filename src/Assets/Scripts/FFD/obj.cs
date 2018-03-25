@@ -64,13 +64,13 @@ private float tmpSTU = 0;
 
 private void Start()
 {
-        sm = new SaveManager("/profileData.save");
+		sm = FindObjectOfType<SaveManager>();
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
         ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
-        saveProfile();
+        //saveProfile();
         BuildLattice();
 }
 
@@ -157,8 +157,7 @@ void Deform()
 
 
 void BuildLattice()
-{    //build control point lattice
-        int p = 0;
+{
         for (int i = 0; i <= L; i++)
         {
                 for (int j=0; j <= M; j++)
@@ -248,12 +247,6 @@ void adjust(float measurement,string section)
 
         }
 
-}
-void saveProfile(){
-        Save data = new Save ();
-        data.bust = 5.0f;
-        data.hip = 32.0f;
-        sm.saveData (data);
 }
 
 void loadProfile(){

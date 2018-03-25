@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
-public abstract class Saver:MonoBehaviour
+public abstract class Saver : MonoBehaviour
 {//global inputs to save 
     public StateManager stateManager;
     public SaveManager saveManager;
 
 
-    void Awake()
+    private void Awake()
     {
         stateManager = GameObject.FindObjectOfType<StateManager>();
         if (!stateManager)
@@ -26,7 +24,6 @@ public abstract class Saver:MonoBehaviour
         stateManager.beforeLoad -= Save;
         stateManager.afterLoad -= Load;
     }
-    protected abstract string FileName();
     protected abstract void Save();
     protected abstract void Load();
 

@@ -150,6 +150,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
 			activePos = 1;
 			anim.SetInteger("Pose", activePos); 
+			//anim.SetInteger("Pose", 0); 
 
 		}
 		//ANIMATION
@@ -159,6 +160,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			Debug.Log ("Pose 2 Animation");
 			activePos = 2;
 			anim.SetInteger("Pose", activePos); 
+			//anim.SetInteger("Pose", 0); 
 
 		}
     }

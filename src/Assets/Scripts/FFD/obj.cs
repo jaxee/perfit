@@ -62,8 +62,12 @@ private float tmpTUS = 0;
 private float tmpSUT = 0;
 private float tmpSTU = 0;
 
+private BodyscanSave bodyData;
+
+
 private void Start()
 {
+		bodyData = FindObjectOfType<BodyscanSave> ();
 		sm = FindObjectOfType<SaveManager>();
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
@@ -167,7 +171,7 @@ void BuildLattice()
                                 Vector3 position = P0 + (i / (float)L * S) + (j / (float)M * T) + (k / (float)N * U);
                                 ctrlPoints[i, j, k] = (GameObject)Instantiate(ctrlPoint, position, Quaternion.identity, transform);
                                 ctrlPoints[i, j, k].name = string.Format("{0},{1},{2}", i, j, k);
-								ctrlPoints[i, j, k].layer = 8; 
+								ctrlPoints[i, j, k].layer = 8;
                         }
                 }
         }//end-of-nested loop
@@ -246,14 +250,12 @@ void adjust(float measurement,string section)
         {
 
         }
-
 }
 
 void loadProfile(){
-        //Save data = sm.loadData ();
-        adjust(10, "butt");
-        adjust(5, "chest");
-        adjust(30, "hips");
+		adjust(bodyData.Bust, "butt");
+		adjust(bodyData.Bust, "chest");
+		adjust(bodyData.Waist, "hips");
 }
 
 }//-end-of-script

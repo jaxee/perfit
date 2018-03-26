@@ -16017,55 +16017,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1134144492}
---- !u!1 &1142843558
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1142843560}
-  - component: {fileID: 1142843559}
-  m_Layer: 0
-  m_Name: 'deformerManager '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1142843559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1142843558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f78aa61bf22487a813722430546532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetmodel: {fileID: 1513048685}
-  ctrlPoint: {fileID: 1469329933801338, guid: 35bbc5fa765f64fb08f3434655177e4a, type: 2}
-  L: 6
-  M: 4
-  N: 2
-  S: {x: 0, y: 0, z: 0}
-  T: {x: 0, y: 0, z: 0}
-  U: {x: 0, y: 0, z: 0}
-  updateMesh: 0
---- !u!4 &1142843560
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1142843558}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1145789718
 GameObject:
   m_ObjectHideFlags: 0
@@ -22645,11 +22596,6 @@ Prefab:
 --- !u!4 &1513048684 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4925908491751420, guid: 22881fffa71bc4797868b2a425360cf3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1513048683}
---- !u!1 &1513048685 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1746251597437788, guid: 22881fffa71bc4797868b2a425360cf3,
     type: 2}
   m_PrefabInternal: {fileID: 1513048683}
 --- !u!1 &1513895576
@@ -29563,34 +29509,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939240268}
---- !u!1 &1945305885
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1945305887}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1945305887
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1945305885}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.174057, y: -10.66213, z: 99.50539}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1956205902
 GameObject:
   m_ObjectHideFlags: 0

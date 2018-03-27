@@ -417,7 +417,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1554778080
+  randomSeed: -2074366204
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3850,10 +3850,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveManager: {fileID: 11400000, guid: da8a40b9dac0c4ff893f349267e7fa02, type: 2}
-  file: bodyscan
-  Height: 70
-  Waist: 32
-  Bust: 5
+  file: bodyScan
+  Height: 0
+  Waist: 0
+  Bust: 0
 --- !u!4 &1869573646
 Transform:
   m_ObjectHideFlags: 0

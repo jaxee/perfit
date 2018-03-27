@@ -10,6 +10,7 @@ public class ItemDatabase : MonoBehaviour
     private void Awake()
     {
         //create singleton
+		//Debug.Log ("Happen");
         instance = this; 
 
 		//1.Naked (Empty/No dress/0)

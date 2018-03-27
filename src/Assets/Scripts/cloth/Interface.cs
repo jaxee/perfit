@@ -46,8 +46,9 @@ public class Interface : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
 		if (gameObject.name == "Dress1") {
-			changeClothesScript.RemoveClothingItem ("Dress", "abc");
 			Debug.Log ("Dress 1");
+
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
 			//humanObject.transform.rotation = Quaternion.identity;
 			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
 		} else if (gameObject.name == "Dress2") {
@@ -151,6 +152,9 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			activePos = 1;
 			anim.SetInteger("Pose", activePos); 
 			//anim.SetInteger("Pose", 0); 
+
+			//FIX BUG
+			//https://answers.unity.com/questions/612051/change-boolean-after-animation-is-done.html
 
 		}
 		//ANIMATION

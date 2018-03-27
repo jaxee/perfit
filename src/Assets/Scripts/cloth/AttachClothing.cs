@@ -34,6 +34,7 @@ public class AttachClothing : MonoBehaviour
     public void InitializeClothingItemsList()
     {
 		//attachGarments ();
+		//Debug.Log ("hello");
         totalSlots = 1;
 
         for (int i = 0; i < totalSlots; i++)
@@ -123,17 +124,17 @@ public class AttachClothing : MonoBehaviour
         return wornClothing;
     }
 	void OnMouseDrag(){
-		Debug.Log ("ROTATE");
+		//Debug.Log ("ROTATE");
 
 		float rotSpeed = 300;
 		float rotX = Input.GetAxis ("Mouse X") *rotSpeed *Mathf.Deg2Rad;
 
 		if (wornDress) {
 
-			wornDress.transform.Find ("QuickRigCharacter1_Reference").transform.Rotate (Vector3.up, -rotX);
+			wornDress.transform.Find ("QuickRigCharacter3_Reference").transform.Rotate (Vector3.up, -rotX);
 			//Debug.Log ("meow");
 		} else {
-			GameObject.Find ("QuickRigCharacter1_Reference").transform.Rotate (Vector3.up, -rotX);
+			GameObject.Find ("QuickRigCharacter3_Reference").transform.Rotate (Vector3.up, -rotX);
 		}
 
 	}
@@ -144,7 +145,7 @@ public class AttachClothing : MonoBehaviour
 		
 		DestroyImmediate (avatar); 
 		DestroyImmediate (GameObject.Find("SkinnedVersion")); 
-		DestroyImmediate (GameObject.Find("QuickRigCharacter1_Reference")); 
+		DestroyImmediate (GameObject.Find("QuickRigCharacter3_Reference")); 
 
 		GameObject newHuman = Instantiate (Resources.Load ("UNITY_FEMALE")) as GameObject;
 		avatar = newHuman;
@@ -154,7 +155,7 @@ public class AttachClothing : MonoBehaviour
 		Cloth clothComponent;
 		DestroyClothing ();
 		GameObject modelGO = ClothingModel;
-		GameObject skeletonGO = avatar.transform.Find("QuickRigCharacter1_Reference").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
+		GameObject skeletonGO = avatar.transform.Find("QuickRigCharacter3_Reference").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
 		GameObject cube  = GameObject.Find("Pin");
 		//Debug.Log (skeletonGO);
 		MeshSkinner ms = new MeshSkinner(modelGO, skeletonGO);
@@ -183,9 +184,9 @@ public class AttachClothing : MonoBehaviour
 
 		for (int i = 0; i < clothComponent.vertices.Length; i++) {
 			float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
-			Debug.Log (dist);
+			//Debug.Log (dist);
 
-			if (dist > 4f) {
+			if (dist < 4) {
 				newConstraints [i].maxDistance = 0; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
 
 			} else {
@@ -202,10 +203,10 @@ public class AttachClothing : MonoBehaviour
 
 		//REDO COLLIDERS.... after lena 
 		colliders = new CapsuleCollider[20];
-		colliders [0] = GameObject.Find ("QuickRigCharacter1_LeftUpLeg").GetComponent<CapsuleCollider> ();
-		colliders [1] = GameObject.Find ("QuickRigCharacter1_RightUpLeg").GetComponent<CapsuleCollider> ();
-		colliders [2] = GameObject.Find ("QuickRigCharacter1_LeftLeg").GetComponent<CapsuleCollider> ();
-		colliders [3] = GameObject.Find ("QuickRigCharacter1_RightLeg").GetComponent<CapsuleCollider> ();
+		colliders [0] = GameObject.Find ("QuickRigCharacter3_LeftUpLeg").GetComponent<CapsuleCollider> ();
+		colliders [1] = GameObject.Find ("QuickRigCharacter3_RightUpLeg").GetComponent<CapsuleCollider> ();
+		colliders [2] = GameObject.Find ("QuickRigCharacter3_LeftLeg").GetComponent<CapsuleCollider> ();
+		colliders [3] = GameObject.Find ("QuickRigCharacter3_RightLeg").GetComponent<CapsuleCollider> ();
 
 //		colliders [4] = GameObject.Find ("QuickRigCharacter_Hips_J").GetComponent<CapsuleCollider> ();
 //

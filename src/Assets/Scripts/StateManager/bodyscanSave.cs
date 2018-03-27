@@ -31,11 +31,14 @@ public class BodyscanSave : Saver
     protected override void Load()
     {
 		Body _data = new Body();
-		if (saveManager.Load (file, ref _data)) {
-			Debug.Log (_data.file);
-			Height = _data.Height;
-			Waist = _data.Waist;
-			Bust = _data.Bust;
-		}
+        if (saveManager.Load(file, ref _data))
+        {
+            Height = _data.Height;
+            Waist = _data.Waist;
+            Bust = _data.Bust;
+        }
+        else {
+            Debug.Log("no saved BodyScan data");
+        }
     }
 }

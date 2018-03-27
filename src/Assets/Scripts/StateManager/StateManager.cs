@@ -11,7 +11,7 @@ public class StateManager : MonoBehaviour
 
     private float fadeDuration = 1f;
     private bool isFading;
-    public string startingSceneName = "_FFD";
+    public string startingSceneName;
     public CanvasGroup fadeCanvas;
 
 	public SaveManager bodyData; 

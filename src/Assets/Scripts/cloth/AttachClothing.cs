@@ -25,11 +25,9 @@ public class AttachClothing : MonoBehaviour
     #region Monobehaviour
 
 	public void OnStart () {
-		avatar = GameObject.Find ("UNITY_FEMALE");
-
+        avatar = GameObject.Find ("UNITY_FEMALE");
 		black = new Color (255, 255, 255);
-
-	}
+    }
 	public void attachGarments(){
 
 	}
@@ -154,11 +152,11 @@ public class AttachClothing : MonoBehaviour
 		float PIN_CONSTANT = 3;
 
 
-		//applying ffd
-		model = FindObjectOfType<ModelSave>();
-		target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
+        //applying ffds
+        model = FindObjectOfType<ModelSave>();
+        target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
 		target.sharedMesh = model.mesh;
-		//target.material = model.skin; 
+		target.material = model.skin; 
 
 		GameObject finalProduct;
 		Cloth clothComponent;

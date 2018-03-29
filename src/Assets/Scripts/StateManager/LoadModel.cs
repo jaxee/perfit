@@ -12,7 +12,7 @@ public class LoadModel : MonoBehaviour {
         model = FindObjectOfType<ModelSave>();
         target = GameObject.FindObjectOfType<SkinnedMeshRenderer>();
         target.sharedMesh = model.mesh;
-        //target.material = model.skin; 
+        target.material = model.skin; 
 	}
 
 }

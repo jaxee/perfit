@@ -32,8 +32,8 @@ public class Database : MonoBehaviour {
 	IEnumerator Upload()
 	{
 		WWWForm form = new WWWForm();
-		form.AddField("password", "password");
-		form.AddField("email", "john@doe.com");
+		form.AddField("session[password]", "password");
+		form.AddField("session[email]", "john@doe.com");
 
 		using (UnityWebRequest www = UnityWebRequest.Post("localhost:3000/login", form))
 		{
@@ -46,6 +46,7 @@ public class Database : MonoBehaviour {
 			else
 			{
 				Debug.Log("Form upload complete!");
+				Debug.Log (www.GetResponseHeaders());
 			}
 		}
 	}

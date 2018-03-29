@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Unit
+  - BodySourceManager
+  - DepthSourceManager
   - sleeved
   layers:
   - Default

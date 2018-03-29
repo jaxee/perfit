@@ -45,25 +45,19 @@ public class BodyScanInterface : MonoBehaviour {
 
 	private string first_name, last_name, user_email, user_password = null;
 
-	// Use this for initialization
 	void Start () {
-		//if (KinectSensor.GetDefault ().IsAvailable) {
-			bdySrcMgr = GameObject.FindGameObjectWithTag ("BodySourceManager").GetComponent<BodySourceManager> ();
-			dpthSrcMgr = GameObject.FindGameObjectWithTag ("DepthSourceManager").GetComponent<DepthSourceManager> ();
-		//} else {
-		//	Debug.LogError ("Kinect is not connected");
-		//}
+		bdySrcMgr = GameObject.FindGameObjectWithTag ("BodySourceManager").GetComponent<BodySourceManager> ();
+		dpthSrcMgr = GameObject.FindGameObjectWithTag ("DepthSourceManager").GetComponent<DepthSourceManager> ();
+
 
 		measurementsScpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Measurements>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
 
 	public void SaveInformation() {
-		Debug.Log ("The values that you entered are: ");
 		first_name = firstName.text;
 		last_name = lastName.text;
 		user_email = email.text;
@@ -73,51 +67,62 @@ public class BodyScanInterface : MonoBehaviour {
 	}
 
 	public void StartBodyScan() {
-		Debug.Log ("Start body scan");
-
 		bdySrcMgr.StartBodySourceManager ();
 		dpthSrcMgr.StartDepthSourceManager ();
 
-		StartCoroutine (WaitForPosition ());
+		StartCoroutine (StandInFrontOfCamera());
 	}
 
-	IEnumerator WaitForPosition() {
+	IEnumerator StandInFrontOfCamera() {
         placementUIGroup.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
+        StartCoroutine(WaitForPosition());
+	}
+
+    IEnumerator WaitForPosition()
+    {
         placeInstOne.gameObject.SetActive(false);
         placeInstTwo.gameObject.SetActive(true);
 
-        Debug.Log ("waiting done");
-		bool isNotTracked = true;
+        yield return new WaitForSeconds(3);
 
-        Debug.Log("Bodies:" + measurementsScpt.GetNumberOfBodies());
-		if (measurementsScpt.GetNumberOfBodies () > 0) {
-			Debug.Log ("Body found");
+        bool isNotTracked = true;
 
-			while (isNotTracked) {
-				if (measurementsScpt.isHeadAndToesTracked ()) {
-                    placementInstructions.gameObject.SetActive (false);
-					placementSideStepsUI.gameObject.SetActive (true);
+        if (measurementsScpt.GetNumberOfBodies() > 0)
+        {
+            while (isNotTracked)
+            {
+                if (measurementsScpt.isHeadAndToesTracked())
+                {
+                    placementInstructions.gameObject.SetActive(false);
+                    placementSideStepsUI.gameObject.SetActive(true);
 
-					StartCoroutine (WaitForPositionFront ());
-					isNotTracked = false;
-				} else {
-					placeInstTwo.gameObject.SetActive (false);
+                    StartCoroutine(WaitForPositionFront());
+                    isNotTracked = false;
+                }
+                else
+                {
+                    placeInstTwo.gameObject.SetActive(false);
 
-					if (measurementsScpt.GetNumberOfBodies () > 0) {
-						placeInstThree.gameObject.SetActive (true);
-					} else {
-						placeInstFour.gameObject.SetActive (true);
-					}
-				}
-			}
-		} else {
-			Debug.LogError ("Could not find person in front of camera");
-		}
+                    if (measurementsScpt.GetNumberOfBodies() > 0)
+                    {
+                        placeInstThree.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        placeInstFour.gameObject.SetActive(true);
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Could not find person in front of camera");
+        }
 
-	}
+    }
 
 	IEnumerator WaitForPositionFront() {
 		frontPlacementUI.gameObject.SetActive (true);

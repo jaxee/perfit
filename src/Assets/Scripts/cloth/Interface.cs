@@ -151,6 +151,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
 			activePos = 1;
 			anim.SetInteger("Pose", activePos); 
+			//anim.
 			//anim.SetInteger("Pose", 0); 
 
 			//FIX BUG

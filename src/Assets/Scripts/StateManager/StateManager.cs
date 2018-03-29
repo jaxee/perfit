@@ -14,10 +14,12 @@ public class StateManager : MonoBehaviour
     public string startingSceneName;
     public CanvasGroup fadeCanvas;
 
-	public SaveManager bodyData; 
+	public SaveManager bodyData;
+    UIManager ui;//ui call 
 
     private IEnumerator Start()
     {
+        ui = GameObject.FindObjectOfType<UIManager>(); 
         fadeCanvas.alpha = 1f;
 
 		BodyscanSave.Body data = new BodyscanSave.Body ();
@@ -36,6 +38,8 @@ public class StateManager : MonoBehaviour
         if (!isFading)
         {
             StartCoroutine(fadeTransition(sceneName));
+            ui.ResetAll();
+
         }
 
     }

@@ -20,10 +20,10 @@ MonoBehaviour:
     y: 30
     width: 1249
     height: 701
-  m_MinSize: {x: 879, y: 492}
-  m_MaxSize: {x: 16004, y: 14042}
+  m_MinSize: {x: 881, y: 492}
+  m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 3372
+  controlID: 3679
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 674
+    x: 608
     y: 102
     width: 348
     height: 403
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 492}
   m_MaxSize: {x: 12004, y: 14042}
   vertical: 1
-  controlID: 3373
+  controlID: 3680
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 221}
   m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
-  controlID: 3345
+  controlID: 3658
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,14 +197,14 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 52
+    x: -14
     y: 102
     width: 392
     height: 403
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 442f0000
+    m_SelectedIDs: 0e2d0000
     m_LastClickedID: 0
     m_ExpandedIDs: 2622ffffd230ffffbc38ffffc4a2ffffd8a2ffffdca2ffff34abffffc0beffff2ad9ffff40e1ffff12e3ffffbaf1ffff72f5ffff9efbffff00000000e4620000
     m_RenameOverlay:
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 448
+    x: 382
     y: 102
     width: 222
     height: 403
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 52
+    x: -14
     y: 526
     width: 970
     height: 256
@@ -575,8 +575,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 442f0000
-    m_LastClickedInstanceID: 12100
+    m_SelectedInstanceIDs: 0e2d0000
+    m_LastClickedInstanceID: 11534
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000c4b00500f4ed0500824e000000000000f0340d00b07f0d00b04d00003c4d0000
     m_RenameOverlay:
@@ -650,8 +650,8 @@ MonoBehaviour:
     y: 0
     width: 277
     height: 701
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1026
+    x: 960
     y: 102
     width: 275
     height: 680

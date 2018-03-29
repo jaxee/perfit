@@ -770,6 +770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327129090}
   - component: {fileID: 327129089}
+  - component: {fileID: 327129091}
   m_Layer: 0
   m_Name: customData
   m_TagString: Untagged
@@ -805,6 +806,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &327129091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327129088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1901b15ca0af2246a9e675367d384cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelSkin: {fileID: 1676984652}
+  shade0: {fileID: 2100000, guid: 6728027517fd249a38d262cbf75e4e8b, type: 3}
+  shade1: {fileID: 2100000, guid: 77475643c958d4948bd955c02c6c8f03, type: 2}
+  shade2: {fileID: 2100000, guid: 602b1505aed8ee849868fd87b2d3aa6f, type: 2}
+  shade3: {fileID: 2100000, guid: 50c531b077ab57348989ad408408e525, type: 2}
 --- !u!1001 &330426239
 Prefab:
   m_ObjectHideFlags: 0
@@ -958,7 +975,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 334930109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 327129091}
+        m_MethodName: setSkin
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &334930109
@@ -5563,7 +5591,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1157141843}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 327129091}
+        m_MethodName: setSkin
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1157141843
@@ -6596,6 +6635,8 @@ MonoBehaviour:
   wornDress: {fileID: 0}
   colliders: []
   addClothScript: {fileID: 0}
+  model: {fileID: 0}
+  target: {fileID: 0}
   wornItems: []
 --- !u!95 &1626710150
 Animator:
@@ -7301,7 +7342,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1870307675}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 327129091}
+        m_MethodName: setSkin
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1870307675
@@ -7501,7 +7553,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2012618841}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 327129091}
+        m_MethodName: setSkin
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2012618841

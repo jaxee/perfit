@@ -10,6 +10,7 @@ public class ItemDatabase : MonoBehaviour
     private void Awake()
     {
         //create singleton
+		//Debug.Log ("Happen");
         instance = this; 
 
 		//1.Naked (Empty/No dress/0)
@@ -18,9 +19,9 @@ public class ItemDatabase : MonoBehaviour
 		//2.Dresses
 									//ItemID //Name //Description //FileName //ItemType //GameObjectInstance
 
-		clothesList.Add(new ClothingItem(1, "", "", "dress01", "Dress", (GameObject)Resources.Load("Dresses/small/dress01")));
+		clothesList.Add(new ClothingItem(1, "", "", "dress01", "Dress", (GameObject)Resources.Load("Dresses/large/dress01")));
 		clothesList.Add(new ClothingItem(2, "", "", "dress02", "Dress", (GameObject)Resources.Load("Dresses/small/dress02")));
-		clothesList.Add(new ClothingItem(3, "", "", "dress03", "Dress", (GameObject)Resources.Load("Dresses/small/dress03")));
+		clothesList.Add(new ClothingItem(3, "", "", "dress03", "Dress", (GameObject)Resources.Load("Dresses/large/dress03")));
 		clothesList.Add(new ClothingItem(4, "", "", "dress04", "Dress", (GameObject)Resources.Load("Dresses/small/dress04")));
 		clothesList.Add(new ClothingItem(5, "", "", "dress05", "Dress", (GameObject)Resources.Load("Dresses/small/dress05")));
 		clothesList.Add(new ClothingItem(6, "", "", "dress06", "Dress", (GameObject)Resources.Load("Dresses/small/dress06")));

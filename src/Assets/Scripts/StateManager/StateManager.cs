@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -6,22 +6,30 @@ using UnityEngine.SceneManagement;
 public class StateManager : MonoBehaviour
 {
 
-    public event Action beforeLoad;
-    public event Action afterLoad;
+    public event Action BeforeLoad;
+    public event Action AfterLoad;
 
     private float fadeDuration = 1f;
     private bool isFading;
-
-    [Header("Initial Start Scene")]
-    public string startingSceneName = "_FFD";
-
-    [Header("Initial canvas elements")]
+    public string startingSceneName;
     public CanvasGroup fadeCanvas;
 
-    // Use this for initialization
+	public SaveManager bodyData;
+    UIManager ui;//ui call 
+
     private IEnumerator Start()
     {
+        ui = GameObject.FindObjectOfType<UIManager>(); 
         fadeCanvas.alpha = 1f;
+
+		BodyscanSave.Body data = new BodyscanSave.Body ();
+
+		data.Bust = 5f; 
+		data.Waist = 32f;
+        data.Height = 70f;
+
+        bodyData.Save ("bodyScan", data);
+
         yield return StartCoroutine(loadSetScene(startingSceneName));
         StartCoroutine(fade(0f));
     }
@@ -31,6 +39,8 @@ public class StateManager : MonoBehaviour
         if (!isFading)
         {
             StartCoroutine(fadeTransition(sceneName));
+            ui.ResetAll();
+
         }
 
     }
@@ -40,17 +50,17 @@ public class StateManager : MonoBehaviour
 
         yield return StartCoroutine(fade(1f));//start fading scene
 
-        if (beforeLoad != null)
+		if (BeforeLoad != null)
         {
-            beforeLoad();
+			BeforeLoad();
         }
 
         yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         yield return StartCoroutine(loadSetScene(sceneName));
 
-        if (afterLoad != null)
+        if (AfterLoad != null)
         {
-            afterLoad();
+			AfterLoad();
         }
 
         yield return StartCoroutine(fade(0f));

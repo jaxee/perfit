@@ -3,41 +3,42 @@ using System.Collections;
 
 public class BodyscanSave : Saver
 {
-	public class Body{
-	    public string file; 
+	public struct Body{
+	    public string file;
 	    public float Height;
 	    public float Waist;
 	    public float Bust;
 	};
-	private Body data;
-	public string file; 
+
+
+	private Body data = new Body();
+	public string file;
 	public float Height;
 	public float Waist;
 	public float Bust;
 
 
-	private void Awake(){
-		data = new Body ();
-
-	}
-
 	protected override void Save(){
-		data.file = file; 
+		data.file = file;
 		data.Height = Height;
 		data.Waist = Waist;
 		data.Bust = Bust;
 
-        saveManager.Save(data); 
+        saveManager.Save(file, data);
     }
 
 
     protected override void Load()
     {
-		Body data = new Body();
-		if (saveManager.Load (ref data)) {
-			Height = data.Height;
-			Waist = data.Waist;
-			Bust = data.Bust;
-		} 
+		Body _data = new Body();
+        if (saveManager.Load(file, ref _data))
+        {
+            Height = _data.Height;
+            Waist = _data.Waist;
+            Bust = _data.Bust;
+        }
+        else {
+            Debug.Log("no saved BodyScan data");
+        }
     }
 }

@@ -1,0 +1,98 @@
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl Material18694
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl Material17767
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+newmtl Material18183
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl Material18875
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+newmtl Material18992
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl Material19173
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+newmtl Material19290
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl Default Fabric_FRONT_16792
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+newmtl Material17585
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl Material17885
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/paisley-01.jpg
+newmtl Material18066
+Ka 0.257132 0.257132 0.257132
+Kd 0.819608 0.819608 0.819608
+Ks 0.000000 0.000000 0.000000
+Ns 5.000000
+illum 2
+d 1.000000
+map_Ka E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg
+map_Kd E:/School/Fourth Year/Senior Project/Fabrics/blueCrochet.jpg

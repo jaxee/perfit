@@ -1,50 +1,93 @@
 ﻿using System;
-using System.IO;
 using UnityEngine;
-using System.Runtime.Serialization.Formatters.Binary;
-
+using System.Collections.Generic;
 
 [CreateAssetMenu]
-public class SaveManager:ResettableScriptableObject
+public class SaveManager: ResettableScriptableObject
 {
-		protected string filePath;
-		
-		//private SaveData
-	public override void Reset ()
+	protected string filePath;
+
+	[Serializable]
+	public class DataList<T>
 	{
-		this.filePath = "";
-		
-	}
-	public SaveManager ()
-	{
-		this.filePath = "";
-	}
 
+		public List<string> keys = new List<string> ();
+		public List<T> values = new List<T> ();
 
-	public void Save (BodyscanSave.Body input)
-	{//save file 
-        this.filePath = input.file; 
-        BinaryFormatter bin = new BinaryFormatter();
-		FileStream file = File.Create(this.filePath);
-		bin.Serialize(file, input);
-		Debug.Log ("Saved" + this.filePath);
-		file.Close();
-	}
-
-	public bool Load (ref BodyscanSave.Body input)
-	{//load file
-        this.filePath = input.file;
-		BodyscanSave body = new BodyscanSave();
-		if (File.Exists (this.filePath)) {
-			BinaryFormatter bin = new BinaryFormatter ();
-			FileStream file = File.Open (filePath, FileMode.Open);
-			input = (BodyscanSave.Body)bin.Deserialize (file);
-			Debug.Log ("loaded" + this.filePath);
-			file.Close ();
-			return true;
+		public void Clear ()
+		{
+			keys.Clear ();
+			values.Clear ();
 		}
-		return false;
+
+		public void SetValue(string key, T value){
+			// Find the index of the keys and values based on the given key.
+			int index = keys.FindIndex(x => x == key);
+			if (index > -1)
+			{
+				values[index] = value;
+			}
+			else
+			{
+				keys.Add (key);
+				values.Add (value);
+			}
+		}
+
+		public bool GetValue (string key, ref T value)
+		{
+			int index = keys.FindIndex(x => x == key);
+
+			if (index > -1)
+			{
+				value = values[index];
+				return true;
+			}
+			return false;
+		}
+
 	}
+
+
+
+	public DataList<BodyscanSave.Body> bodyDataList = new DataList<BodyscanSave.Body> ();
+    public DataList<ModelSave.Model> modelDataList = new DataList<ModelSave.Model>();
+
+    public override void Reset ()
+	{
+		bodyDataList.Clear ();
+        modelDataList.Clear ();
+
+    }
+
+	private void Save<T>(DataList<T> lists, string key, T value)
+	{
+		lists.SetValue(key, value);
+	}
+
+	private bool Load<T>(DataList<T> lists, string key, ref T value)
+	{
+		return lists.GetValue(key, ref value);
+	}
+
+
+
+	public void Save (String fileName, BodyscanSave.Body input)
+	{//save file
+		Save(bodyDataList, fileName, input);
+	}
+	public bool Load (String fileName,ref BodyscanSave.Body input)
+	{//load file
+		return Load(bodyDataList, fileName, ref input);
+	}
+
+    public void Save(String fileName, ModelSave.Model input)
+    {//save file
+        Save(modelDataList, fileName, input);
+    }
+    public bool Load(String fileName, ref ModelSave.Model input)
+    {//load file
+        return Load(modelDataList, fileName, ref input);
+    }
+
 }
-
-

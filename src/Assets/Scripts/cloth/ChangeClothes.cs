@@ -6,6 +6,8 @@ public class ChangeClothes : MonoBehaviour
 
     private void Start()
     {
+
+		//Debug.Log ("HI");
 		attachScript = GetComponent<AttachClothing>(); //change name of this later
         //create equipment list
 		attachScript.InitializeClothingItemsList();

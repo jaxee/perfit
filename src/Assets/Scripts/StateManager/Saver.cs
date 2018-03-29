@@ -2,30 +2,28 @@
 
 
 public abstract class Saver : MonoBehaviour
-{//global inputs to save 
-    public StateManager stateManager;
-    public SaveManager saveManager;
-
-
-    private void Awake()
-    {
-        stateManager = GameObject.FindObjectOfType<StateManager>();
+{//global inputs to save
+	public SaveManager saveManager;
+	private StateManager stateManager;
+	
+	private void Awake()
+	{
+		stateManager = FindObjectOfType<StateManager>();
         if (!stateManager)
             throw new UnityException("State Manager could not be found, ensure that it exists in the transition scene.");
     }
 
-    private void OnEnable()
+	private void OnEnable()
     {
-        stateManager.beforeLoad += Save;
-        stateManager.afterLoad += Load;
+        stateManager.BeforeLoad += Save;
+        stateManager.AfterLoad += Load;
     }
-    private void OnDisable()
+	private void OnDisable()
     {
-        stateManager.beforeLoad -= Save;
-        stateManager.afterLoad -= Load;
+        stateManager.BeforeLoad -= Save;
+        stateManager.AfterLoad -= Load;
     }
     protected abstract void Save();
     protected abstract void Load();
 
 }
-

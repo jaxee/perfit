@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-
+using System.Collections;
 
 public class obj : MonoBehaviour {
 
@@ -50,6 +50,7 @@ public bool updateMesh= false;
 //array to target ctrl group
 string [] leftHip   = new string[] { "2,2,0","2,2,1","2,2,2"};
 string [] rightHip  = new string[] { "4,2,0", "4,2,1", "4,2,2" };
+string [] height    = new string[] { "0,3,0","0,3,1","0,3,2","0,4,0","0,4,1","0,4,2", "1,3,0", "1,3,1", "1,3,2", "1,4,0", "1,4,1", "1,4,2", "2,3,0", "2,3,1", "2,3,2", "2,4,0", "2,4,1", "2,4,2", "3,3,0", "3,3,1", "3,3,2", "3,4,0", "3,4,1", "3,4,2", "4,3,0", "4,3,1", "4,3,2", "4,4,0", "4,4,1", "4,4,2", "5,3,0", "5,3,1", "5,3,2", "5,4,0", "5,4,1", "5,4,2", "6,3,0", "6,3,1", "6,3,2", "6,4,0", "6,4,1", "6,4,2" };
 string butt         = "3,2,0";
 string chest        = "3,3,2";
 string stomach      = "3,2,2";
@@ -62,17 +63,21 @@ private float tmpTUS = 0;
 private float tmpSUT = 0;
 private float tmpSTU = 0;
 
+private BodyscanSave bodyData;
+private ModelSave modelData; 
+
 private void Start()
 {
-		sm = FindObjectOfType<SaveManager>();
+		bodyData = FindObjectOfType<BodyscanSave> ();
+        sm = FindObjectOfType<SaveManager>();
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
         ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
-        //saveProfile();
         BuildLattice();
-}
+        StartCoroutine(applyFFD());
+    }
 
 private void Update()
 {
@@ -167,7 +172,7 @@ void BuildLattice()
                                 Vector3 position = P0 + (i / (float)L * S) + (j / (float)M * T) + (k / (float)N * U);
                                 ctrlPoints[i, j, k] = (GameObject)Instantiate(ctrlPoint, position, Quaternion.identity, transform);
                                 ctrlPoints[i, j, k].name = string.Format("{0},{1},{2}", i, j, k);
-								ctrlPoints[i, j, k].layer = 8; 
+								ctrlPoints[i, j, k].layer = 8;
                         }
                 }
         }//end-of-nested loop
@@ -197,6 +202,8 @@ void MeshUpdate(Vector3[] vertices)
         target.sharedMesh.vertices = vertices;
         target.sharedMesh.RecalculateBounds();
         target.sharedMesh.RecalculateNormals();
+        modelData = FindObjectOfType<ModelSave>();
+        modelData.mesh = target.sharedMesh;
 }
 
 void adjust(float measurement,string section)
@@ -244,16 +251,31 @@ void adjust(float measurement,string section)
         }
         if (section == "height")
         {
+            for (int i = 0; i< height.Length; i++) {
+                Vector3 adjustment = new Vector3(0, measurement * 0.01f,0);
+                GameObject tmp = GameObject.Find(height[i]);
+                tmp.transform.position += adjustment;
+
+            }
 
         }
-
 }
 
 void loadProfile(){
-        //Save data = sm.loadData ();
-        adjust(10, "butt");
-        adjust(5, "chest");
-        adjust(30, "hips");
-}
+		adjust(bodyData.Bust, "butt");
+		adjust(bodyData.Bust, "chest");
+		adjust(bodyData.Waist, "hips");
+        adjust(bodyData.Height, "height");
+    }
+
+    private IEnumerator applyFFD() {
+        yield return new WaitForSeconds(1);
+        Deform();
+        updateMesh = false;
+        GameObject.FindObjectOfType<ParticleSystem>().Stop();
+        gameObject.SetActive(false);
+ 
+
+    }
 
 }//-end-of-script

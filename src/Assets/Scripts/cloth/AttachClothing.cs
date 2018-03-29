@@ -156,8 +156,8 @@ public class AttachClothing : MonoBehaviour
 		DestroyClothing ();
 		GameObject modelGO = ClothingModel;
 		GameObject skeletonGO = avatar.transform.Find("QuickRigCharacter3_Reference").gameObject;// Debug.Log (modelGO.name + skeletonGO.name); 
-		GameObject cube  = GameObject.Find("Pin");
-		//Debug.Log (skeletonGO);
+		GameObject cube  = ClothingModel.transform.Find("Pin").gameObject;
+		Debug.Log (cube);
 		MeshSkinner ms = new MeshSkinner(modelGO, skeletonGO);
 		ms.work();
 		//ms.quickFix ();
@@ -186,10 +186,19 @@ public class AttachClothing : MonoBehaviour
 			float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 			//Debug.Log (dist);
 
-			if (dist < 4) {
-				newConstraints [i].maxDistance = 0; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
+			if (dist > 3) {
+				
+				if (ClothingModel.tag == "sleeved") {
+					//Debug.Log ("HEY");
+					newConstraints [i].maxDistance = 0.02f;
+				}
+				else {
+					newConstraints [i].maxDistance = 0; //https://docs.unity3d.com/ScriptReference/ClothSkinningCoefficient-maxDistance.html
+				}
 
-			} else {
+			} 
+
+			else {
 				newConstraints [i].maxDistance = 0.2f;
 			}
 		}
@@ -208,24 +217,23 @@ public class AttachClothing : MonoBehaviour
 		colliders [2] = GameObject.Find ("QuickRigCharacter3_LeftLeg").GetComponent<CapsuleCollider> ();
 		colliders [3] = GameObject.Find ("QuickRigCharacter3_RightLeg").GetComponent<CapsuleCollider> ();
 
-//		colliders [4] = GameObject.Find ("QuickRigCharacter_Hips_J").GetComponent<CapsuleCollider> ();
+		colliders [4] = GameObject.Find ("QuickRigCharacter3_Hips_J").GetComponent<CapsuleCollider> ();
 //
-//		colliders [4] = GameObject.Find ("QuickRigCharacter_RightSide_J").GetComponent<CapsuleCollider> ();
-//		colliders [5] = GameObject.Find ("QuickRigCharacter_LeftUpLeg_J").GetComponent<CapsuleCollider> ();
-//		colliders [6] = GameObject.Find ("QuickRigCharacter_RightUpLeg_J").GetComponent<CapsuleCollider> ();
-//		colliders [7] = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
-//		colliders [8] = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
-//		colliders [9] = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
+		colliders [4] = GameObject.Find ("QuickRigCharacter3_RightSide_J").GetComponent<CapsuleCollider> ();
+		colliders [5] = GameObject.Find ("QuickRigCharacter3_LeftUpLeg_J").GetComponent<CapsuleCollider> ();
+		colliders [6] = GameObject.Find ("QuickRigCharacter3_RightUpLeg_J").GetComponent<CapsuleCollider> ();
+		colliders [7] = GameObject.Find ("QuickRigCharacter3_Rbutt_J").GetComponent<CapsuleCollider> ();
+		colliders [8] = GameObject.Find ("QuickRigCharacter3_Lbutt_J").GetComponent<CapsuleCollider> ();
+		colliders [9] = GameObject.Find ("QuickRigCharacter3_Hips").GetComponent<CapsuleCollider> ();
 //
-//		colliders [10] = GameObject.Find ("QuickRigCharacter_LeftSide_J").GetComponent<CapsuleCollider> ();
-//		colliders [11] = GameObject.Find ("QuickRigCharacter_HipsCenter_J").GetComponent<CapsuleCollider> ();
+		colliders [10] = GameObject.Find ("QuickRigCharacter3_LeftSide_J").GetComponent<CapsuleCollider> ();
+		colliders [11] = GameObject.Find ("QuickRigCharacter3_HipsCenter_J").GetComponent<CapsuleCollider> ();
 //		colliders [12] = GameObject.Find ("QuickRigCharacter_Belly_J").GetComponent<CapsuleCollider> ();
-//		colliders [13] = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider> ();
-//		colliders [14] = GameObject.Find ("QuickRigCharacter_Belly2_J").GetComponent<CapsuleCollider> ();
-//		colliders [15] = GameObject.Find ("QuickRigCharacter_Belly3_J").GetComponent<CapsuleCollider> ();
-//		colliders [16] = GameObject.Find ("QuickRigCharacter_Rear_J").GetComponent<CapsuleCollider> ();
-//		colliders [17] = GameObject.Find ("QuickRigCharacter_Rear2_J").GetComponent<CapsuleCollider> ();
-//		colliders [18] = GameObject.Find ("QuickRigCharacter_Rear3_J").GetComponent<CapsuleCollider> ();
+		colliders [13] = GameObject.Find ("QuickRigCharacter3_RightKnee_J").GetComponent<CapsuleCollider> ();
+		colliders [14] = GameObject.Find ("QuickRigCharacter3_LeftKnee_J").GetComponent<CapsuleCollider> ();
+		colliders [16] = GameObject.Find ("QuickRigCharacter3_Rear_J").GetComponent<CapsuleCollider> ();
+		colliders [17] = GameObject.Find ("QuickRigCharacter3_Rear2_J").GetComponent<CapsuleCollider> ();
+		colliders [18] = GameObject.Find ("QuickRigCharacter3_Rear3_J").GetComponent<CapsuleCollider> ();
 
 		//QuickRigCharacter_Hips
 

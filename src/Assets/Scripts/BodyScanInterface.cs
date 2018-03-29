@@ -49,8 +49,7 @@ public class BodyScanInterface : MonoBehaviour {
 		bdySrcMgr = GameObject.FindGameObjectWithTag ("BodySourceManager").GetComponent<BodySourceManager> ();
 		dpthSrcMgr = GameObject.FindGameObjectWithTag ("DepthSourceManager").GetComponent<DepthSourceManager> ();
 
-
-		measurementsScpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Measurements>();
+		measurementsScpt = GetComponent<Measurements>();
 	}
 	
 	void Update () {
@@ -63,7 +62,7 @@ public class BodyScanInterface : MonoBehaviour {
 		user_email = email.text;
 		user_password = password.text;
 
-		Debug.Log (first_name + " " + last_name + " | " + user_email + " " + user_password);
+		//Debug.Log (first_name + " " + last_name + " | " + user_email + " " + user_password);
 	}
 
 	public void StartBodyScan() {
@@ -127,7 +126,7 @@ public class BodyScanInterface : MonoBehaviour {
 	IEnumerator WaitForPositionFront() {
 		frontPlacementUI.gameObject.SetActive (true);
 
-		yield return new WaitForSeconds (5);
+		yield return new WaitForSeconds (3);
 
 		frontPlacementPreInstructions.gameObject.SetActive (false);
 		frontPlacementDuringInstructions.gameObject.SetActive (true);
@@ -152,7 +151,7 @@ public class BodyScanInterface : MonoBehaviour {
 		sidePlacementUI.gameObject.SetActive (true);
 		placementStepsSideSelected.gameObject.SetActive (true);
 
-		yield return new WaitForSeconds (5);
+		yield return new WaitForSeconds (3);
 
 		sidePlacementPreInstructions.gameObject.SetActive (false);
 		sidePlacementDuringInstructions.gameObject.SetActive (true);

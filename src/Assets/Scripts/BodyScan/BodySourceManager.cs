@@ -46,7 +46,7 @@ public class BodySourceManager : MonoBehaviour
 			Debug.LogError ("Kinect not connected");
 		}
 
-        Debug.Log("Initializing Body Source Manager");
+        //Debug.Log("Initializing Body Source Manager");
     }
     
     void Update () 

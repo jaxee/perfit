@@ -262,7 +262,6 @@ void adjust(float measurement,string section)
 }
 
 void loadProfile(){
-		adjust(bodyData.Bust, "butt");
 		adjust(bodyData.Bust, "chest");
 		adjust(bodyData.Waist, "hips");
         adjust(bodyData.Height, "height");

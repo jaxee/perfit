@@ -36,6 +36,10 @@ public class Measurements : MonoBehaviour
     private float bustSide = 0.0f;
     private float bustCalculation = 0.0f;
 
+    /*private float neckFront = 0.0f;
+    private float neckSide = 0.0f;
+    private float neckCalculation = 0.0f;*/
+
     private bool beginScanOne = false;
     private bool scanOneDone = false;
 
@@ -48,10 +52,10 @@ public class Measurements : MonoBehaviour
     private ushort[] depthData;
     private Texture2D texture;
 
+    private BodyscanSave bodyData;
     void Start()
     {
-        //sm = new SaveManager("/measurements.save");
-        //data = new Save();
+        bodyData = FindObjectOfType<BodyscanSave>();
 
         if (BodySrcManager == null)
         {
@@ -106,20 +110,6 @@ public class Measurements : MonoBehaviour
         {
             return;
         }
-
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            scan++;
-
-            if (scan == 1)
-            {
-                beginScanOne = true;
-            }
-            if (scan == 2)
-            {
-                beginScanTwo = true;
-            }
-        }*/
 
 		if (startScanning)
 		{
@@ -182,10 +172,12 @@ public class Measurements : MonoBehaviour
                 var finalLeg = averageValues(legCalculations);
                 var finalArm = averageValues(armCalculations);
 
-                Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
-                Debug.Log("INCHES | Height: " + CmToInches(finalHeight) + "\nLeg Length: " + CmToInches(finalLeg) + "\nArm Length: " + CmToInches(finalArm));
+                Debug.Log("\n");
 
-                //data.height = CmToInches(finalHeight);
+                Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
+                //Debug.Log("INCHES | Height: " + CmToInches(finalHeight) + "\nLeg Length: " + CmToInches(finalLeg) + "\nArm Length: " + CmToInches(finalArm));
+
+                bodyData.Height = CmToInches(finalHeight);
 
                 scanOneDone = true;
             }
@@ -232,12 +224,19 @@ public class Measurements : MonoBehaviour
 
             if (y >= SCAN_LENGTH)
             {
-
+                Debug.Log("\n\n");
                 Debug.Log("CENTIMETERS | Hip: " + hipCalculation);
+                //Debug.Log("INCHES | Hip: " + CmToInches(hipCalculation));
+                
+                Debug.Log("\n");
+                
                 Debug.Log("CENTIMETERS | Bust: " + bustCalculation);
+                //Debug.Log("INCHES | Bust: " + CmToInches(bustCalculation));
 
-                Debug.Log("INCHES | Hip: " + CmToInches(hipCalculation));
-                Debug.Log("INCHES | Bust: " + CmToInches(bustCalculation));
+                Debug.Log("\n");
+
+                //Debug.Log("CENTIMETERS | Neck: " + neckCalculation);
+                //Debug.Log("INCHES | Neck: " + CmToInches(neckCalculation));
 
                 //data.hip = CmToInches(hipCalculation);
                 //data.bust = CmToInches(bustCalculation);
@@ -274,6 +273,7 @@ public class Measurements : MonoBehaviour
 
         hipFront = EllipseRadius(hip, hipRight, hipLeft, "Hip front");
         bustFront = EllipseRadius(waist, "Bust front");
+        //neckFront = EllipseRadius(neck, "Neck front");
 
         heightCalculations.Add(height);
         legCalculations.Add(legLength);
@@ -310,6 +310,9 @@ public class Measurements : MonoBehaviour
 
         bustSide = EllipseRadius(waist, "Bust side");
         bustCalculation = EllipseCircumference((float)bustFront, (float)bustSide) * 100;
+
+        //neckSide = EllipseRadius(neck, "Neck side");
+        //neckCalculation = EllipseCircumference((float)neckFront, (float)neckSide) * 100;
     }
 
     private double BodyHeight(params Kinect.Joint[] joints)
@@ -352,7 +355,7 @@ public class Measurements : MonoBehaviour
 
     private float EllipseRadius(Kinect.Joint middle, Kinect.Joint left, Kinect.Joint right, string measurement)
     {
-        bool debug = true;
+        bool debug = false;
 
         Kinect.DepthSpacePoint centreDepthPoint = bodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(middle.Position);
         Kinect.DepthSpacePoint rightDepthPoint = centreDepthPoint;
@@ -444,7 +447,7 @@ public class Measurements : MonoBehaviour
 
     private float EllipseRadius(Kinect.Joint middle, string measurement)
     {
-        bool debug = true;
+        bool debug = false;
 
         Kinect.DepthSpacePoint centreDepthPoint = bodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(middle.Position);
         Kinect.DepthSpacePoint centreDepthNew = centreDepthPoint;
@@ -494,8 +497,6 @@ public class Measurements : MonoBehaviour
             Debug.LogError(measurement + " both depths 0");
         } else if (depthAThl != 0 && depthAThr != 0)
         {
-            Debug.Log("Neither 0");
-
             Kinect.CameraSpacePoint leftCameraSpace = depthManager._Sensor.CoordinateMapper.MapDepthPointToCameraSpace(leftDepthPoint, depthAThl);
             leftCameraSpace.Z = middle.Position.Z;
             leftCameraSpace.Y = middle.Position.Y;
@@ -511,7 +512,6 @@ public class Measurements : MonoBehaviour
 
             if (depthATC == 0)
             {
-                Debug.LogError("Depth at centre 0");
                 leftDistance = Length(leftCameraSpace, middle.Position);
                 rightDistance = Length(rightCameraSpace, middle.Position);
             }
@@ -519,8 +519,12 @@ public class Measurements : MonoBehaviour
             {
                 Kinect.CameraSpacePoint csCentreDepthNew = depthManager._Sensor.CoordinateMapper.MapDepthPointToCameraSpace(centreDepthNew, depthATC);
 
-                Debug.Log("Original Camera Space Point Centre | x: " + middle.Position.X + " y: " + middle.Position.Y + " z: " + middle.Position.Z);
-                Debug.Log("New Camera Space Point Centre | x: " + csCentreDepthNew.X + " y: " + csCentreDepthNew.Y + " z: " + csCentreDepthNew.Z);
+                if (debug)
+                {
+                    Debug.Log("Original Camera Space Point Centre | x: " + middle.Position.X + " y: " + middle.Position.Y + " z: " + middle.Position.Z);
+                    Debug.Log("New Camera Space Point Centre | x: " + csCentreDepthNew.X + " y: " + csCentreDepthNew.Y + " z: " + csCentreDepthNew.Z);
+                }
+               
                 csCentreDepthNew.Z = middle.Position.Z;
                 csCentreDepthNew.Y = middle.Position.Y;
 
@@ -529,10 +533,10 @@ public class Measurements : MonoBehaviour
             }
 
 
-            if (Mathf.Abs(leftDistance - rightDistance) > 0.20)
+            /*if (Mathf.Abs(leftDistance - rightDistance) > 0.20)
             {
                 Debug.LogError("Something is off");
-            }
+            }*/
 
             if (leftDistance > rightDistance)
             {
@@ -547,9 +551,8 @@ public class Measurements : MonoBehaviour
             if (debug)
             {
                 Debug.Log(measurement + " " + leftDistance + "(left)");
+                Debug.Log("\n");
             }
-
-            Debug.Log("\n");
 
             return leftDistance;
 

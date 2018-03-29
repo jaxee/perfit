@@ -14,4 +14,5 @@ public class LoadModel : MonoBehaviour {
         target.sharedMesh = model.mesh;
         //target.material = model.skin; 
 	}
+
 }

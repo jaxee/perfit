@@ -26,8 +26,9 @@ public class StateManager : MonoBehaviour
 
 		data.Bust = 5f; 
 		data.Waist = 32f;
+        data.Height = 70f;
 
-		bodyData.Save ("bodyScan", data);
+        bodyData.Save ("bodyScan", data);
 
         yield return StartCoroutine(loadSetScene(startingSceneName));
         StartCoroutine(fade(0f));

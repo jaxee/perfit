@@ -51,11 +51,14 @@ public class SaveManager: ResettableScriptableObject
 
 
 	public DataList<BodyscanSave.Body> bodyDataList = new DataList<BodyscanSave.Body> ();
+    public DataList<ModelSave.Model> modelDataList = new DataList<ModelSave.Model>();
 
-	public override void Reset ()
+    public override void Reset ()
 	{
 		bodyDataList.Clear ();
-	}
+        modelDataList.Clear ();
+
+    }
 
 	private void Save<T>(DataList<T> lists, string key, T value)
 	{
@@ -77,4 +80,14 @@ public class SaveManager: ResettableScriptableObject
 	{//load file
 		return Load(bodyDataList, fileName, ref input);
 	}
+
+    public void Save(String fileName, ModelSave.Model input)
+    {//save file
+        Save(modelDataList, fileName, input);
+    }
+    public bool Load(String fileName, ref ModelSave.Model input)
+    {//load file
+        return Load(modelDataList, fileName, ref input);
+    }
+
 }

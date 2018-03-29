@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour {
         Reset(secondaryMenu);
         Reset(msgModule);
     }
-    private void Reset(GameObject module)
+    public void Reset(GameObject module)
     {
         module.SetActive(false);
     }

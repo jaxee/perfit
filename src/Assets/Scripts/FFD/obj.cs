@@ -63,20 +63,24 @@ private float tmpSUT = 0;
 private float tmpSTU = 0;
 
 private BodyscanSave bodyData;
-
+private ModelSave modelData; 
 
 private void Start()
 {
 		bodyData = FindObjectOfType<BodyscanSave> ();
-		sm = FindObjectOfType<SaveManager>();
+        modelData = FindObjectOfType<ModelSave>(); 
+        sm = FindObjectOfType<SaveManager>();
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
         ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
-        //saveProfile();
         BuildLattice();
-}
+
+        Deform();
+        updateMesh = false;
+        gameObject.SetActive(false);
+    }
 
 private void Update()
 {
@@ -201,6 +205,8 @@ void MeshUpdate(Vector3[] vertices)
         target.sharedMesh.vertices = vertices;
         target.sharedMesh.RecalculateBounds();
         target.sharedMesh.RecalculateNormals();
+
+        modelData.mesh = target.sharedMesh;
 }
 
 void adjust(float measurement,string section)

@@ -25126,6 +25126,64 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1752107225}
+--- !u!1 &1756986872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1756986875}
+  - component: {fileID: 1756986874}
+  - component: {fileID: 1756986873}
+  m_Layer: 0
+  m_Name: AutoloadModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1756986873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756986872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6139bcd5a2fde0f4b83ced2e81e76b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveManager: {fileID: 11400000, guid: ced94f3e09510b54193860ed5b759b3d, type: 2}
+  file: modelData
+  skin: {fileID: 2100000, guid: 6728027517fd249a38d262cbf75e4e8b, type: 3}
+  mesh: {fileID: 2014860095}
+--- !u!114 &1756986874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756986872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77e647fa7f80264480ae81cced1c3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 0}
+  target: {fileID: 2014860095}
+--- !u!4 &1756986875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756986872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 302.6484, y: 791.4016, z: 35.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1771278828
 GameObject:
   m_ObjectHideFlags: 0
@@ -28110,6 +28168,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47508620a2d4d4349a8a0b14b24dd7de, type: 2}
   m_IsPrefabParent: 0
+--- !u!137 &2014860095 stripped
+SkinnedMeshRenderer:
+  m_PrefabParentObject: {fileID: 137697104776524952, guid: 47508620a2d4d4349a8a0b14b24dd7de,
+    type: 2}
+  m_PrefabInternal: {fileID: 2014860094}
 --- !u!1 &2035755422
 GameObject:
   m_ObjectHideFlags: 0

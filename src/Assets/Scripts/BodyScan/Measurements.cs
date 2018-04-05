@@ -392,8 +392,8 @@ public class Measurements : MonoBehaviour
             Debug.Log(measurement + " centre depth point: (" + centreDepthPoint.X + ", " + centreDepthPoint.Y + ")");
         }
 
-        ushort depthAThl = depthData[(int)leftDepthPoint.Y * (512 + ((int)leftDepthPoint.X))];
-        ushort depthAThr = depthData[(int)rightDepthPoint.Y * (512 + ((int)rightDepthPoint.X))];
+        ushort depthAThl = depthData[(int)leftDepthPoint.Y * (511 + ((int)leftDepthPoint.X))];
+        ushort depthAThr = depthData[(int)rightDepthPoint.Y * (511 + ((int)rightDepthPoint.X))];
 
         if (depthAThl == 0 && depthAThr == 0)
         {
@@ -489,8 +489,8 @@ public class Measurements : MonoBehaviour
             Debug.Log(measurement + " new centre depth point: ( " + centreDepthNew.X + ", " + centreDepthNew.Y + ")");
         }
 
-        ushort depthAThl = depthData[(int)leftDepthPoint.Y * (512 + ((int)leftDepthPoint.X))];
-        ushort depthAThr = depthData[(int)rightDepthPoint.Y * (512 + ((int)rightDepthPoint.X))];
+        ushort depthAThl = depthData[(int)leftDepthPoint.Y * (511 + ((int)leftDepthPoint.X))];
+        ushort depthAThr = depthData[(int)rightDepthPoint.Y * (511 + ((int)rightDepthPoint.X))];
 
         if (depthAThl == 0 && depthAThr == 0)
         {
@@ -505,7 +505,7 @@ public class Measurements : MonoBehaviour
             rightCameraSpace.Z = middle.Position.Z;
             rightCameraSpace.Y = middle.Position.Y;
 
-            ushort depthATC = depthData[(int)centreDepthNew.Y * (512 + ((int)centreDepthNew.X))];
+            ushort depthATC = depthData[(int)centreDepthNew.Y * (511 + ((int)centreDepthNew.X))];
 
             float leftDistance = 0;
             float rightDistance = 0;

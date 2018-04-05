@@ -64,9 +64,10 @@ private float tmpSUT = 0;
 private float tmpSTU = 0;
 
 private BodyscanSave bodyData;
-private ModelSave modelData; 
+private ModelSave modelData;
 
-private void Start()
+
+    private void Start()
 {
 		bodyData = FindObjectOfType<BodyscanSave> ();
         sm = FindObjectOfType<SaveManager>();
@@ -76,7 +77,8 @@ private void Start()
         ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
         BuildLattice();
-        StartCoroutine(applyFFD());
+        GameObject.FindObjectOfType<ParticleSystem>().Play();
+        StartCoroutine(applyFX());
     }
 
 private void Update()
@@ -261,20 +263,26 @@ void adjust(float measurement,string section)
         }
 }
 
-void loadProfile(){
+    void loadProfile(){
 		adjust(bodyData.Bust, "chest");
 		adjust(bodyData.Waist, "hips");
         adjust(bodyData.Height, "height");
     }
 
     private IEnumerator applyFFD() {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForFixedUpdate();
         Deform();
         updateMesh = false;
-        GameObject.FindObjectOfType<ParticleSystem>().Stop();
         gameObject.SetActive(false);
- 
-
     }
+
+    private IEnumerator applyFX() {
+        StartCoroutine(applyFFD());
+        yield return new WaitForSeconds(2);
+        GameObject.FindObjectOfType<ParticleSystem>().Stop();
+    }
+
+
+
 
 }//-end-of-script

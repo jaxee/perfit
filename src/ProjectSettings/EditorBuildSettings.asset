@@ -39,8 +39,8 @@ EditorBuildSettings:
     path: Assets/final/scenes/_customPage.unity
     guid: d11fb80075886344aae5952c4f8df00a
   - enabled: 1
-    path: Assets/final/scenes/_bodyScanPageOld.unity
-    guid: 72e6b8f4678692a479936a7de203434c
-  - enabled: 1
     path: Assets/final/scenes/_bodyScanPage.unity
-    guid: 69bc16f62da8a1344b90440f1a676926
+    guid: 72e6b8f4678692a479936a7de203434c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000

@@ -250,26 +250,58 @@ public class AttachClothing : MonoBehaviour
 
 		//BODY SPECIFIC COLLIDERS.. modified at different ratios. 
 		tummycolliders = new CapsuleCollider[2];
-		tummycolliders [0] = GameObject.Find ("QuickRigCharacter3_Spine").GetComponent<CapsuleCollider> ();
-		tummycolliders [1] = GameObject.Find ("QuickRigCharacter3_Spine1").GetComponent<CapsuleCollider> ();
+		tummycolliders [0] = GameObject.Find ("QuickRigCharacter3_Spine").GetComponent<CapsuleCollider> (); //tummy
+		tummycolliders [1] = GameObject.Find ("QuickRigCharacter3_Spine1").GetComponent<CapsuleCollider> (); //tummy
 	
 		hipscolliders = new CapsuleCollider[10];
 		hipscolliders [0] = GameObject.Find ("QuickRigCharacter3_Hips_J").GetComponent<CapsuleCollider> ();
 		hipscolliders [1] = GameObject.Find ("QuickRigCharacter3_RightSide_J").GetComponent<CapsuleCollider> ();
-
+		hipscolliders [2] = GameObject.Find ("QuickRigCharacter3_Rbutt_J").GetComponent<CapsuleCollider> (); //hips
+		hipscolliders [3] = GameObject.Find ("QuickRigCharacter3_Lbutt_J").GetComponent<CapsuleCollider> (); //hips
+		hipscolliders [4] = GameObject.Find ("QuickRigCharacter3_Hips").GetComponent<CapsuleCollider> (); //hips
+		hipscolliders [5] = GameObject.Find ("QuickRigCharacter3_LeftSide_J").GetComponent<CapsuleCollider> (); //hips
+		hipscolliders [6] = GameObject.Find ("QuickRigCharacter3_HipsCenter_J").GetComponent<CapsuleCollider> (); //hips
+		hipscolliders [7] = GameObject.Find ("QuickRigCharacter3_Rear_J").GetComponent<CapsuleCollider> (); //hips
+		hipscolliders [8] = GameObject.Find ("QuickRigCharacter3_Rear2_J").GetComponent<CapsuleCollider> (); //hips
+		hipscolliders [9] = GameObject.Find ("QuickRigCharacter3_Rear3_J").GetComponent<CapsuleCollider> (); //hips
 
 		legscolliders = new CapsuleCollider[10];
+		legscolliders [0] = GameObject.Find ("QuickRigCharacter3_LeftUpLeg").GetComponent<CapsuleCollider> ();  //legs
+		legscolliders [1] = GameObject.Find ("QuickRigCharacter3_RightUpLeg").GetComponent<CapsuleCollider> (); //legs
+		legscolliders [2] = GameObject.Find ("QuickRigCharacter3_LeftLeg").GetComponent<CapsuleCollider> (); //legs
+		legscolliders [3] = GameObject.Find ("QuickRigCharacter3_RightLeg").GetComponent<CapsuleCollider> (); //legs
+		legscolliders [4] = GameObject.Find ("QuickRigCharacter3_LeftUpLeg_J").GetComponent<CapsuleCollider> (); //legs
+		legscolliders [5] = GameObject.Find ("QuickRigCharacter3_RightUpLeg_J").GetComponent<CapsuleCollider> (); //legs
+		legscolliders [6] = GameObject.Find ("QuickRigCharacter3_LeftKnee2_J").GetComponent<CapsuleCollider> (); //legs
+		legscolliders [7] = GameObject.Find ("QuickRigCharacter3_RightKnee_J").GetComponent<CapsuleCollider> (); //legs
+		legscolliders [8] = GameObject.Find ("QuickRigCharacter3_LeftKnee_J").GetComponent<CapsuleCollider> (); //legs
+		legscolliders [9] = GameObject.Find ("QuickRigCharacter3_RightKnee2_J").GetComponent<CapsuleCollider> (); //legs
 
 
-		//Ratio *= 
-//
-//		for (int i = 0; i < hipscolliders.length; i++) {
-//			hipscolliders [i] *= 1.2; //ratio
-//		 		
-//		}
+		//FFDColliders();
 
 		return ClothingModel;
     }
+
+	public void FFDColliders (float hipsRatio, float tummyRatio, float legsRatio ) {
+
+		for (int i = 0; i < hipscolliders.Length; i++) {
+				
+			hipscolliders [i].radius *= hipsRatio; //ratio
+					 		
+		}
+		for (int i = 0; i < tummycolliders.Length; i++) {
+
+			tummycolliders [i].radius  *= tummyRatio; //ratio
+
+		}
+		for (int i = 0; i < legscolliders.Length; i++) {
+
+			legscolliders [i].radius *= legsRatio; //ratio
+
+		}
+
+	}
 
 	private IEnumerator DestroyClothing()
 	{

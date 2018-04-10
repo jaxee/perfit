@@ -20,6 +20,12 @@ public class DepthSourceManager : MonoBehaviour
         return _Texture;
     }
 
+    private int _HeightOfFrame;
+    public int GetHeightOfFrame()
+    {
+        return _HeightOfFrame;
+    }
+
     void Start () 
     {
         /*_Sensor = KinectSensor.GetDefault();
@@ -44,6 +50,8 @@ public class DepthSourceManager : MonoBehaviour
 
 			_RawData = new byte[_Sensor.DepthFrameSource.FrameDescription.LengthInPixels * 3];
 			_Texture = new Texture2D (_Sensor.DepthFrameSource.FrameDescription.Width, _Sensor.DepthFrameSource.FrameDescription.Height, TextureFormat.RGB24, false);
+
+            _HeightOfFrame = _Sensor.DepthFrameSource.FrameDescription.Height;
 		} else {
 			Debug.LogError ("Kinect not found - Please check connection");
 		}

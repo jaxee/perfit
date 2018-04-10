@@ -123,7 +123,11 @@ public class AttachClothing : MonoBehaviour
         clothing = (GameObject)GameObject.Instantiate(clothing);
 
 		clothing.transform.eulerAngles = new Vector3 (0, -180, 0);
-		//clothScript.GenerateCloth (clothing);
+
+		//CHANGE HEIGHT before skinning is done. luk
+		float heightRatio;
+		//clothing.transform.position = new Vector3 (0, clothing.transform.position.y + heightRatio, 0);
+
 
         wornClothing = AttachModels(clothing, avatar);
         return wornClothing;
@@ -157,11 +161,11 @@ public class AttachClothing : MonoBehaviour
 		float PIN_CONSTANT = 3;
 
 
-//        //applying ffds
-//        model = FindObjectOfType<ModelSave>();
-//        target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
-//		target.sharedMesh = model.mesh;
-//		target.material = model.skin; 
+        //applying ffds
+        model = FindObjectOfType<ModelSave>();
+        target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
+		target.sharedMesh = model.mesh;
+		target.material = model.skin; 
 
 		GameObject finalProduct;
 		Cloth clothComponent;
@@ -277,13 +281,15 @@ public class AttachClothing : MonoBehaviour
 		legscolliders [8] = GameObject.Find ("QuickRigCharacter3_LeftKnee_J").GetComponent<CapsuleCollider> (); //legs
 		legscolliders [9] = GameObject.Find ("QuickRigCharacter3_RightKnee2_J").GetComponent<CapsuleCollider> (); //legs
 
-
-		//FFDColliders();
+		//luk
+		//FFDColliders(ratio1,ratio2,ratio3);
 
 		return ClothingModel;
     }
 
 	public void FFDColliders (float hipsRatio, float tummyRatio, float legsRatio ) {
+
+		//luk
 
 		for (int i = 0; i < hipscolliders.Length; i++) {
 				

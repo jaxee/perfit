@@ -65,10 +65,12 @@ private float tmpSTU = 0;
 
 private BodyscanSave bodyData;
 private ModelSave modelData;
+private Sizing sizing; 
 
 
     private void Start()
 {
+        sizing = new Sizing(); 
 		bodyData = FindObjectOfType<BodyscanSave> ();
         sm = FindObjectOfType<SaveManager>();
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
@@ -105,9 +107,9 @@ void SetOrigin()
         //get max and min of 3d model vertices
         Vector3 min = new Vector3 (Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
         Vector3 max = new Vector3 (-Mathf.Infinity,-Mathf.Infinity,-Mathf.Infinity);
-        foreach (Vector3 v in clone.vertices) {//loop through all points and find max vertice and min vertice
-                max = Vector3.Max(v,max);
-                min = Vector3.Min(v,min);
+        for (int i = 0; i < clone.vertices.Length; i++) {//loop through all points and find max vertice and min vertice
+                max = Vector3.Max(clone.vertices[i],max);
+                min = Vector3.Min(clone.vertices[i],min);
         }
 
         S  = new Vector3(max.x-min.x, 0.0f, 0.0f);
@@ -211,12 +213,6 @@ void MeshUpdate(Vector3[] vertices)
 void adjust(float measurement,string section)
 {    //take values and move respective ctrl points
 
-        //CapsuleCollider hipCol      = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();
-
         if (section == "hips") {
                 Vector3 adjA = new Vector3(measurement * 0.10f, 0,0);
                 foreach (string hip in leftHip) {
@@ -264,9 +260,9 @@ void adjust(float measurement,string section)
 }
 
     void loadProfile(){
-		adjust(bodyData.Bust, "chest");
-		adjust(bodyData.Waist, "hips");
-        adjust(bodyData.Height, "height");
+        adjust(sizing.ConvertInput(1,bodyData.Height), "height");
+        adjust(sizing.ConvertInput(2,bodyData.Bust),"bust");
+		adjust(sizing.ConvertInput(3, bodyData.Waist), "hips");
     }
 
     private IEnumerator applyFFD() {

@@ -1,0 +1,107 @@
+newmtl blinn1SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl large_blueDress_noinside_resize:Material4956
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5020
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5081
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5198
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5255
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5332
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5407
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5498
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5555
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl large_blueDress_noinside_resize:Material5612
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

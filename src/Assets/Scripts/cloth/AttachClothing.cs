@@ -25,11 +25,19 @@ public class AttachClothing : MonoBehaviour
 	public List<ClothingItem> wornItems = new List<ClothingItem>();
     //ints
     private int totalSlots;
+    private BodyscanSave bodyData;
+    private Sizing sizing;
     #endregion
 
     #region Monobehaviour
 
-	public void OnStart () {
+    private void Start()
+    {
+        bodyData = FindObjectOfType<BodyscanSave>();
+        sizing = new Sizing();
+    }
+
+    public void OnStart () {
         avatar = GameObject.Find ("UNITY_FEMALE");
 		black = new Color (255, 255, 255);
     }
@@ -125,7 +133,8 @@ public class AttachClothing : MonoBehaviour
 		clothing.transform.eulerAngles = new Vector3 (0, -180, 0);
 
 		//CHANGE HEIGHT before skinning is done. luk
-		float heightRatio;
+		//float heightRatio = sizing.ConvertInput(1, bodyData.Height)*0.01f;
+       // Debug.Log(heightRatio);
 		//clothing.transform.position = new Vector3 (0, clothing.transform.position.y + heightRatio, 0);
 
 

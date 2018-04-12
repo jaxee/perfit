@@ -68,10 +68,10 @@ private ModelSave modelData;
 private Sizing sizing; 
 
 
-    private void Start()
+private void Start()
 {
-        sizing = new Sizing(); 
 		bodyData = FindObjectOfType<BodyscanSave> ();
+        sizing = new Sizing();
         sm = FindObjectOfType<SaveManager>();
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
@@ -227,7 +227,7 @@ void adjust(float measurement,string section)
                 }
                 //hipCol.radius += 2 * 0.10f;
         }
-        if (section == "butt") {
+        if (section == "waist") {
                 Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
                 GameObject tmp = GameObject.Find(butt);
                 tmp.transform.position -= adjustment;
@@ -238,7 +238,7 @@ void adjust(float measurement,string section)
                 GameObject tmp = GameObject.Find(stomach);
                 tmp.transform.position += adjustment;
         }
-        if (section == "chest")
+        if (section == "bust")
         {
                 Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
                 GameObject tmp = GameObject.Find(chest);
@@ -260,12 +260,15 @@ void adjust(float measurement,string section)
 }
 
     void loadProfile(){
-        //      adjust(sizing.ConvertInput(1,bodyData.Height), "height");
-        //      adjust(sizing.ConvertInput(2,bodyData.Bust),"bust");
-        //adjust(sizing.ConvertInput(3, bodyData.Waist), "hips");
-        adjust(bodyData.Height, "height");
-        adjust(bodyData.Bust, "bust");
-        adjust(bodyData.Waist, "hips");
+        adjust(sizing.ConvertInput(1, bodyData.Height), "height");
+        adjust(sizing.ConvertInput(2, bodyData.Bust), "bust");
+        adjust(sizing.ConvertInput(3, bodyData.Waist), "hips");
+        adjust(sizing.ConvertInput(4, bodyData.Hip), "waist");
+
+        Debug.Log(bodyData.Bust);
+
+        float[] sizes = new float[] { bodyData.Bust,bodyData.Hip,bodyData.Waist };
+        Debug.Log(sizing.RecommendedFit(sizes));
     }
 
     private IEnumerator applyFFD() {

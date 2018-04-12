@@ -40,9 +40,9 @@ public class Interface : MonoBehaviour, IPointerClickHandler
         	changeClothesScript = humanObject.GetComponent<ChangeClothes>();
 
 			//Reference to the equipment script to use functions
-        	attachScript = humanObject.GetComponent<AttachClothing>(); 
-			//AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
-		}
+        	attachScript = humanObject.GetComponent<AttachClothing>();
+            //AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
+        }
     }
 
 	private void Update (){
@@ -53,7 +53,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-		if (gameObject.name == "Dress1") {
+        if (gameObject.name == "Dress1") {
 			Debug.Log ("Dress 1");
 
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");

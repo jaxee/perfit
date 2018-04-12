@@ -5,25 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/beta/HomePage.unity
     guid: 24ac711d4db811549bdd20e786664e89
-  - enabled: 1
+  - enabled: 0
     path: Assets/beta/SettingsPage.unity
     guid: bde2ca1d118e54057a452d434932f6b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/beta/HomePage-signedOut.unity
     guid: dcad6bbbe9430429db5bb7c97e733d67
-  - enabled: 1
+  - enabled: 0
     path: Assets/beta/BodySettingsPage.unity
     guid: 3521c373b569b4a84bb2ce05145e4493
-  - enabled: 1
+  - enabled: 0
     path: Assets/beta/Measurements.unity
     guid: 711353ed8e2f9d244981b51cecbd2ebb
-  - enabled: 1
+  - enabled: 0
     path: Assets/beta/WomensPage.unity
     guid: e892a25812c0c432785fbca9ad0ea8dd
-  - enabled: 1
+  - enabled: 0
     path: Assets/beta/BodyScanPage.unity
     guid: 3506958f073be7e428e584f8e709968b
   - enabled: 1
@@ -41,6 +41,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/final/scenes/_bodyScanPage.unity
     guid: 72e6b8f4678692a479936a7de203434c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000

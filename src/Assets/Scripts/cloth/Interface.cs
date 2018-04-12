@@ -9,6 +9,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
     private ChangeClothes changeClothesScript; //Reference to the change Item script
     private AttachClothing attachScript; //Reference 
     private Text textChild;  //Their text lol can prob delete this l8r
+	public string modelSize; // s,m,l
 
 	//animation stuff 
 	//https://www.youtube.com/watch?v=4Rc3dlERSWg
@@ -27,7 +28,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
 
-	
+		modelSize = "s";
 		activePos = 0; // nothing
 		//anim.SetInteger("Pose", activePos); 
 
@@ -50,106 +51,58 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
 	}
 
+	public void setClothingSizes(string inputSize){
+		modelSize = inputSize;
+	}
+
 
     public void OnPointerClick(PointerEventData eventData)
+
     {
+		string size = modelSize; //update this luk
+
         if (gameObject.name == "Dress1") {
 			Debug.Log ("Dress 1");
-
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-			//humanObject.transform.rotation = Quaternion.identity;
-			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
+			AddOrRemoveClothes ("naked", "Dress", "dress01_" + modelSize, 0);
+
 		} else if (gameObject.name == "Dress2") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
 			Debug.Log ("Dress 2");
-			//humanObject.transform.rotation = Quaternion.identity;
+			AddOrRemoveClothes ("naked", "Dress", "dress02_"+ modelSize, 0);
 
-			AddOrRemoveClothes ("naked", "Dress", "dress02", 0);
 		} else if (gameObject.name == "Dress3") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
 			Debug.Log ("Dress 3");
-			//humanObject.transform.rotation = Quaternion.identity;
+			AddOrRemoveClothes ("naked", "Dress", "dress03_" + modelSize, 0);
 
-			AddOrRemoveClothes ("naked", "Dress", "dress03", 0);
 		} else if (gameObject.name == "Dress4") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
 			Debug.Log ("Dress 4");
-			//humanObject.transform.rotation = Quaternion.identity;
-
-			AddOrRemoveClothes ("naked", "Dress", "dress04", 0);
+			AddOrRemoveClothes ("naked", "Dress", "dress04_" + modelSize, 0);
 
 		} else if (gameObject.name == "Dress5") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
 			Debug.Log ("Dress 5");
-			//humanObject.transform.rotation = Quaternion.identity;
-
-			AddOrRemoveClothes ("naked", "Dress", "dress05", 0);
-
+			AddOrRemoveClothes ("naked", "Dress", "dress05_" + modelSize, 0);
 		}
 		else if (gameObject.name == "Dress6") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
 			Debug.Log ("Dress 6");
-			//humanObject.transform.rotation = Quaternion.identity;
-
-			AddOrRemoveClothes ("naked", "Dress", "dress06", 0);
-
+			AddOrRemoveClothes ("naked", "Dress", "dress06_" + modelSize, 0);
 		}
 		else if (gameObject.name == "Dress7") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
 			Debug.Log ("Dress 7");
-			//humanObject.transform.rotation = Quaternion.identity;
-
-			AddOrRemoveClothes ("naked", "Dress", "dress07", 0);
-
+			AddOrRemoveClothes ("naked", "Dress", "dress07_" + modelSize, 0);
 		}
 		else if (gameObject.name == "Dress8") {
 			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
 			Debug.Log ("Dress 8");
-			//humanObject.transform.rotation = Quaternion.identity;
-
-			AddOrRemoveClothes ("naked", "Dress", "dress08", 0);
+			AddOrRemoveClothes ("naked", "Dress", "dress08_" + modelSize, 0);
 
 		}
-
-		else if (gameObject.name == "dress1s") {
-			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
-			Debug.Log ("Dress 1s");
-			//humanObject.transform.rotation = Quaternion.identity;
-
-			AddOrRemoveClothes ("naked", "Dress", "dress01", 0);
-
-		}
-		else if (gameObject.name == "dress1m") {
-			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
-			Debug.Log ("Dress 1m");
-			//humanObject.transform.rotation = Quaternion.identity;
-
-			AddOrRemoveClothes ("naked", "Dress", "dress01m", 0);
-
-		}
-		else if (gameObject.name == "dress1l") {
-			changeClothesScript.RemoveClothingItem ("Dress", "abc");
-
-			Debug.Log ("Dress 1l");
-			//humanObject.transform.rotation = Quaternion.identity;
-
-			AddOrRemoveClothes ("naked", "Dress", "dress01l", 0);
-
-		}
-
-
-
-		//add more
-
+			
 		//https://docs.unity3d.com/ScriptReference/Animation-clip.html
 		//ANIMATION https://unity3d.com/learn/tutorials/topics/animation/animator-scripting
 		else if (gameObject.name == "PoseButton") {

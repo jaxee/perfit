@@ -1,0 +1,97 @@
+newmtl blinn1SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl medium_greenDress_noinside:Material27517
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_greenDress_noinside:Material27629
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_greenDress_noinside:Material27686
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_greenDress_noinside:Material27936
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_greenDress_noinside:Material28179
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_greenDress_noinside:Material28237
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_greenDress_noinside:Material28330
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_greenDress_noinside:Material28387
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_greenDress_noinside:Material28444
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd green.png
+map_Ka green.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

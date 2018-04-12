@@ -1058,6 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b5985f89f62d848ba348253606ef80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelSize: 
   anim: {fileID: 0}
   activePos: 0
 --- !u!114 &594658841

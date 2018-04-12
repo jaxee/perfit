@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ModelSave : Saver
 {
-
+    private GlobalMessage globalMessage;
     public struct Model {
         public string file;
         public Material skin;

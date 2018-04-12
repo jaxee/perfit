@@ -7,7 +7,8 @@ public class BodyscanSave : Saver
 	    public string file;
 	    public float Height;
 	    public float Waist;
-	    public float Bust;
+        public float Hip;
+        public float Bust;
 	};
 
 
@@ -15,7 +16,10 @@ public class BodyscanSave : Saver
 	public string file;
 	public float Height;
 	public float Waist;
-	public float Bust;
+    public float Hip;
+    public float Bust;
+
+    private GlobalMessage globalMessage;
 
 
 	protected override void Save(){
@@ -23,6 +27,7 @@ public class BodyscanSave : Saver
 		data.Height = Height;
 		data.Waist = Waist;
 		data.Bust = Bust;
+        data.Hip = Hip;
 
         saveManager.Save(file, data);
     }
@@ -34,11 +39,13 @@ public class BodyscanSave : Saver
         if (saveManager.Load(file, ref _data))
         {
             Height = _data.Height;
+            Hip = _data.Hip;
             Waist = _data.Waist;
             Bust = _data.Bust;
         }
         else {
             Debug.Log("no saved BodyScan data");
+            //globalMessage.SendMessage("No saved BodyScan data");
         }
     }
 }

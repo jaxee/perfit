@@ -19,8 +19,6 @@ public class BodyscanSave : Saver
     public float Hip;
     public float Bust;
 
-    private GlobalMessage globalMessage;
-
 
 	protected override void Save(){
 		data.file = file;
@@ -45,7 +43,6 @@ public class BodyscanSave : Saver
         }
         else {
             Debug.Log("no saved BodyScan data");
-            //globalMessage.SendMessage("No saved BodyScan data");
         }
     }
 }

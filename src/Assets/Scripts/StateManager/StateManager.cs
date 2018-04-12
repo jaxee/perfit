@@ -27,6 +27,7 @@ public class StateManager : MonoBehaviour
 		data.Bust = 5f; 
 		data.Waist = 32f;
         data.Height = 70f;
+        data.Hip = 32f;
 
         bodyData.Save ("bodyScan", data);
 

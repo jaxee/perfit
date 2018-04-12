@@ -6568,10 +6568,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1626710151}
   - component: {fileID: 1626710150}
-  - component: {fileID: 1626710149}
-  - component: {fileID: 1626710148}
-  - component: {fileID: 1626710147}
-  - component: {fileID: 1626710146}
   m_Layer: 0
   m_Name: Model
   m_TagString: Unit
@@ -6579,65 +6575,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1626710146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114182740758759650, guid: 5694e204f99ba034bbcae8c9411db293,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1626710145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6111383ae292fd04ab27f47f66a9b3dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1626710147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114238579649038096, guid: 5694e204f99ba034bbcae8c9411db293,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1626710145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b5985f89f62d848ba348253606ef80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1626710150}
-  activePos: 0
---- !u!65 &1626710148
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 65195077573277012, guid: 5694e204f99ba034bbcae8c9411db293,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1626710145}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 25, y: 18, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1626710149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114238783575798106, guid: 5694e204f99ba034bbcae8c9411db293,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1626710145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9db0998c1495b444b3043984b63c6c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  avatar: {fileID: 1626710145}
-  ClothingSize: 0
-  wornDress: {fileID: 0}
-  colliders: []
-  addClothScript: {fileID: 0}
-  model: {fileID: 0}
-  target: {fileID: 0}
-  wornItems: []
 --- !u!95 &1626710150
 Animator:
   serializedVersion: 3
@@ -7255,6 +7192,7 @@ MonoBehaviour:
   file: bodyScan
   Height: 70
   Waist: 15
+  Hip: 0
   Bust: 5
 --- !u!4 &1869573646
 Transform:

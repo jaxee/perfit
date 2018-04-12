@@ -107,9 +107,9 @@ void SetOrigin()
         //get max and min of 3d model vertices
         Vector3 min = new Vector3 (Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
         Vector3 max = new Vector3 (-Mathf.Infinity,-Mathf.Infinity,-Mathf.Infinity);
-        for (int i = 0; i < clone.vertices.Length; i++) {//loop through all points and find max vertice and min vertice
-                max = Vector3.Max(clone.vertices[i],max);
-                min = Vector3.Min(clone.vertices[i],min);
+        foreach (Vector3 v in clone.vertices) {//loop through all points and find max vertice and min vertice
+                max = Vector3.Max(v,max);
+                min = Vector3.Min(v,min);
         }
 
         S  = new Vector3(max.x-min.x, 0.0f, 0.0f);
@@ -260,9 +260,12 @@ void adjust(float measurement,string section)
 }
 
     void loadProfile(){
-        adjust(sizing.ConvertInput(1,bodyData.Height), "height");
-        adjust(sizing.ConvertInput(2,bodyData.Bust),"bust");
-		adjust(sizing.ConvertInput(3, bodyData.Waist), "hips");
+        //      adjust(sizing.ConvertInput(1,bodyData.Height), "height");
+        //      adjust(sizing.ConvertInput(2,bodyData.Bust),"bust");
+        //adjust(sizing.ConvertInput(3, bodyData.Waist), "hips");
+        adjust(bodyData.Height, "height");
+        adjust(bodyData.Bust, "bust");
+        adjust(bodyData.Waist, "hips");
     }
 
     private IEnumerator applyFFD() {

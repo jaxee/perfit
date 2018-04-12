@@ -31,7 +31,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 		activePos = 0; // nothing
 		//anim.SetInteger("Pose", activePos); 
 
-		if(GameObject.FindGameObjectWithTag("Unit").gameObject){ 
+		if(GameObject.FindGameObjectWithTag("Unit")){ 
 			anim = GameObject.FindGameObjectWithTag("Unit").GetComponent<Animator>();
 		
        		humanObject = GameObject.FindGameObjectWithTag("Unit").gameObject; //finding the human

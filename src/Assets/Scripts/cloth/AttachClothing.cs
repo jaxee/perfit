@@ -132,9 +132,9 @@ public class AttachClothing : MonoBehaviour
 		clothing.transform.eulerAngles = new Vector3 (0, -180, 0);
 
 		//CHANGE HEIGHT before skinning is done. luk
-		//float heightRatio = sizing.ConvertInput(1, bodyData.Height)*0.01f;
+		float heightRatio = sizing.ConvertInput(1, bodyData.Height)*0.1f;
        // Debug.Log(heightRatio);
-		//clothing.transform.position = new Vector3 (0, clothing.transform.position.y + heightRatio, 0);
+		clothing.transform.position = new Vector3 (0, clothing.transform.position.y + heightRatio, 0);
 
 
         wornClothing = AttachModels(clothing, avatar);

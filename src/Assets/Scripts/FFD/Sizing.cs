@@ -6,12 +6,12 @@ public class Sizing : MonoBehaviour {
     private static float ratio = 0.10f;
 
     //small model base measurements 
-    private static float s_height = 160f;
+    private static float s_height = 64f;
     private static float s_waist = 25f;
     private static float s_hip = 35f;
     private static float s_bust = 33f;
     //large model base measurements
-    private static float l_height = 160f;
+    private static float l_height = 70f;
     private static float l_waist = 25f;
     private static float l_hip = 35f;
     private static float l_bust = 33f;

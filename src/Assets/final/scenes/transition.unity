@@ -1106,7 +1106,7 @@ GameObject:
   - component: {fileID: 628173865}
   - component: {fileID: 628173864}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: Body data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1661,7 +1661,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LOG IN
+  m_Text: 'Profile
+
+'
 --- !u!222 &882770204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2178,7 +2180,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1180494004473720, guid: 47508620a2d4d4349a8a0b14b24dd7de, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47508620a2d4d4349a8a0b14b24dd7de, type: 2}
@@ -2963,7 +2965,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '      Settings'
+  m_Text: '      Body data'
 --- !u!222 &1632212520
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3312,7 +3314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1940679291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3568,7 +3570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2032829310
 RectTransform:
   m_ObjectHideFlags: 0

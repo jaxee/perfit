@@ -15933,6 +15933,7 @@ MonoBehaviour:
   file: modelData
   skin: {fileID: 2100000, guid: 6728027517fd249a38d262cbf75e4e8b, type: 3}
   mesh: {fileID: 2014860095}
+  size: 
 --- !u!114 &1756986874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18347,6 +18348,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 137697104776524952, guid: 47508620a2d4d4349a8a0b14b24dd7de,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca10b6c56f757a54fa073f54dafb6e47, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47508620a2d4d4349a8a0b14b24dd7de, type: 2}
   m_IsPrefabParent: 0

@@ -5,7 +5,7 @@ using Kinect = Windows.Kinect;
 
 using System.IO;
 
-public class Measurements : MonoBehaviour
+public class Measurements_Copy : MonoBehaviour
 {
 
     //SaveManager sm;

@@ -162,10 +162,10 @@ public class AttachClothing : MonoBehaviour
 
 
         //applying ffds
-        model = FindObjectOfType<ModelSave>();
-        target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
-		target.sharedMesh = model.mesh;
-		target.material = model.skin; 
+//        model = FindObjectOfType<ModelSave>();
+//        target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
+//		target.sharedMesh = model.mesh;
+//		target.material = model.skin; 
 
 		GameObject finalProduct;
 		Cloth clothComponent;

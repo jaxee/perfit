@@ -1,0 +1,100 @@
+newmtl medium_loosePaisley:Material155806
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd paisley-01.jpg
+map_Ka paisley-01.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:Material155864
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blueCrochet.jpg
+map_Ka blueCrochet.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:Material155979
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blueCrochet.jpg
+map_Ka blueCrochet.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:Material156093
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blueCrochet.jpg
+map_Ka blueCrochet.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:Material156207
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blueCrochet.jpg
+map_Ka blueCrochet.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:PT_FABRIC_FRONT_181338
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd paisley-01.jpg
+map_Ka paisley-01.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:PT_FABRIC_FRONT_181512
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd paisley-01.jpg
+map_Ka paisley-01.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:PT_FABRIC_FRONT_215883
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd paisley-01.jpg
+map_Ka paisley-01.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:PT_FABRIC_FRONT_216153
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd paisley-01.jpg
+map_Ka paisley-01.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_loosePaisley:PT_FABRIC_FRONT_216872
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd paisley-01.jpg
+map_Ka paisley-01.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

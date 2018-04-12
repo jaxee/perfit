@@ -1058,6 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b5985f89f62d848ba348253606ef80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelSize: 
   anim: {fileID: 0}
   activePos: 0
 --- !u!114 &594658841
@@ -1105,7 +1106,7 @@ GameObject:
   - component: {fileID: 628173865}
   - component: {fileID: 628173864}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: Body data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1660,7 +1661,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LOG IN
+  m_Text: 'Profile
+
+'
 --- !u!222 &882770204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2177,8 +2180,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1180494004473720, guid: 47508620a2d4d4349a8a0b14b24dd7de, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 137697104776524952, guid: 47508620a2d4d4349a8a0b14b24dd7de,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca10b6c56f757a54fa073f54dafb6e47, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47508620a2d4d4349a8a0b14b24dd7de, type: 2}
   m_IsPrefabParent: 0
@@ -2962,7 +2970,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '      Settings'
+  m_Text: '      Body data'
 --- !u!222 &1632212520
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3311,7 +3319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1940679291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3567,7 +3575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2032829310
 RectTransform:
   m_ObjectHideFlags: 0

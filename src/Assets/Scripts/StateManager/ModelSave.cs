@@ -9,11 +9,13 @@ public class ModelSave : Saver
         public string file;
         public Material skin;
         public Mesh mesh;
+        public string size;
     }
 
     public string file;
     public Material skin;
-    public Mesh mesh; 
+    public Mesh mesh;
+    public string size;
 
     protected override void Save()
     {
@@ -21,6 +23,7 @@ public class ModelSave : Saver
         data.file = file;
         data.mesh = mesh;
         data.skin = skin;
+        data.size = size;
 
         saveManager.Save(data.file, data); 
     }
@@ -30,7 +33,8 @@ public class ModelSave : Saver
         Model _model = new Model();
         if (saveManager.Load(file, ref _model)) {
             mesh = _model.mesh;
-            skin = _model.skin; 
+            skin = _model.skin;
+            size = _model.size;
         }
         else
         {

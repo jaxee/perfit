@@ -191,7 +191,12 @@ ModelImporter:
     7400002: POSE_TWO_FINAL
     9500000: //RootNode
     13700000: body
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert5
+    second: {fileID: 2100000, guid: ca10b6c56f757a54fa073f54dafb6e47, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

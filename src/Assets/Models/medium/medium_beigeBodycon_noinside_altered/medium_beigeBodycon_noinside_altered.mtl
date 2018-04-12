@@ -1,0 +1,107 @@
+newmtl blinn1SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl medium_beigeBodycon_noinside:Material335209
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335267
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335324
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335381
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335438
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335507
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335564
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335621
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335678
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_beigeBodycon_noinside:Material335735
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd beige.png
+map_Ka beige.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

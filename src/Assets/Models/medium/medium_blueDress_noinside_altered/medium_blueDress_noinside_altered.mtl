@@ -1,0 +1,107 @@
+newmtl blinn1SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_320694
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_331173
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_331391
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_331727
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_331973
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_332185
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_332860
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_333040
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_333244
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_blueDress_noinside:PT_FABRIC_FRONT_333514
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blue.png
+map_Ka blue.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

@@ -15,7 +15,6 @@ public class AttachClothing : MonoBehaviour
 	public CapsuleCollider[] legscolliders;
 
 
-	public AddCloth addClothScript;
 	private Color black;
 	public ModelSave model;
 	public SkinnedMeshRenderer target; 
@@ -25,11 +24,19 @@ public class AttachClothing : MonoBehaviour
 	public List<ClothingItem> wornItems = new List<ClothingItem>();
     //ints
     private int totalSlots;
+    private BodyscanSave bodyData;
+    private Sizing sizing;
     #endregion
 
     #region Monobehaviour
 
-	public void OnStart () {
+    private void Start()
+    {
+        bodyData = FindObjectOfType<BodyscanSave>();
+        sizing = new Sizing();
+    }
+
+    public void OnStart () {
         avatar = GameObject.Find ("UNITY_FEMALE");
 		black = new Color (255, 255, 255);
     }
@@ -124,9 +131,8 @@ public class AttachClothing : MonoBehaviour
 
 		clothing.transform.eulerAngles = new Vector3 (0, -180, 0);
 
-		//CHANGE HEIGHT before skinning is done. luk
-		float heightRatio;
-		//clothing.transform.position = new Vector3 (0, clothing.transform.position.y + heightRatio, 0);
+		float heightRatio = sizing.ConvertInput(1, bodyData.Height)*0.1f;
+		clothing.transform.position = new Vector3 (0, clothing.transform.position.y + heightRatio, 0);
 
 
         wornClothing = AttachModels(clothing, avatar);
@@ -161,7 +167,7 @@ public class AttachClothing : MonoBehaviour
 		float PIN_CONSTANT = 3;
 
 
-        //applying ffds
+       // applying ffds
         model = FindObjectOfType<ModelSave>();
         target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
 		target.sharedMesh = model.mesh;
@@ -202,7 +208,7 @@ public class AttachClothing : MonoBehaviour
 			float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 			//Debug.Log (dist);
 
-			if (dist > 3) {
+			if (dist > 2) {
 				
 				if (ClothingModel.tag == "sleeved") {
 					//Debug.Log ("HEY");

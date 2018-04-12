@@ -10,9 +10,23 @@ public class LoadModel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         model = FindObjectOfType<ModelSave>();
-        target = GameObject.FindObjectOfType<SkinnedMeshRenderer>();
+        ApplyChange();
+
+    }
+
+    public void ApplyChange() {
+        target = GameObject.FindGameObjectWithTag("Unit").GetComponentInChildren< SkinnedMeshRenderer>();
         target.sharedMesh = model.mesh;
-        target.material = model.skin; 
-	}
+        target.material = model.skin;
+    }
+
+    private void Update()
+    {
+        if (!target)
+        {
+            Debug.Log("new target");
+            ApplyChange();
+        }
+    }
 
 }

@@ -349,7 +349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1184297647748902
 GameObject:
   m_ObjectHideFlags: 1
@@ -3183,7 +3183,9 @@ MonoBehaviour:
   ClothingSize: 0
   wornDress: {fileID: 0}
   colliders: []
-  addClothScript: {fileID: 0}
+  tummycolliders: []
+  hipscolliders: []
+  legscolliders: []
   model: {fileID: 0}
   target: {fileID: 0}
   wornItems: []

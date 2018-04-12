@@ -65,11 +65,13 @@ private float tmpSTU = 0;
 
 private BodyscanSave bodyData;
 private ModelSave modelData;
+private Sizing sizing; 
 
 
-    private void Start()
+private void Start()
 {
 		bodyData = FindObjectOfType<BodyscanSave> ();
+        sizing = new Sizing();
         sm = FindObjectOfType<SaveManager>();
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
@@ -211,12 +213,6 @@ void MeshUpdate(Vector3[] vertices)
 void adjust(float measurement,string section)
 {    //take values and move respective ctrl points
 
-        //CapsuleCollider hipCol      = GameObject.Find ("QuickRigCharacter_Hips").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider rbuttCol    = GameObject.Find ("QuickRigCharacter_Rbutt_J").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider lbuttCol    = GameObject.Find ("QuickRigCharacter_Lbutt_J").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider bustACol    = GameObject.Find ("QuickRigCharacter_Spine1").GetComponent<CapsuleCollider> ();
-        //CapsuleCollider bustBCol    = GameObject.Find ("QuickRigCharacter_Spine").GetComponent<CapsuleCollider>();
-
         if (section == "hips") {
                 Vector3 adjA = new Vector3(measurement * 0.10f, 0,0);
                 foreach (string hip in leftHip) {
@@ -231,7 +227,7 @@ void adjust(float measurement,string section)
                 }
                 //hipCol.radius += 2 * 0.10f;
         }
-        if (section == "butt") {
+        if (section == "waist") {
                 Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
                 GameObject tmp = GameObject.Find(butt);
                 tmp.transform.position -= adjustment;
@@ -242,7 +238,7 @@ void adjust(float measurement,string section)
                 GameObject tmp = GameObject.Find(stomach);
                 tmp.transform.position += adjustment;
         }
-        if (section == "chest")
+        if (section == "bust")
         {
                 Vector3 adjustment = new Vector3(0, 0, measurement * 0.10f);
                 GameObject tmp = GameObject.Find(chest);
@@ -264,9 +260,15 @@ void adjust(float measurement,string section)
 }
 
     void loadProfile(){
-		adjust(bodyData.Bust, "chest");
-		adjust(bodyData.Waist, "hips");
-        adjust(bodyData.Height, "height");
+        adjust(sizing.ConvertInput(1, bodyData.Height), "height");
+        adjust(sizing.ConvertInput(2, bodyData.Bust), "bust");
+        adjust(sizing.ConvertInput(3, bodyData.Waist), "hips");
+        adjust(sizing.ConvertInput(4, bodyData.Hip), "waist");
+
+        float[] sizes = new float[] { bodyData.Bust,bodyData.Hip,bodyData.Waist };
+        Debug.Log(sizing.RecommendedFit(sizes));
+        ModelSave modelSave = FindObjectOfType<ModelSave>();
+        modelSave.size = sizing.RecommendedFit(sizes);
     }
 
     private IEnumerator applyFFD() {

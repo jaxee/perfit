@@ -27,11 +27,13 @@ public class Interface : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
 
-		anim = GameObject.FindGameObjectWithTag("Unit").GetComponent<Animator>();
+	
 		activePos = 0; // nothing
 		//anim.SetInteger("Pose", activePos); 
 
-		if(GameObject.FindGameObjectWithTag("Unit").gameObject)
+		if(GameObject.FindGameObjectWithTag("Unit").gameObject){ 
+			anim = GameObject.FindGameObjectWithTag("Unit").GetComponent<Animator>();
+		
        		humanObject = GameObject.FindGameObjectWithTag("Unit").gameObject; //finding the human
 
 			//Reference to the changeGear script to use functions
@@ -40,7 +42,13 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			//Reference to the equipment script to use functions
         	attachScript = humanObject.GetComponent<AttachClothing>(); 
 			//AddOrRemoveClothes ("naked", "Dress", "underwear01", 0);
+		}
     }
+
+	private void Update (){
+
+
+	}
 
 
     public void OnPointerClick(PointerEventData eventData)

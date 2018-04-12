@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/final/scenes/transition.unity
+    guid: c900e598aafe2468292b1a85bb35242d
+  - enabled: 1
     path: Assets/beta/HomePage.unity
     guid: 24ac711d4db811549bdd20e786664e89
   - enabled: 1

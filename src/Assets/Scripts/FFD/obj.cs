@@ -265,10 +265,10 @@ void adjust(float measurement,string section)
         adjust(sizing.ConvertInput(3, bodyData.Waist), "hips");
         adjust(sizing.ConvertInput(4, bodyData.Hip), "waist");
 
-        Debug.Log(bodyData.Bust);
-
         float[] sizes = new float[] { bodyData.Bust,bodyData.Hip,bodyData.Waist };
         Debug.Log(sizing.RecommendedFit(sizes));
+        ModelSave modelSave = FindObjectOfType<ModelSave>();
+        modelSave.size = sizing.RecommendedFit(sizes);
     }
 
     private IEnumerator applyFFD() {

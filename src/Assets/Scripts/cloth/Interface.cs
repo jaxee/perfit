@@ -17,6 +17,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 	public Animator anim; //animation controller for human
 	public int activePos; // 0, 1, 2
 
+    private ModelSave modelSave; 
 
 
 
@@ -27,8 +28,8 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-
-		modelSize = "s";
+        modelSave = FindObjectOfType<ModelSave>();
+        setClothingSizes(modelSave.size);
 		activePos = 0; // nothing
 		//anim.SetInteger("Pose", activePos); 
 
@@ -53,6 +54,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
 	public void setClothingSizes(string inputSize){
 		modelSize = inputSize;
+        Debug.Log("recommended size: " + inputSize);
 	}
 
 

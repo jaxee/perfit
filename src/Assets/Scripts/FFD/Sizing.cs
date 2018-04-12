@@ -71,18 +71,21 @@ public class Sizing : MonoBehaviour {
 
             if (measurements[0] >= _small_bust || measurements[0] <= small_bust && measurements[1] >= _small_hip || measurements[1] <= small_hip && measurements[2] >= _small_waist || measurements[2] <= small_waist)
             {//small
-                fit = "Recommended size small between size 2-4";
+                //fit = "Recommended size small between size 2-4";
+                fit = "s";
                 return fit;
             }
 
             if (measurements[0] >= _med_bust || measurements[0] <= med_bust && measurements[1] >= _med_hip || measurements[1] <= med_hip && measurements[2] >= _med_waist || measurements[2] <= med_waist)
             {//medium
-                fit = "Recommended size small or medium between size 6-8";
+                //fit = "Recommended size small or medium between size 6-8";
+                fit = "m";
                 return fit;
             }
             if (measurements[0] >= _large_bust || measurements[0] <= large_bust && measurements[1] >= _large_hip || measurements[1] <= large_hip && measurements[2] >= _large_waist || measurements[2] <=large_waist)
              {//large
-                fit = "Recommended size large between size 10-12";
+                //fit = "Recommended size large between size 10-12";
+                fit = "l";
                 return fit;
             }
 

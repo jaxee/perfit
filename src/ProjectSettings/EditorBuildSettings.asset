@@ -5,7 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+<<<<<<< HEAD
   - enabled: 0
+=======
+  - enabled: 1
+    path: Assets/final/scenes/transition.unity
+    guid: c900e598aafe2468292b1a85bb35242d
+  - enabled: 1
+>>>>>>> df664cac0196bb236b97d304ce2d81d75fb8998c
     path: Assets/beta/HomePage.unity
     guid: 24ac711d4db811549bdd20e786664e89
   - enabled: 0

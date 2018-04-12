@@ -3186,7 +3186,6 @@ MonoBehaviour:
   tummycolliders: []
   hipscolliders: []
   legscolliders: []
-  addClothScript: {fileID: 0}
   model: {fileID: 0}
   target: {fileID: 0}
   wornItems: []

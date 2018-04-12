@@ -15,7 +15,6 @@ public class AttachClothing : MonoBehaviour
 	public CapsuleCollider[] legscolliders;
 
 
-	public AddCloth addClothScript;
 	private Color black;
 	public ModelSave model;
 	public SkinnedMeshRenderer target; 
@@ -170,11 +169,11 @@ public class AttachClothing : MonoBehaviour
 		float PIN_CONSTANT = 3;
 
 
-        //applying ffds
-//        model = FindObjectOfType<ModelSave>();
-//        target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
-//		target.sharedMesh = model.mesh;
-//		target.material = model.skin; 
+       // applying ffds
+        model = FindObjectOfType<ModelSave>();
+        target = avatar.GetComponentInChildren<SkinnedMeshRenderer> ();
+		target.sharedMesh = model.mesh;
+		target.material = model.skin; 
 
 		GameObject finalProduct;
 		Cloth clothComponent;

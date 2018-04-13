@@ -12,7 +12,7 @@ public class BodyscanSave : Saver
 	};
 
 
-	private Body data = new Body();
+	public Body data = new Body();
 	public string file;
 	public float Height;
 	public float Waist;

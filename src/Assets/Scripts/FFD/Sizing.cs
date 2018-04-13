@@ -8,7 +8,7 @@ public class Sizing:MonoBehaviour  {
     private static float ratio = 0.10f;
 
     //small model base measurements 
-    private static float s_height = 64f;
+    private static float s_height = 60f;
     private static float s_waist = 25f;
     private static float s_hip = 35f;
     private static float s_bust = 33f;
@@ -79,13 +79,13 @@ public class Sizing:MonoBehaviour  {
 				value = (size - s_height);
 				break;
 			case 10://bust large
-				value = (size - large_bust);
+				value = (size - _large_bust);
 				break;
 			case 11://waist large
-				value = (size - large_waist);
+				value = (size - _large_waist);
 				break;
 			case 12://hip large
-				value = (size - large_hip);
+				value = (size - _large_hip);
 				break;
 
 
@@ -118,9 +118,9 @@ public class Sizing:MonoBehaviour  {
 					}
 				}
             }
-            if (measurements[0] <= large_bust)
+            if (measurements[0] <= _large_bust)
              {//large
-				if(measurements[1] <= large_hip){
+				if(measurements[1] <= _large_hip){
 					if( measurements[2] >= _large_waist){
 						fit = "l";
 						return fit;

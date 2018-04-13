@@ -237,21 +237,21 @@ void adjust(float measurement,string section)
         }
         if (section == "waist") {
 				Debug.Log ("waist: "+measurement);
-			Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
+			    Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
                 GameObject tmp = GameObject.Find(butt);
                 tmp.transform.position -= adjustment;
         }
         if (section == "stomach")
         {
 				Debug.Log ("stomach: "+measurement);
-			Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
+			    Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
                 GameObject tmp = GameObject.Find(stomach);
                 tmp.transform.position += adjustment;
         }
         if (section == "bust")
         {
 				Debug.Log ("bust: "+measurement);
-			Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
+			    Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
                 GameObject tmp = GameObject.Find(chest);
                 tmp.transform.position += adjustment;
 

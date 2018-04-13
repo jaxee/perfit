@@ -301,8 +301,13 @@ public class AttachClothing : MonoBehaviour
 		legscolliders [8] = GameObject.Find ("QuickRigCharacter3_LeftKnee_J").GetComponent<CapsuleCollider> (); //legs
 		legscolliders [9] = GameObject.Find ("QuickRigCharacter3_RightKnee2_J").GetComponent<CapsuleCollider> (); //legs
 
-		//luk
-		//FFDColliders(ratio1,ratio2,ratio3);
+        //luk
+
+        float hips  =   (bodyData.Hip - 34.5f)*0.1f;
+        float waist =  1- (bodyData.Waist - 25f) *0.2f;
+        float legs  =   (bodyData.Height - 60f) *0.1f;
+
+        FFDColliders(hips,waist,legs);
 
 
 

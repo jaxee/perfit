@@ -7,8 +7,10 @@ ModelImporter:
   fileIDToRecycleName:
     100000: medium_looseBurgandy_noinside:polySurface2_medium_looseBurgandy_noinside:polySurface1
     100002: //RootNode
+    100004: medium_looseBurgandy_noinside_altered:polySurface2_medium_looseBurgandy_noinside_altered:polySurface3_medium_looseBurgandy_noinside_altered:polySurface1
     400000: medium_looseBurgandy_noinside:polySurface2_medium_looseBurgandy_noinside:polySurface1
     400002: //RootNode
+    400004: medium_looseBurgandy_noinside_altered:polySurface2_medium_looseBurgandy_noinside_altered:polySurface3_medium_looseBurgandy_noinside_altered:polySurface1
     2100000: medium_looseBurgandy_noinside_Material78592
     2100002: medium_looseBurgandy_noinside_Material78650
     2100004: medium_looseBurgandy_noinside_Material78707
@@ -17,9 +19,18 @@ ModelImporter:
     2100010: medium_looseBurgandy_noinside_Material79032
     2100012: medium_looseBurgandy_noinside_Material79209
     2100014: medium_looseBurgandy_noinside_Material79387
+    2100016: medium_looseBurgandy_noinside_altered_Material78592
+    2100018: medium_looseBurgandy_noinside_altered_Material78650
+    2100020: medium_looseBurgandy_noinside_altered_Material78707
+    2100022: medium_looseBurgandy_noinside_altered_Material78918
+    2100024: medium_looseBurgandy_noinside_altered_Material78975
+    2100026: medium_looseBurgandy_noinside_altered_Material79032
     2300000: medium_looseBurgandy_noinside:polySurface2_medium_looseBurgandy_noinside:polySurface1
+    2300002: medium_looseBurgandy_noinside_altered:polySurface2_medium_looseBurgandy_noinside_altered:polySurface3_medium_looseBurgandy_noinside_altered:polySurface1
     3300000: medium_looseBurgandy_noinside:polySurface2_medium_looseBurgandy_noinside:polySurface1
+    3300002: medium_looseBurgandy_noinside_altered:polySurface2_medium_looseBurgandy_noinside_altered:polySurface3_medium_looseBurgandy_noinside_altered:polySurface1
     4300000: medium_looseBurgandy_noinside:polySurface2_medium_looseBurgandy_noinside:polySurface1
+    4300002: medium_looseBurgandy_noinside_altered:polySurface2_medium_looseBurgandy_noinside_altered:polySurface3_medium_looseBurgandy_noinside_altered:polySurface1
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -7,8 +7,10 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: large_looseBurgandy_noinside_resized:polySurface2_large_looseBurgandy_noinside_resized:polySurface1
+    100004: polySurface2_polySurface3_polySurface1
     400000: //RootNode
     400002: large_looseBurgandy_noinside_resized:polySurface2_large_looseBurgandy_noinside_resized:polySurface1
+    400004: polySurface2_polySurface3_polySurface1
     2100000: large_looseBurgandy_noinside_resized_Material6638
     2100002: large_looseBurgandy_noinside_resized_Material6696
     2100004: large_looseBurgandy_noinside_resized_Material6753
@@ -17,9 +19,18 @@ ModelImporter:
     2100010: large_looseBurgandy_noinside_resized_Material7078
     2100012: large_looseBurgandy_noinside_resized_Material7255
     2100014: large_looseBurgandy_noinside_resized_Material7433
+    2100016: Material6638
+    2100018: Material6696
+    2100020: Material6753
+    2100022: Material6964
+    2100024: Material7021
+    2100026: Material7078
     2300000: large_looseBurgandy_noinside_resized:polySurface2_large_looseBurgandy_noinside_resized:polySurface1
+    2300002: polySurface2_polySurface3_polySurface1
     3300000: large_looseBurgandy_noinside_resized:polySurface2_large_looseBurgandy_noinside_resized:polySurface1
+    3300002: polySurface2_polySurface3_polySurface1
     4300000: large_looseBurgandy_noinside_resized:polySurface2_large_looseBurgandy_noinside_resized:polySurface1
+    4300002: polySurface2_polySurface3_polySurface1
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -1,11 +1,4 @@
-newmtl blinn1SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-newmtl large_looseBurgandy_noinside_resized:Material6638
+newmtl Material6638
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -15,7 +8,7 @@ map_Ka burgandy.png
 Ni 1.00
 Ks 0.00 0.00 0.00
 Ns 5.00
-newmtl large_looseBurgandy_noinside_resized:Material6696
+newmtl Material6696
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -25,7 +18,7 @@ map_Ka burgandy.png
 Ni 1.00
 Ks 0.00 0.00 0.00
 Ns 5.00
-newmtl large_looseBurgandy_noinside_resized:Material6753
+newmtl Material6753
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -35,7 +28,7 @@ map_Ka burgandy.png
 Ni 1.00
 Ks 0.00 0.00 0.00
 Ns 5.00
-newmtl large_looseBurgandy_noinside_resized:Material6964
+newmtl Material6964
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -45,7 +38,7 @@ map_Ka burgandy.png
 Ni 1.00
 Ks 0.00 0.00 0.00
 Ns 5.00
-newmtl large_looseBurgandy_noinside_resized:Material7021
+newmtl Material7021
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -55,33 +48,13 @@ map_Ka burgandy.png
 Ni 1.00
 Ks 0.00 0.00 0.00
 Ns 5.00
-newmtl large_looseBurgandy_noinside_resized:Material7078
+newmtl Material7078
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd burgandy.png
 map_Ka burgandy.png
-Ni 1.00
-Ks 0.00 0.00 0.00
-Ns 5.00
-newmtl large_looseBurgandy_noinside_resized:Material7255
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd lowOpac.png
-map_Ka lowOpac.png
-Ni 1.00
-Ks 0.00 0.00 0.00
-Ns 5.00
-newmtl large_looseBurgandy_noinside_resized:Material7433
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd lowOpac.png
-map_Ka lowOpac.png
 Ni 1.00
 Ks 0.00 0.00 0.00
 Ns 5.00

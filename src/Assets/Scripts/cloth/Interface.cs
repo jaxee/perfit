@@ -48,10 +48,10 @@ public class Interface : MonoBehaviour, IPointerClickHandler
     }
 
 	private void Update (){
+		if (modelSave) {
+			setClothingSizes (modelSave.size);
 
-		if(modelSave)
-			setClothingSizes(modelSave.size);
-
+		}
 	}
 
 	public void setClothingSizes(string inputSize){

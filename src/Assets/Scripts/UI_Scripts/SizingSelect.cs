@@ -20,20 +20,30 @@ public class SizingSelect : MonoBehaviour {
     private static float l_waist = 25f;
     private static float l_hip = 35f;
     private static float l_bust = 33f;
-    obj ffd;
-    BodyscanSave.Body data;
-    ModelSave modelSave;
+    private obj ffd;
+    private BodyscanSave.Body data;
+    private ModelSave modelSave;
     private SaveManager bodyData;
+	public SkinnedMeshRenderer target;
 
     // Use this for initialization
     void Start() {
-        ffd = FindObjectOfType<obj>();
-        data = new BodyscanSave.Body();
-        modelSave = FindObjectOfType<ModelSave>();
-        bodyData = FindObjectOfType<SaveManager>();
+        ffd 		= FindObjectOfType<obj>();
+        data		= new BodyscanSave.Body();
+        modelSave   = FindObjectOfType<ModelSave>();
+        bodyData    = FindObjectOfType<SaveManager>();
+
+		if (modelSave)
+			modelSave.original = target;
+
     }
 
     private void ResetModel() {
+		if (target) {
+			target.sharedMesh = modelSave.original;
+			target.sharedMesh.RecalculateBounds ();
+			target.sharedMesh.RecalculateNormals ();
+		}
 
     }
 
@@ -55,6 +65,8 @@ public class SizingSelect : MonoBehaviour {
             data.Height = m_height;
             data.Hip = m_hip;
 
+			bodyData.Save("bodyScan", data);
+
         }
         if (size == 3)
         {
@@ -63,6 +75,8 @@ public class SizingSelect : MonoBehaviour {
             data.Waist = l_waist;
             data.Height = l_height;
             data.Hip = l_hip;
+
+			bodyData.Save("bodyScan", data);
 
         }
 

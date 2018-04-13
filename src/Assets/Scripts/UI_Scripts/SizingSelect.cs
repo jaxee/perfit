@@ -11,15 +11,15 @@ public class SizingSelect : MonoBehaviour {
     //medium 
     //small model base measurements 
     private static float m_height = 66f;
-    private static float m_waist = 26f;
-    private static float m_hip = 30f;
-    private static float m_bust = 33f;
+    private static float m_waist = 27f;
+    private static float m_hip = 37.5f;
+    private static float m_bust = 36f;
 
     //large model base measurements
     private static float l_height = 70f;
-    private static float l_waist = 30f;
-    private static float l_hip = 35f;
-    private static float l_bust = 33f;
+    private static float l_waist = 29.5f;
+    private static float l_hip = 38.5f;
+    private static float l_bust = 36.5f;
 
 
     private obj ffd;

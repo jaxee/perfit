@@ -272,14 +272,32 @@ void adjust(float measurement,string section)
 }
 
     void loadProfile(){
-        adjust(sizing.ConvertInput(1, bodyData.Height), "height");
-        adjust(sizing.ConvertInput(2, bodyData.Bust), "bust");
-		adjust(sizing.ConvertInput(3, bodyData.Hip), "hips");
-		adjust(sizing.ConvertInput(4, bodyData.Waist), "waist");
 
-        float[] sizes = new float[] { bodyData.Bust,bodyData.Hip,bodyData.Waist };
-        ModelSave modelSave = FindObjectOfType<ModelSave>();
-        modelSave.size = sizing.RecommendedFit(sizes);
+		float[] sizes = new float[] { bodyData.Bust,bodyData.Hip,bodyData.Waist };
+		ModelSave modelSave = FindObjectOfType<ModelSave>();
+		modelSave.size = sizing.RecommendedFit(sizes);
+
+		Debug.Log (sizing.RecommendedFit (sizes));
+
+		if (modelSave.size == "s") {
+			adjust (sizing.ConvertInput (1, bodyData.Height), "height");
+			adjust (sizing.ConvertInput (2, bodyData.Bust), "bust");
+			adjust (sizing.ConvertInput (3, bodyData.Hip), "hips");
+			adjust (sizing.ConvertInput (4, bodyData.Waist), "waist");
+		}
+		if (modelSave.size == "m") {
+			adjust (sizing.ConvertInput (5, bodyData.Height), "height");
+			adjust (sizing.ConvertInput (6, bodyData.Bust), "bust");
+			adjust (sizing.ConvertInput (7, bodyData.Hip), "hips");
+			adjust (sizing.ConvertInput (8, bodyData.Waist), "waist");
+		}
+		if (modelSave.size == "l") {
+			adjust (sizing.ConvertInput (9, bodyData.Height), "height");
+			adjust (sizing.ConvertInput (10, bodyData.Bust), "bust");
+			adjust (sizing.ConvertInput (11, bodyData.Hip), "hips");
+			adjust (sizing.ConvertInput (12, bodyData.Waist), "waist");
+		}
+	
     }
 
     public IEnumerator applyFFD() {

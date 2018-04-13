@@ -49,18 +49,46 @@ public class Sizing:MonoBehaviour  {
         float value = 0f;
 
         switch (section) {
-            case 1://height
+            case 1://height small
                 value = (size - s_height);
                 break;
-            case 2://bust
-                value = (size - s_bust);
+            case 2://bust small
+				value = (size - small_bust);
                 break;
-            case 3://waist
-                value = (size - s_waist);
+            case 3://waist small
+				value = (size - small_waist);
                 break;
-            case 4://hip
-                value = (size - s_hip);
+            case 4://hip small
+				value = (size - small_hip);
                 break;
+
+			case 5://height medium
+				value = (size - s_height);
+				break;
+			case 6://bust medium
+				value = (size - med_bust);
+				break;
+			case 7://waist medium
+				value = (size - med_waist);
+				break;
+			case 8://hip medium
+				value = (size - med_hip);
+				break; 
+
+			case 9://height large
+				value = (size - s_height);
+				break;
+			case 10://bust large
+				value = (size - large_bust);
+				break;
+			case 11://waist large
+				value = (size - large_waist);
+				break;
+			case 12://hip large
+				value = (size - large_hip);
+				break;
+
+
             default:
                 break;
         }
@@ -71,24 +99,33 @@ public class Sizing:MonoBehaviour  {
     public string RecommendedFit(float[] measurements){
         string fit = "No size";
 
-            if (measurements[0] >= _small_bust || measurements[0] <= small_bust && measurements[1] >= _small_hip || measurements[1] <= small_hip && measurements[2] >= _small_waist || measurements[2] <= small_waist)
+            if (measurements[0] <= small_bust)
             {//small
-                //fit = "Recommended size small between size 2-4";
-                fit = "s";
-                return fit;
+				if (measurements [1] <= small_hip) {
+					if (measurements [2] <= small_waist) {
+						fit = "s";
+						return fit;
+					}
+				}
             }
 
-            if (measurements[0] >= _med_bust || measurements[0] <= med_bust && measurements[1] >= _med_hip || measurements[1] <= med_hip && measurements[2] >= _med_waist || measurements[2] <= med_waist)
+            if (measurements[0] <= med_bust)
             {//medium
-                //fit = "Recommended size small or medium between size 6-8";
-                fit = "m";
-                return fit;
+				if(measurements[1] <= med_hip){
+					if( measurements[2] <= _med_waist){
+						fit = "m";
+						return fit;
+					}
+				}
             }
-            if (measurements[0] >= _large_bust || measurements[0] <= large_bust && measurements[1] >= _large_hip || measurements[1] <= large_hip && measurements[2] >= _large_waist || measurements[2] <=large_waist)
+            if (measurements[0] <= large_bust)
              {//large
-                //fit = "Recommended size large between size 10-12";
-                fit = "l";
-                return fit;
+				if(measurements[1] <= large_hip){
+					if( measurements[2] >= _large_waist){
+						fit = "l";
+						return fit;
+					}
+				}
             }
 
         return fit;

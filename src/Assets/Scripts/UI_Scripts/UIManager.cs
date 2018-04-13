@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour {
         if (module.activeSelf)
         {
             Reset(module);
+
+
         }
         else
         {

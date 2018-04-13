@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class DressInfo :MonoBehaviour {
 
 	public GameObject scrolllist;
+	public ModelSave ModelInfoScript;
+	public string recommendedSize;
 
 	// Use this for initialization
 	void Start () {
-		
+		ModelInfoScript = GameObject.Find ("AutoloadModel").GetComponent<ModelSave> ();
 	}
 	public void DiableClick(){
 		
@@ -27,6 +29,10 @@ public class DressInfo :MonoBehaviour {
 		}
 	}
 
+	public void Update (){
+		recommendedSize = ModelInfoScript.size;
+	}
+
 	public void Reset(GameObject module)
 	{
 		module.SetActive(false);
@@ -40,6 +46,10 @@ public class DressInfo :MonoBehaviour {
 		else
 		{
 			module.SetActive(true);
+			Debug.Log ("texti");
+
+			Text sizeText = module.transform.Find ("SizeText").GetComponent<Text> ();
+			sizeText.text = "Recommended Size: " + recommendedSize.ToUpper ();
 		}
 	}
 }

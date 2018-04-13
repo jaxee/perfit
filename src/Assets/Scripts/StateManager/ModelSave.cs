@@ -9,11 +9,13 @@ public class ModelSave : Saver
         public string file;
         public Material skin;
         public Mesh mesh;
+        public SkinnedMeshRenderer original;
         public string size;
     }
 
     public string file;
     public Material skin;
+    public SkinnedMeshRenderer original;
     public Mesh mesh;
     public string size;
 
@@ -21,6 +23,7 @@ public class ModelSave : Saver
     {
         Model data = new Model();
         data.file = file;
+        data.original = original; 
         data.mesh = mesh;
         data.skin = skin;
         data.size = size;
@@ -35,6 +38,7 @@ public class ModelSave : Saver
             mesh = _model.mesh;
             skin = _model.skin;
             size = _model.size;
+            original = _model.original;
         }
         else
         {

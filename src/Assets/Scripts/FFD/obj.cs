@@ -128,6 +128,7 @@ void SetOrigin()
         tmpSTU = Vector3.Dot(tmpST, U);
         P0 = min;
 		BuildLattice();
+		StartCoroutine (applyFFD ());
 }
 void Deform()
 {    //place vertices of object into lattice local grid for calculation

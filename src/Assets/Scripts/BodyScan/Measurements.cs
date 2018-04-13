@@ -48,10 +48,12 @@ public class Measurements : MonoBehaviour
     private Texture2D texture;
 
     private BodyscanSave bodyData;
+    private BodyscanSave.Body data; 
     void Start()
     {
         bodyData = FindObjectOfType<BodyscanSave>();
-
+        data = new BodyscanSave.Body();
+ 
         if (BodySrcManager == null)
         {
             Debug.LogError("Missing Game Object (Body Source Manager)");
@@ -126,7 +128,7 @@ public class Measurements : MonoBehaviour
         {
             int i = 0;
 
-            /*if (i == 0)
+            if (i == 0)
             {
                 using (FileStream stream = new FileStream("C:\\DepthData\\depthdatafront.raw", FileMode.Create))
                 {
@@ -140,8 +142,8 @@ public class Measurements : MonoBehaviour
                         writer.Close();
                     }
                 }
-            }*/
-
+            }
+            
             while (i < SCAN_LENGTH)
             {
                 foreach (var body in bodies)
@@ -171,7 +173,7 @@ public class Measurements : MonoBehaviour
 
                 Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
 
-                //bodyData.Height = CmToInches(finalHeight);
+                data.Height = CmToInches(finalHeight);
 
                 scanOneDone = true;
             }
@@ -181,7 +183,7 @@ public class Measurements : MonoBehaviour
         {
             int y = 0;
 
-            /*if (y == 0)
+            if (y == 0)
             {
                 using (FileStream stream2 = new FileStream("C:\\DepthData\\depthdataside.raw", FileMode.Create))
                 {
@@ -195,7 +197,7 @@ public class Measurements : MonoBehaviour
                         writer2.Close();
                     }
                 }
-            }*/
+            }
 
             while (y < SCAN_LENGTH)
             {
@@ -227,10 +229,10 @@ public class Measurements : MonoBehaviour
                 Debug.Log("CENTIMETERS | Bust: " + bustCalculation);
 
                 Debug.Log("\n");
-
-                //data.hip = CmToInches(hipCalculation);
-                //data.bust = CmToInches(bustCalculation);
-
+                
+                data.Hip = CmToInches(hipCalculation);
+                data.Bust = CmToInches(bustCalculation);
+                bodyData.saveManager.Save("bodyScan", data);
                 scanTwoDone = true;
             }
         }

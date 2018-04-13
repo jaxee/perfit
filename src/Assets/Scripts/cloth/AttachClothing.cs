@@ -212,7 +212,7 @@ public class AttachClothing : MonoBehaviour
 			float dist = Vector3.Distance (clothComponent.vertices [i], cube.transform.position);
 			//Debug.Log (dist);
 
-			if (dist > 2) {
+			if (dist > 3) {
 				
 				if (ClothingModel.tag == "sleeved") {
 					//Debug.Log ("HEY");

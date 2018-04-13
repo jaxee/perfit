@@ -9626,6 +9626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrolllist: {fileID: 825032855}
+  ModelInfoScript: {fileID: 0}
+  recommendedSize: 
 --- !u!1 &1090581678
 GameObject:
   m_ObjectHideFlags: 0
@@ -19170,10 +19172,10 @@ RectTransform:
   m_Father: {fileID: 200587271}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.3597037}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 371.81693, y: 19.67035}
-  m_SizeDelta: {x: -747.32007, y: -2161.9897}
+  m_AnchoredPosition: {x: 371.81693, y: -462.32965}
+  m_SizeDelta: {x: -747.32007, y: -1197.9897}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2085643780
 MonoBehaviour:

@@ -22,14 +22,14 @@ public class StateManager : MonoBehaviour
         ui = GameObject.FindObjectOfType<UIManager>(); 
         fadeCanvas.alpha = 1f;
 
-		BodyscanSave.Body data = new BodyscanSave.Body ();
-
-		data.Bust = 37.4f; 
-		data.Waist = 32f;
-        data.Height = 64f;
-        data.Hip = 32f;
-
-        bodyData.Save ("bodyScan", data);
+//		BodyscanSave.Body data = new BodyscanSave.Body ();
+//
+//		data.Bust = 37.4f; 
+//		data.Waist = 32f;
+//        data.Height = 64f;
+//        data.Hip = 32f;
+//
+//        bodyData.Save ("bodyScan", data);
 
         yield return StartCoroutine(loadSetScene(startingSceneName));
         StartCoroutine(fade(0f));

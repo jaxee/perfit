@@ -83,8 +83,6 @@ private void Start()
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
-        ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
-        SetOrigin();
 		GameObject.FindObjectOfType<ParticleSystem>().Stop();
     }
 
@@ -108,7 +106,7 @@ private void Update()
 
 void SetOrigin()
 {    //set lattice local coordinate system
-
+		ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         //get max and min of 3d model vertices
         Vector3 min = new Vector3 (Mathf.Infinity,Mathf.Infinity,Mathf.Infinity);
         Vector3 max = new Vector3 (-Mathf.Infinity,-Mathf.Infinity,-Mathf.Infinity);
@@ -130,6 +128,7 @@ void SetOrigin()
         tmpSTU = Vector3.Dot(tmpST, U);
         P0 = min;
 		BuildLattice();
+		StartCoroutine (applyFFD ());
 }
 void Deform()
 {    //place vertices of object into lattice local grid for calculation
@@ -186,7 +185,7 @@ void BuildLattice()
                         }
                 }
         }//end-of-nested loop
-        //loadProfile();
+        loadProfile();
 }
 
 float factorials(int a)
@@ -217,12 +216,9 @@ void MeshUpdate(Vector3[] vertices)
 
 void adjust(float measurement,string section)
 {    //take values and move respective ctrl points
-
-		Debug.Log (measurement);
-
         if (section == "hips") {
 				Debug.Log ("hip: "+measurement);
-                Vector3 adjA = new Vector3(measurement*0.1f, 0,0);
+                Vector3 adjA = new Vector3(measurement, 0,0);
                 foreach (string hip in leftHip) {
                         GameObject tmp = GameObject.Find(hip);
                         tmp.transform.position -= adjA;
@@ -237,21 +233,21 @@ void adjust(float measurement,string section)
         }
         if (section == "waist") {
 				Debug.Log ("waist: "+measurement);
-			    Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
+			    Vector3 adjustment = new Vector3(0, 0, measurement);
                 GameObject tmp = GameObject.Find(butt);
                 tmp.transform.position -= adjustment;
         }
         if (section == "stomach")
         {
 				Debug.Log ("stomach: "+measurement);
-			    Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
+			    Vector3 adjustment = new Vector3(0, 0, measurement);
                 GameObject tmp = GameObject.Find(stomach);
                 tmp.transform.position += adjustment;
         }
         if (section == "bust")
         {
 				Debug.Log ("bust: "+measurement);
-			    Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
+			    Vector3 adjustment = new Vector3(0, 0, measurement);
                 GameObject tmp = GameObject.Find(chest);
                 tmp.transform.position += adjustment;
 
@@ -277,22 +273,22 @@ void adjust(float measurement,string section)
 		ModelSave modelSave = FindObjectOfType<ModelSave>();
 		modelSave.size = sizing.RecommendedFit(sizes);
 
-		Debug.Log (sizing.RecommendedFit (sizes));
+		Debug.Log (modelSave.size);
 
 		if (modelSave.size == "s") {
 			adjust (sizing.ConvertInput (1, bodyData.Height), "height");
 			adjust (sizing.ConvertInput (2, bodyData.Bust), "bust");
-			adjust (sizing.ConvertInput (3, bodyData.Hip), "hips");
-			adjust (sizing.ConvertInput (4, bodyData.Waist), "waist");
+			adjust (sizing.ConvertInput (3, bodyData.Waist), "waist");
+			adjust (sizing.ConvertInput (4, bodyData.Hip), "hips");
 		}
 		if (modelSave.size == "m") {
 			adjust (sizing.ConvertInput (5, bodyData.Height), "height");
 			adjust (sizing.ConvertInput (6, bodyData.Bust), "bust");
-			adjust (sizing.ConvertInput (7, bodyData.Hip), "hips");
-			adjust (sizing.ConvertInput (8, bodyData.Waist), "waist");
+			adjust (sizing.ConvertInput (7, bodyData.Hip), "waist");
+			adjust (sizing.ConvertInput (8, bodyData.Waist), "hips");
 		}
 		if (modelSave.size == "l") {
-			adjust (sizing.ConvertInput (9, bodyData.Height), "height");
+			adjust (sizing.ConvertInput (9 , bodyData.Height), "height");
 			adjust (sizing.ConvertInput (10, bodyData.Bust), "bust");
 			adjust (sizing.ConvertInput (11, bodyData.Hip), "hips");
 			adjust (sizing.ConvertInput (12, bodyData.Waist), "waist");
@@ -304,9 +300,9 @@ void adjust(float measurement,string section)
 		target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
 		clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
 		vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
-		loadProfile();
+		SetOrigin();
         yield return new WaitForFixedUpdate();
-        Deform();
+		Deform();
 		StartCoroutine(applyFX());
         //updateMesh = false;
         //gameObject.SetActive(false);

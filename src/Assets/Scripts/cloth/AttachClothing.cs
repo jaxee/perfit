@@ -142,7 +142,7 @@ public class AttachClothing : MonoBehaviour
 
 		clothing.transform.eulerAngles = new Vector3 (0, -180, 0);
 
-		float heightRatio = sizing.ConvertInput(1, bodyData.Height)*0.1f;
+		float heightRatio = sizing.ConvertInput(1, bodyData.Height)*0.07f;
 		clothing.transform.position = new Vector3 (0, clothing.transform.position.y + heightRatio, 0);
 
 
@@ -303,11 +303,13 @@ public class AttachClothing : MonoBehaviour
 
         //luk
 
-        float hips  =   (bodyData.Hip - 34.5f)*0.1f;
-        float waist =  1- (bodyData.Waist - 25f) *0.2f;
-        float legs  =   (bodyData.Height - 60f) *0.1f;
+        //float hips  =   1-(bodyData.Hip - 34.5f) *0.1f;
+        //float waist =  	1-(bodyData.Waist - 25f) *0.1f;
+        //float legs  =   1-(bodyData.Height - 60f) *0.1f;
 
-        FFDColliders(hips,waist,legs);
+		//print (hips);
+
+        //FFDColliders(hips,waist,legs);
 
 
 

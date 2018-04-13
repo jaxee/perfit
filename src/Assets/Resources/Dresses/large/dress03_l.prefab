@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4248416834947306}
   m_Layer: 0
   m_Name: dress03_l
-  m_TagString: Untagged
+  m_TagString: noPose
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

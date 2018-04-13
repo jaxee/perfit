@@ -47,11 +47,11 @@ public class Measurements : MonoBehaviour
     private ushort[] depthData;
     private Texture2D texture;
 
-    private BodyscanSave bodyData;
+    public GameObject bodyObj;
+    public SaveManager bodyData;
     private BodyscanSave.Body data; 
     void Start()
     {
-        bodyData = FindObjectOfType<BodyscanSave>();
         data = new BodyscanSave.Body();
  
         if (BodySrcManager == null)
@@ -229,10 +229,11 @@ public class Measurements : MonoBehaviour
                 Debug.Log("CENTIMETERS | Bust: " + bustCalculation);
 
                 Debug.Log("\n");
-                
-                data.Hip = CmToInches(hipCalculation);
+
+                data.Hip  = CmToInches(hipCalculation);
                 data.Bust = CmToInches(bustCalculation);
-                bodyData.saveManager.Save("bodyScan", data);
+
+                bodyData.Save("bodyScan", data);
                 scanTwoDone = true;
             }
         }

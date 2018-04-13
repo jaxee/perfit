@@ -1,0 +1,57 @@
+newmtl blinn1SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl medium_looseLace_noinside:Material117643
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_looseLace_noinside:Material117869
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lace.jpg
+map_Ka lace.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_looseLace_noinside:Material118305
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lace.jpg
+map_Ka lace.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_looseLace_noinside:Material118488
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+map_Ka black.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00
+newmtl medium_looseLace_noinside:Material118923
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lace.jpg
+map_Ka lace.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 5.00

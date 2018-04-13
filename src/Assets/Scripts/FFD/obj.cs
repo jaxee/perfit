@@ -75,7 +75,7 @@ private void Start()
         block = new GameObject("block");
         block.AddComponent<Sizing>();
 
-        bodyData = FindObjectOfType<BodyscanSave>();
+		bodyData = FindObjectOfType<BodyscanSave>();
         sizing = block.GetComponent<Sizing>();
         modelData = FindObjectOfType<ModelSave>();
 
@@ -86,8 +86,7 @@ private void Start()
         ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
         BuildLattice();
-        GameObject.FindObjectOfType<ParticleSystem>().Play();
-        StartCoroutine(applyFX());
+		//GameObject.FindObjectOfType<ParticleSystem>().Stop();
     }
 
 private void Update()
@@ -168,7 +167,7 @@ void Deform()
         TimeSpan delta = tStart.Elapsed;
         UnityEngine.Debug.Log("Delta: "+ delta);
         tStart.Reset();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
 }
 
 
@@ -266,6 +265,7 @@ void adjust(float measurement,string section)
 }
 
     void loadProfile(){
+		Debug.Log (bodyData.Waist);
         adjust(sizing.ConvertInput(1, bodyData.Height), "height");
         adjust(sizing.ConvertInput(2, bodyData.Bust), "bust");
         adjust(sizing.ConvertInput(3, bodyData.Waist), "hips");
@@ -276,20 +276,24 @@ void adjust(float measurement,string section)
         modelSave.size = sizing.RecommendedFit(sizes);
     }
 
-    private IEnumerator applyFFD() {
+    public IEnumerator applyFFD() {
+		target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
+		clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
+		vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
+		ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
+		SetOrigin();
+		BuildLattice();
         yield return new WaitForFixedUpdate();
         Deform();
-        updateMesh = false;
-        gameObject.SetActive(false);
+		//StartCoroutine(applyFX());
+        //updateMesh = false;
+        //gameObject.SetActive(false);
     }
 
     private IEnumerator applyFX() {
-        StartCoroutine(applyFFD());
+		GameObject.FindObjectOfType<ParticleSystem>().Play();
         yield return new WaitForSeconds(2);
         GameObject.FindObjectOfType<ParticleSystem>().Stop();
     }
-
-
-
 
 }//-end-of-script

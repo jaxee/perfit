@@ -5,45 +5,44 @@ using UnityEngine;
 public class Sizing:MonoBehaviour  {
 
 
-    private static float ratio = 0.10f;
+	private static float ratio = 0.10f;
 
-    //small model base measurements 
-    private static float s_height = 60f;
-    private static float s_waist = 25f;
-    private static float s_hip = 35f;
-    private static float s_bust = 33f;
-    //large model base measurements
-    private static float l_height = 70f;
-    private static float l_waist = 25f;
-    private static float l_hip = 35f;
-    private static float l_bust = 33f;
+	//small model base measurements 
+	private static float s_height = 64f;
+	private static float s_waist = 25f;
+	private static float s_hip = 35f;
+	private static float s_bust = 33f;
+	//large model base measurements
+	private static float l_height = 70f;
+	private static float l_waist = 25f;
+	private static float l_hip = 35f;
+	private static float l_bust = 33f;
 
-    //Canadian/US womens sizing ref - http://www.sizeguide.net
-    //2-4
-    private static float _small_waist = 25f;
-    private static float _small_hip   = 34.5f;
-    private static float _small_bust  = 32.5f;
+	//Canadian/US womens sizing ref - http://www.sizeguide.net
+	//2-4
+	private static float _small_waist = 25f;
+	private static float _small_hip   = 34.5f;
+	private static float _small_bust  = 32.5f;
 
-    private static float small_waist = 26f;
-    private static float small_hip = 35.5f;
-    private static float small_bust = 33.5f;
-    //6-8
-    private static float _med_waist = 26f;
-    private static float _med_hip   = 36.5f;
-    private static float _med_bust  = 34.5f;
+	private static float small_waist = 26f;
+	private static float small_hip = 35.5f;
+	private static float small_bust = 33.5f;
+	//6-8
+	private static float _med_waist = 26f;
+	private static float _med_hip   = 36.5f;
+	private static float _med_bust  = 34.5f;
 
-    private static float med_waist = 27f;
-    private static float med_hip = 37.5f;
-    private static float med_bust = 35.5f;
-    //10-12
-    private static float _large_waist = 28f;
-    private static float _large_hip   = 38.5f;
-    private static float _large_bust  = 36.5f;
+	private static float med_waist = 27f;
+	private static float med_hip = 37.5f;
+	private static float med_bust = 35.5f;
+	//10-12
+	private static float _large_waist = 28f;
+	private static float _large_hip   = 38.5f;
+	private static float _large_bust  = 36.5f;
 
-    private static float large_waist = 29.5f;
-    private static float large_hip = 39.5f;
-    private static float large_bust = 38f;
-
+	private static float large_waist = 29.5f;
+	private static float large_hip = 39.5f;
+	private static float large_bust = 38f;
 
     public float ConvertInput(int section, float size) {
         float value = 0f;
@@ -77,18 +76,17 @@ public class Sizing:MonoBehaviour  {
 
 			case 9://height large
 				value = (size - s_height);
+				Debug.Log ("h "+value+ " to " + size);
 				break;
 			case 10://bust large
-				value = (size - _large_bust);
+				value = (size - l_bust);
 				break;
 			case 11://waist large
-				value = (size - _large_waist);
+				value = (size - l_waist);
 				break;
 			case 12://hip large
-				value = (size - _large_hip);
+				value = (size - l_hip);
 				break;
-
-
             default:
                 break;
         }

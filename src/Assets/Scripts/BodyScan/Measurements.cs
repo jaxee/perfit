@@ -177,7 +177,7 @@ public class Measurements : MonoBehaviour
                 Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
                 //Debug.Log("INCHES | Height: " + CmToInches(finalHeight) + "\nLeg Length: " + CmToInches(finalLeg) + "\nArm Length: " + CmToInches(finalArm));
 
-                bodyData.Height = CmToInches(finalHeight);
+                //bodyData.Height = CmToInches(finalHeight);
 
                 scanOneDone = true;
             }
@@ -225,15 +225,15 @@ public class Measurements : MonoBehaviour
             if (y >= SCAN_LENGTH)
             {
                 Debug.Log("\n\n");
-                Debug.Log("CENTIMETERS | Hip: " + hipCalculation);
+                //Debug.Log("CENTIMETERS | Hip: " + hipCalculation);
                 //Debug.Log("INCHES | Hip: " + CmToInches(hipCalculation));
 
-                Debug.Log("\n");
-
+                //Debug.Log("\n");
+                Debug.Log("Bust Calculation | front: " + bustFront + " side: " + bustSide);
                 Debug.Log("CENTIMETERS | Bust: " + bustCalculation);
                 //Debug.Log("INCHES | Bust: " + CmToInches(bustCalculation));
 
-                //Debug.Log("\n");
+                Debug.Log("\n");
 
                 //Debug.Log("CENTIMETERS | Neck: " + neckCalculation);
                 //Debug.Log("INCHES | Neck: " + CmToInches(neckCalculation));
@@ -271,7 +271,7 @@ public class Measurements : MonoBehaviour
         double legLength = LegLength(hipLeft, hipRight, kneeLeft, kneeRight, ankleLeft, ankleRight, footLeft, footRight) * 100;
         double armLength = ArmLength(rightShoulder, leftShoulder, rightElbow, leftElbow, rightWrist, leftWrist) * 100;
 
-        hipFront = EllipseRadius(hip, "Hip front");
+        //hipFront = EllipseRadius(hip, "Hip front");
 
         //hipFront = EllipseRadius(hip, hipRight, hipLeft, "Hip front");
         bustFront = EllipseRadius(waist, "Bust front");
@@ -307,12 +307,11 @@ public class Measurements : MonoBehaviour
 
         heightCalculations.Add(height);
 
-        hipSide = EllipseRadius(hip, "Hip side");
-        Debug.Log("Hip Calculation | front: " + hipFront + " side: " + hipSide);
-        hipCalculation = EllipseCircumference((float)hipFront, (float)hipSide) * 100;
+        //hipSide = EllipseRadius(hip, "Hip side");
+        //Debug.Log("Hip Calculation | front: " + hipFront + " side: " + hipSide);
+        //hipCalculation = EllipseCircumference((float)hipFront, (float)hipSide) * 100;
 
         bustSide = EllipseRadius(waist, "Bust side");
-        Debug.Log("Bust Calculation | front: " + bustFront + " side: " + bustSide);
         bustCalculation = EllipseCircumference((float)bustFront, (float)bustSide) * 100;
 
         //neckSide = EllipseRadius(neck, "Neck side");
@@ -357,88 +356,6 @@ public class Measurements : MonoBehaviour
         return armLength;
     }
 
-    private float EllipseRadiusNew(Kinect.Joint middle, string measurement)
-    {
-        bool debug = true;
-
-        Kinect.CameraSpacePoint middle_cameraspace = middle.Position;
-        Kinect.DepthSpacePoint middle_depthspace = bodyManager._Sensor.CoordinateMapper.MapCameraPointToDepthSpace(middle_cameraspace);
-
-        Kinect.DepthSpacePoint right_depthspace = new Kinect.DepthSpacePoint();
-        right_depthspace = middle_depthspace;
-        // Change x y and z instead of above line?
-
-        Kinect.DepthSpacePoint left_depthspace = new Kinect.DepthSpacePoint();
-        left_depthspace = middle_depthspace;
-        // Change x y and z instead of above line?
-
-        for (int i = 0; i < 100; i++)
-        {
-            if (texture.GetPixel(((int)right_depthspace.X + i), (int)right_depthspace.Y).grayscale == 0)
-            {
-                right_depthspace.X = (int)right_depthspace.X + i;
-
-                if (debug)
-                {
-                    Debug.Log(measurement + " right depth point: (" + right_depthspace.X + ", " + right_depthspace.Y + ")");
-                }
-                
-                break;
-            }
-        }
-
-        for (int i = 0; i < 100; i++)
-        {
-            if (texture.GetPixel(((int)left_depthspace.X - i), (int)left_depthspace.Y).grayscale == 0)
-            {
-                left_depthspace.X = (int)left_depthspace.X - i;
-
-                if (debug)
-                {
-                    Debug.Log(measurement + " left depth point: (" + (left_depthspace.X - i) + ", " + left_depthspace.Y + ")");
-                }
-                
-                break;
-            }
-        }
-
-        if (debug)
-        {
-            Debug.Log(measurement + " middle depth point (" + middle_depthspace.X + " ," + middle_depthspace.Y + ")");
-            Debug.Log("\n");
-        }
-
-        // Make sure that is working
-
-        // Depth attempt
-        /*int depthFrameHeight = depthManager.GetHeightOfFrame();
-        ushort depth_left = depthData[((int)left_depthspace.Y * depthFrameHeight) + (int)left_depthspace.X];
-        Kinect.CameraSpacePoint left_newcameraspace = depthManager._Sensor.CoordinateMapper.MapDepthPointToCameraSpace(left_depthspace, depth_left);
-
-        if (debug) {
-            Debug.Log(measurement + " left camera space point | X: " + left_newcameraspace.X + " Y: " + left_newcameraspace.Y + " Z: " + left_newcameraspace.Z);
-            Debug.Log("\n");
-        }
-
-        // Right camera depth space?
-        // New middle?
-
-        // Look at values above for differences
-        float left_length = Length(left_newcameraspace, middle_cameraspace);
-
-        if (debug) {
-            Debug.Log("Length from left: " + left_length);
-            Debug.Log("\n");
-            Debug.Log("\n");
-        } */
-
-        // Look at values above
-
-        // TAKE AWAY THE Y AND THE Z BECAUSE WE JUST NEED THE RADIUS
-
-        return 0.0f;
-    }
-
     // Front Calculation
     private float EllipseRadius(Kinect.Joint middle, string measurement)
     {
@@ -466,16 +383,16 @@ public class Measurements : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 70; i++)
+        for (int j = 0; j < 70; j++)
         {
-            if (texture.GetPixel(((int)leftDepthPoint.X - i), (int)leftDepthPoint.Y).grayscale == 0)
+            if (texture.GetPixel(((int)leftDepthPoint.X - j), (int)leftDepthPoint.Y).grayscale == 0)
             {
                 if (debug)
                 {
-                    Debug.Log(measurement + " left depth point: (" + ((int)leftDepthPoint.X - i) + ", " + (int)leftDepthPoint.Y + ")");
+                    Debug.Log(measurement + " left depth point: (" + ((int)leftDepthPoint.X - j) + ", " + (int)leftDepthPoint.Y + ")");
                 }
 
-                leftDepthPoint.X = (int)leftDepthPoint.X - i;
+                leftDepthPoint.X = (int)leftDepthPoint.X - j;
                 break;
             }
         }
@@ -492,10 +409,42 @@ public class Measurements : MonoBehaviour
         ushort depth_right = depthData[((int)rightDepthPoint.Y * depthFrameHeight) + (int)rightDepthPoint.X];
         Kinect.CameraSpacePoint right_newcameraspace = depthManager._Sensor.CoordinateMapper.MapDepthPointToCameraSpace(rightDepthPoint, depth_right);
 
+        ushort depth_middle = 0;
+        Kinect.CameraSpacePoint centre_newcameraspace = new Kinect.CameraSpacePoint();
+
         if (debug)
         {
             Debug.Log("Depth indices | left: " + depth_left + " right: " + depth_right);
             Debug.Log("\n");
+        }
+
+        Debug.Log("Calculations: " + Mathf.Abs((Mathf.Abs(leftDepthPoint.X - centreDepthPoint.X) - Mathf.Abs(rightDepthPoint.X - centreDepthPoint.X))));
+
+        if (depth_left != 0 && depth_right != 0)
+        {
+            if (Mathf.Abs((Mathf.Abs(leftDepthPoint.X - centreDepthPoint.X) - Mathf.Abs(rightDepthPoint.X - centreDepthPoint.X))) > 10)
+            {
+                if (debug)
+                {
+                    Debug.Log("New centre point");
+                    Debug.Log("\n");
+                }
+
+                Debug.Log(measurement + " old centre point | middle: " + centreDepthPoint.X);
+
+                centreDepthPoint.X = (rightDepthPoint.X + leftDepthPoint.X) / 2;
+
+                depth_middle = depthData[((int)centreDepthPoint.Y * depthFrameHeight) + (int)centreDepthPoint.X];
+                centre_newcameraspace = depthManager._Sensor.CoordinateMapper.MapDepthPointToCameraSpace(centreDepthPoint, depth_middle);
+
+                Debug.Log(measurement + " new centre point | left: " + leftDepthPoint.X + " centre: " + centreDepthPoint.X + " right: " + rightDepthPoint.X);
+                Debug.Log("\n");
+            }
+            else
+            {
+                Debug.Log(measurement + " centre point | left: " + leftDepthPoint.X + " centre: " + centreDepthPoint.X + " right: " + rightDepthPoint.X);
+                Debug.Log("\n");
+            }
         }
 
         if (depth_left == 0)
@@ -506,8 +455,6 @@ public class Measurements : MonoBehaviour
 
                 if (depth_left != 0)
                 {
-                    //Debug.Log("break left | New depth: " + depth_left);
-                    //Debug.Log("\n");
                     left_newcameraspace = depthManager._Sensor.CoordinateMapper.MapDepthPointToCameraSpace(leftDepthPoint, depth_left);
                     break;
                 }
@@ -522,39 +469,43 @@ public class Measurements : MonoBehaviour
 
                 if (depth_right != 0)
                 {
-                    //Debug.Log("break right | New depth: " + depth_right);
-                    //Debug.Log("\n");
                     right_newcameraspace = depthManager._Sensor.CoordinateMapper.MapDepthPointToCameraSpace(rightDepthPoint, depth_right);
                     break;
                 }
             }
         }
 
-        if (debug)
+        if (depth_middle != 0)
         {
-            Debug.Log(measurement + " middle camera space | x: " + middle_cameraspace.X + " y: " + middle_cameraspace.Y + " z: " + middle_cameraspace.Z);
-            Debug.Log(measurement + " left camera space point | X: " + left_newcameraspace.X + " Y: " + left_newcameraspace.Y + " Z: " + left_newcameraspace.Z);
-            Debug.Log(measurement + " right camera space point | X: " + right_newcameraspace.X + " Y: " + right_newcameraspace.Y + " Z: " + right_newcameraspace.Z);
-            Debug.Log("\n");
+            if (Length(left_newcameraspace.X, centre_newcameraspace.X) >= Length(right_newcameraspace.X, centre_newcameraspace.X))
+            {
+                return Length(right_newcameraspace.X, centre_newcameraspace.X);
+            }
+            else if (Length(left_newcameraspace.X, centre_newcameraspace.X) < Length(right_newcameraspace.X, centre_newcameraspace.X))
+            {
+                return Length(left_newcameraspace.X, centre_newcameraspace.X);
+            }
+
+        } else
+        {
+
+            if (debug)
+            {
+                Debug.Log(measurement + " middle camera space | x: " + middle_cameraspace.X + " y: " + middle_cameraspace.Y + " z: " + middle_cameraspace.Z);
+                Debug.Log(measurement + " left camera space point | X: " + left_newcameraspace.X + " Y: " + left_newcameraspace.Y + " Z: " + left_newcameraspace.Z);
+                Debug.Log(measurement + " right camera space point | X: " + right_newcameraspace.X + " Y: " + right_newcameraspace.Y + " Z: " + right_newcameraspace.Z);
+                Debug.Log("\n");
+            }
+
+            if (Length(left_newcameraspace.X, middle_cameraspace.X) >= Length(right_newcameraspace.X, middle_cameraspace.X))
+            {
+                return Length(right_newcameraspace.X, middle_cameraspace.X);
+            }
+            else if (Length(left_newcameraspace.X, middle_cameraspace.X) < Length(right_newcameraspace.X, middle_cameraspace.X))
+            {
+                return Length(left_newcameraspace.X, middle_cameraspace.X);
+            }
         }
-
-
-        if (Length(left_newcameraspace.X, middle_cameraspace.X) > Length(right_newcameraspace.X, middle_cameraspace.X))
-        {
-            /*Debug.Log(measurement + " length right | " + Length(right_newcameraspace.X, middle_cameraspace.X));
-            Debug.Log("\n");
-            Debug.Log("\n");
-            Debug.Log("\n");*/
-            return Length(right_newcameraspace.X, middle_cameraspace.X);
-        } else if (Length(left_newcameraspace.X, middle_cameraspace.X) < Length(right_newcameraspace.X, middle_cameraspace.X))
-        {
-            /*Debug.Log(measurement + " length left | " + Length(left_newcameraspace.X, middle_cameraspace.X));
-            Debug.Log("\n");
-            Debug.Log("\n");
-            Debug.Log("\n");*/
-            return Length(left_newcameraspace.X, middle_cameraspace.X);
-        }
-
 
         return 0.0f;
 

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23998293530431474}
   - component: {fileID: 95831635892133168}
   m_Layer: 0
-  m_Name: Hair1
+  m_Name: Ponytail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

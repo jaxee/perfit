@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SizingSelect : MonoBehaviour {
     //small model base measurements 
-    private static float s_height = 64f;
+    private static float s_height = 56f;
     private static float s_waist = 25f;
     private static float s_hip = 32f;
     private static float s_bust = 33f;

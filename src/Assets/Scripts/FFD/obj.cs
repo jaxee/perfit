@@ -85,7 +85,7 @@ private void Start()
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
         ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
-		//GameObject.FindObjectOfType<ParticleSystem>().Stop();
+		GameObject.FindObjectOfType<ParticleSystem>().Stop();
     }
 
 private void Update()
@@ -289,7 +289,7 @@ void adjust(float measurement,string section)
 		loadProfile();
         yield return new WaitForFixedUpdate();
         Deform();
-		//StartCoroutine(applyFX());
+		StartCoroutine(applyFX());
         //updateMesh = false;
         //gameObject.SetActive(false);
     }

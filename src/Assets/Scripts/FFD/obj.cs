@@ -63,6 +63,8 @@ private float tmpTUS = 0;
 private float tmpSUT = 0;
 private float tmpSTU = 0;
 
+
+private GameObject block;
 private BodyscanSave bodyData;
 private ModelSave modelData;
 private Sizing sizing; 
@@ -70,8 +72,13 @@ private Sizing sizing;
 
 private void Start()
 {
-		bodyData = FindObjectOfType<BodyscanSave> ();
-        sizing = new Sizing();
+        block = new GameObject("block");
+        block.AddComponent<Sizing>();
+
+        bodyData = FindObjectOfType<BodyscanSave>();
+        sizing = block.GetComponent<Sizing>();
+        modelData = FindObjectOfType<ModelSave>();
+
         sm = FindObjectOfType<SaveManager>();
         target = targetmodel.GetComponent<SkinnedMeshRenderer>();//get target model in scene mesh info
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
@@ -206,7 +213,6 @@ void MeshUpdate(Vector3[] vertices)
         target.sharedMesh.vertices = vertices;
         target.sharedMesh.RecalculateBounds();
         target.sharedMesh.RecalculateNormals();
-        modelData = FindObjectOfType<ModelSave>();
         modelData.mesh = target.sharedMesh;
 }
 
@@ -266,7 +272,6 @@ void adjust(float measurement,string section)
         adjust(sizing.ConvertInput(4, bodyData.Hip), "waist");
 
         float[] sizes = new float[] { bodyData.Bust,bodyData.Hip,bodyData.Waist };
-        Debug.Log(sizing.RecommendedFit(sizes));
         ModelSave modelSave = FindObjectOfType<ModelSave>();
         modelSave.size = sizing.RecommendedFit(sizes);
     }

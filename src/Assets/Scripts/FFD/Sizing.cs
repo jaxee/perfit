@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sizing : MonoBehaviour {
+public class Sizing:MonoBehaviour  {
+
+
     private static float ratio = 0.10f;
 
     //small model base measurements 
@@ -47,7 +49,7 @@ public class Sizing : MonoBehaviour {
         float value = 0f;
 
         switch (section) {
-            case 1://heigt
+            case 1://height
                 value = (s_height - size);
                 break;
             case 2://bust

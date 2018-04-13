@@ -17,13 +17,13 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 	public Animator anim; //animation controller for human
 	public int activePos; // 0, 1, 2
 
-    private ModelSave modelSave; 
+    private ModelSave modelSave;
+    private GameObject block;
 
 
-
-	/// animation
-	/// 
-	/// 	//rotation
+    /// animation
+    /// 
+    /// 	//rotation
 
 
     private void Start()

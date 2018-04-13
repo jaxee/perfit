@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelSkin: {fileID: 1676984652}
-  shade0: {fileID: 2100000, guid: 6728027517fd249a38d262cbf75e4e8b, type: 3}
+  shade0: {fileID: 2100000, guid: ca10b6c56f757a54fa073f54dafb6e47, type: 2}
   shade1: {fileID: 2100000, guid: 77475643c958d4948bd955c02c6c8f03, type: 2}
   shade2: {fileID: 2100000, guid: 602b1505aed8ee849868fd87b2d3aa6f, type: 2}
   shade3: {fileID: 2100000, guid: 50c531b077ab57348989ad408408e525, type: 2}
@@ -6487,7 +6487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &982324618
 Animator:
   serializedVersion: 3
@@ -13152,13 +13152,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1869573646}
   - component: {fileID: 1869573645}
+  - component: {fileID: 1869573647}
   m_Layer: 0
   m_Name: ModelData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1869573645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13189,6 +13190,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1869573647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1869573644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20560ed7d5fdb1e4b9082c6ea62834f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1870307672
 GameObject:
   m_ObjectHideFlags: 0

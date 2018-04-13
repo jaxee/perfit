@@ -24,6 +24,8 @@ public class AttachClothing : MonoBehaviour
 	public List<ClothingItem> wornItems = new List<ClothingItem>();
     //ints
     private int totalSlots;
+
+    private GameObject block;
     private BodyscanSave bodyData;
     private Sizing sizing;
     #endregion
@@ -33,7 +35,9 @@ public class AttachClothing : MonoBehaviour
     private void Start()
     {
         bodyData = FindObjectOfType<BodyscanSave>();
-        sizing = new Sizing();
+        block = new GameObject("block");
+        block.AddComponent<Sizing>();
+        sizing = block.GetComponent<Sizing>();
     }
 
     public void OnStart () {

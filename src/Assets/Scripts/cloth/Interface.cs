@@ -29,7 +29,7 @@ public class Interface : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         modelSave = FindObjectOfType<ModelSave>();
-        setClothingSizes(modelSave.size);
+		modelSize = "s";
 		activePos = 0; // nothing
 		//anim.SetInteger("Pose", activePos); 
 
@@ -49,6 +49,8 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 
 	private void Update (){
 
+		if(modelSave)
+			setClothingSizes(modelSave.size);
 
 	}
 

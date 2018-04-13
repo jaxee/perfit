@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections;
 using Winterdust;
+using UnityEngine.SceneManagement;
+
 public class AttachClothing : MonoBehaviour
 {
     #region Fields
@@ -13,6 +15,9 @@ public class AttachClothing : MonoBehaviour
 	public CapsuleCollider[] tummycolliders;
 	public CapsuleCollider[] hipscolliders;
 	public CapsuleCollider[] legscolliders;
+
+	private GameObject ps1;
+	private GameObject ps2;
 
 
 	private Color black;
@@ -34,6 +39,8 @@ public class AttachClothing : MonoBehaviour
 
     private void Start()
     {
+		
+
         bodyData = FindObjectOfType<BodyscanSave>();
         block = new GameObject("block");
         block.AddComponent<Sizing>();
@@ -294,6 +301,18 @@ public class AttachClothing : MonoBehaviour
 		//luk
 		//FFDColliders(ratio1,ratio2,ratio3);
 
+
+
+		if (ClothingModel.tag == "noPose") {
+			Destroy (clothComponent);
+			ps1.active = false;
+			ps2.active = false;
+
+		} else {
+			ps1.active = true;
+			ps2.active = true;
+		}
+
 		return ClothingModel;
     }
 
@@ -315,6 +334,14 @@ public class AttachClothing : MonoBehaviour
 
 			legscolliders [i].radius *= legsRatio; //ratio
 
+		}
+
+	}
+
+	void Update (){
+		if (SceneManager.sceneCount > 1) {
+			ps1 = GameObject.Find ("PoseButton");
+			ps2 = GameObject.Find ("PoseButton2");
 		}
 
 	}

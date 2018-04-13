@@ -106,6 +106,12 @@ public class Interface : MonoBehaviour, IPointerClickHandler
 			AddOrRemoveClothes ("naked", "Dress", "dress08_" + modelSize, 0);
 
 		}
+		else if (gameObject.name == "Dress9") {
+			changeClothesScript.RemoveClothingItem ("Dress", "abc");
+			Debug.Log ("Dress 8");
+			AddOrRemoveClothes ("naked", "Dress", "dress09_" + modelSize, 0);
+
+		}
 			
 		//https://docs.unity3d.com/ScriptReference/Animation-clip.html
 		//ANIMATION https://unity3d.com/learn/tutorials/topics/animation/animator-scripting

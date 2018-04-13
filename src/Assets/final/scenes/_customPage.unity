@@ -2364,7 +2364,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Size Presets
+  m_Text: Select Size Preset *
 --- !u!222 &586483513
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2819,6 +2819,7 @@ RectTransform:
   - {fileID: 1027526220}
   - {fileID: 868529517}
   - {fileID: 203851505}
+  - {fileID: 1103379747}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7263,7 +7264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 315, y: -187}
+  m_AnchoredPosition: {x: 373.21045, y: -187}
   m_SizeDelta: {x: 223.4, y: 50.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1027526221
@@ -7595,6 +7596,80 @@ Transform:
   m_Father: {fileID: 1822659911}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1103379746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1103379747}
+  - component: {fileID: 1103379749}
+  - component: {fileID: 1103379748}
+  m_Layer: 5
+  m_Name: Hair Style (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1103379747
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1103379746}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000396, y: 1.0000396, z: 1.0000396}
+  m_Children: []
+  m_Father: {fileID: 695299424}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 447.84546, y: -408}
+  m_SizeDelta: {x: 223.4, y: 50.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1103379748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1103379746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.47794116, g: 0.47794116, b: 0.47794116, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '*Fields Mandatory'
+--- !u!222 &1103379749
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1103379746}
 --- !u!1 &1108301173
 GameObject:
   m_ObjectHideFlags: 0
@@ -8676,8 +8751,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 158, y: 231}
-  m_SizeDelta: {x: 223.4, y: 50.6}
+  m_AnchoredPosition: {x: 196, y: 231}
+  m_SizeDelta: {x: 300, y: 50.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1295794067
 MonoBehaviour:
@@ -8711,7 +8786,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Skin Colour '
+  m_Text: Choose Skin Colour *
 --- !u!222 &1295794068
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14025,7 +14100,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Body Settings '
+  m_Text: Customize Your Body
 --- !u!222 &1802085887
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14928,8 +15003,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 158, y: -179.84692}
-  m_SizeDelta: {x: 223.4, y: 50.6}
+  m_AnchoredPosition: {x: 196, y: -175.31671}
+  m_SizeDelta: {x: 300, y: 50.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2037995659
 MonoBehaviour:
@@ -14963,7 +15038,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hair Style
+  m_Text: Pick Hair Style
 --- !u!222 &2037995660
 CanvasRenderer:
   m_ObjectHideFlags: 0

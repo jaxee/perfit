@@ -85,7 +85,6 @@ private void Start()
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
         ctrlPoints = new GameObject[L + 1, M + 1, N + 1];//set empty array to lattice size input
         SetOrigin();
-        BuildLattice();
 		//GameObject.FindObjectOfType<ParticleSystem>().Stop();
     }
 
@@ -130,6 +129,7 @@ void SetOrigin()
         tmpSUT = Vector3.Dot(tmpSU, T);
         tmpSTU = Vector3.Dot(tmpST, U);
         P0 = min;
+		BuildLattice();
 }
 void Deform()
 {    //place vertices of object into lattice local grid for calculation
@@ -218,8 +218,11 @@ void MeshUpdate(Vector3[] vertices)
 void adjust(float measurement,string section)
 {    //take values and move respective ctrl points
 
+		Debug.Log (measurement);
+
         if (section == "hips") {
-                Vector3 adjA = new Vector3(measurement, 0,0);
+				Debug.Log ("hip: "+measurement);
+                Vector3 adjA = new Vector3(measurement*0.1f, 0,0);
                 foreach (string hip in leftHip) {
                         GameObject tmp = GameObject.Find(hip);
                         tmp.transform.position -= adjA;
@@ -233,19 +236,22 @@ void adjust(float measurement,string section)
                 //hipCol.radius += 2 * 0.10f;
         }
         if (section == "waist") {
-                Vector3 adjustment = new Vector3(0, 0, measurement);
+				Debug.Log ("waist: "+measurement);
+			Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
                 GameObject tmp = GameObject.Find(butt);
                 tmp.transform.position -= adjustment;
         }
         if (section == "stomach")
         {
-                Vector3 adjustment = new Vector3(0, 0, measurement);
+				Debug.Log ("stomach: "+measurement);
+			Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
                 GameObject tmp = GameObject.Find(stomach);
                 tmp.transform.position += adjustment;
         }
         if (section == "bust")
         {
-                Vector3 adjustment = new Vector3(0, 0, measurement);
+				Debug.Log ("bust: "+measurement);
+			Vector3 adjustment = new Vector3(0, 0, measurement*0.1f);
                 GameObject tmp = GameObject.Find(chest);
                 tmp.transform.position += adjustment;
 
@@ -254,8 +260,9 @@ void adjust(float measurement,string section)
         }
         if (section == "height")
         {
+			Debug.Log ("height: "+measurement);
             for (int i = 0; i< height.Length; i++) {
-                Vector3 adjustment = new Vector3(0, measurement * 0.01f,0);
+				Vector3 adjustment = new Vector3(0, measurement*0.1f,0);
                 GameObject tmp = GameObject.Find(height[i]);
                 tmp.transform.position += adjustment;
 
@@ -265,7 +272,6 @@ void adjust(float measurement,string section)
 }
 
     void loadProfile(){
-		Debug.Log (bodyData.Waist);
         adjust(sizing.ConvertInput(1, bodyData.Height), "height");
         adjust(sizing.ConvertInput(2, bodyData.Bust), "bust");
 		adjust(sizing.ConvertInput(3, bodyData.Hip), "hips");

@@ -13874,10 +13874,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveManager: {fileID: 11400000, guid: da8a40b9dac0c4ff893f349267e7fa02, type: 2}
   file: bodyScan
-  Height: 70
-  Waist: 15
+  Height: 0
+  Waist: 0
   Hip: 0
-  Bust: 5
+  Bust: 0
 --- !u!4 &1869573646
 Transform:
   m_ObjectHideFlags: 0
@@ -13902,8 +13902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036798ff5d9bf054ca38b4df80183a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodySave: {fileID: 11400000, guid: da8a40b9dac0c4ff893f349267e7fa02, type: 2}
+  bodyData: {fileID: 0}
   target: {fileID: 1676984652}
+  clone: {fileID: 0}
 --- !u!1 &1870307672
 GameObject:
   m_ObjectHideFlags: 0

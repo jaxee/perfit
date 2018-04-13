@@ -50,16 +50,16 @@ public class Sizing:MonoBehaviour  {
 
         switch (section) {
             case 1://height
-                value = (s_height - size);
+                value = (size - s_height);
                 break;
             case 2://bust
-                value = (s_bust - size);
+                value = (size - s_bust);
                 break;
             case 3://waist
-                value = (s_waist - size);
+                value = (size - s_waist);
                 break;
             case 4://hip
-                value = (s_hip - size);
+                value = (size - s_hip);
                 break;
             default:
                 break;

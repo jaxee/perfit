@@ -28,7 +28,7 @@ public class ItemDatabase : MonoBehaviour
 		clothesList.Add(new ClothingItem(7, "", "", "dress07_s", "Dress", (GameObject)Resources.Load("Dresses/small/dress07_s")));
 		clothesList.Add(new ClothingItem(8, "", "", "dress08_s", "Dress", (GameObject)Resources.Load("Dresses/small/dress08_s")));
 
-		clothesList.Add(new ClothingItem(9, "", "", "dress01_m", "Dress", (GameObject)Resources.Load("Dresses/medium/dress01_m")));
+		clothesList.Add(new ClothingItem(9, "", "", "dress01_m", "Dress",  (GameObject)Resources.Load("Dresses/medium/dress01_m")));
 		clothesList.Add(new ClothingItem(10, "", "", "dress02_m", "Dress", (GameObject)Resources.Load("Dresses/medium/dress02_m")));
 		clothesList.Add(new ClothingItem(11, "", "", "dress03_m", "Dress", (GameObject)Resources.Load("Dresses/medium/dress03_m")));
 		clothesList.Add(new ClothingItem(12, "", "", "dress04_m", "Dress", (GameObject)Resources.Load("Dresses/medium/dress04_m")));

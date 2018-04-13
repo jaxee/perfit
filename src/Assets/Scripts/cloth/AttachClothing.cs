@@ -175,7 +175,10 @@ public class AttachClothing : MonoBehaviour
 
 		GameObject newHuman = Instantiate (Resources.Load ("UNITY_FEMALE")) as GameObject;
 		avatar = newHuman;
-		float PIN_CONSTANT = 3;
+	float PIN_CONSTANT = 3;
+   //  	GameObject newHair = Instantiate (Resources.Load ("Hair/Ponytail")) as GameObject;
+//GameObject parent = avatar.transform.Find ("QuickRigCharacter3_Head").gameObject;
+//		newHair.transform.parent = parent.transform;
 
 
        // applying ffds

@@ -1264,8 +1264,6 @@ MonoBehaviour:
   startSideScan: 0
   BodySrcManager: {fileID: 1423801832}
   DepthSrcManager: {fileID: 368578718}
-  bodyObj: {fileID: 1232371457}
-  bodyData: {fileID: 11400000, guid: da8a40b9dac0c4ff893f349267e7fa02, type: 2}
 --- !u!1 &550368412
 GameObject:
   m_ObjectHideFlags: 0

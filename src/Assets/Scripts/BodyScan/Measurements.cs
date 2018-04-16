@@ -47,14 +47,13 @@ public class Measurements : MonoBehaviour
     private ushort[] depthData;
     private Texture2D texture;
 
-    public GameObject bodyObj;
-    public SaveManager bodyData;
-	private BodyscanSave data; 
+	public BodyscanSave.Body data; 
+
+
 
     void Start()
     {
-		bodyObj.GetComponent<BodyscanSave> ();
-		data = bodyObj.GetComponent<BodyscanSave> ();
+		data = new BodyscanSave.Body ();
         if (BodySrcManager == null)
         {
             Debug.LogError("Missing Game Object (Body Source Manager)");
@@ -174,7 +173,7 @@ public class Measurements : MonoBehaviour
 
                 Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
 
-                data.data.Height = CmToInches(finalHeight);
+                data.Height = CmToInches(finalHeight);
 
                 scanOneDone = true;
             }
@@ -231,10 +230,11 @@ public class Measurements : MonoBehaviour
 
                 Debug.Log("\n");
 
-				data.data.Hip = CmToInches(hipCalculation);
-				data.data.Bust = CmToInches(bustCalculation);
+				data.Hip = CmToInches(hipCalculation);
+				data.Bust = CmToInches(bustCalculation);
 
-				data.saveManager.Save("bodyScan", data.data);
+                Debug.Log("Height:" + data.Height + " waist: " + data.Waist + " hip: " + data.Hip);
+                FindObjectOfType<SaveManager>().Save("bodyScan", data);
                 scanTwoDone = true;
             }
         }

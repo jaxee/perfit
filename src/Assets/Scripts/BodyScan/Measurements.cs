@@ -47,12 +47,13 @@ public class Measurements : MonoBehaviour
     private ushort[] depthData;
     private Texture2D texture;
 
-	public BodyscanSave.Body data; 
-
+	public BodyscanSave.Body data;
+    private BodyscanSave bodySave; 
 
 
     void Start()
     {
+        bodySave = FindObjectOfType<BodyscanSave>();
 		data = new BodyscanSave.Body ();
         if (BodySrcManager == null)
         {
@@ -173,6 +174,7 @@ public class Measurements : MonoBehaviour
 
                 Debug.Log("CENTIMETERS | Height: " + finalHeight + "\nLeg Length: " + finalLeg + "\nArm Length: " + finalArm);
 
+                bodySave.Height = CmToInches(finalHeight);
                 data.Height = CmToInches(finalHeight);
 
                 scanOneDone = true;
@@ -230,12 +232,22 @@ public class Measurements : MonoBehaviour
 
                 Debug.Log("\n");
 
-				data.Hip = CmToInches(hipCalculation);
-				data.Bust = CmToInches(bustCalculation);
+                bodySave.Hip = CmToInches(hipCalculation);
+                bodySave.Bust = CmToInches(bustCalculation);
+
+
+                data.Hip = CmToInches(hipCalculation);
+                data.Bust = CmToInches(bustCalculation);
+                data.isScanned = true;
 
                 Debug.Log("Height:" + data.Height + " waist: " + data.Waist + " hip: " + data.Hip);
-                FindObjectOfType<SaveManager>().Save("bodyScan", data);
+                bodySave.saveManager.Save("bodyScan", data);
+
                 scanTwoDone = true;
+            }
+            else
+            {
+                data.isScanned = false;
             }
         }
     }

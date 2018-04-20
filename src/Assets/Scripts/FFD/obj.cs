@@ -84,7 +84,8 @@ private void Start()
         clone = (Mesh)Instantiate(target.sharedMesh);//make copy of mesh taken
         vrts = new Vector3[clone.vertexCount];//set array size of vertice on mesh
 		GameObject.FindObjectOfType<ParticleSystem>().Stop();
-		StartCoroutine (applyFFD());
+        if(bodyData.isScanned)
+		    StartCoroutine (applyFFD());
     }
 
 private void Update()

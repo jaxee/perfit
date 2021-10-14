@@ -1,0 +1,53 @@
+
+name: Deploy
+on: [push]
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code
+      - uses: actions/checkout@v2
+
+      # Install dependencies
+      - name: Setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          check-latest: true
+      - name: Get yarn cache directory
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        id: 'install-dependencies'
+        run: yarn
+
+      # Production build
+      - name: Build
+        id: storefront-build
+        run: yarn build
+
+      # Publish to Oxygen
+      - name: Publish
+        id: deploy
+        uses: shopify/oxygenctl-action@v1
+        with:
+          oxygen_deployment_token: ${{ secrets.OXYGEN_DEPLOYMENT_TOKEN }}
+
+      # Create GitHub Deployment
+      - name: Create GitHub Deployment
+        uses: shopify/github-deployment-action@v1
+        if: always()
+        with:
+          token: ${{ github.token }}
+          environment: 'preview'
+          preview_url: ${{ steps.deploy.outputs.url }}
+          description: ${{ github.event.head_commit.message }}
+
+        
